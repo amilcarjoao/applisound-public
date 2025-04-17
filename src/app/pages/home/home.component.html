@@ -4,10 +4,11 @@
 
 <div class="players-carousel-container">
     <div class="players-wrapper" #playersWrapper>
-      <app-player-soundtracks></app-player-soundtracks>
-      <app-player-soundtracks></app-player-soundtracks>
-      <app-player-soundtracks></app-player-soundtracks>
-      <app-player-soundtracks></app-player-soundtracks>
+
+      <app-player-soundtracks>[config]="PLAYER_CONFIGS.soundtracks"></app-player-soundtracks>
+      <app-player-soundtracks>[config]="PLAYER_CONFIGS.soundtracks"></app-player-soundtracks>
+      <app-player-soundtracks>[config]="PLAYER_CONFIGS.soundtracks"></app-player-soundtracks>
+
     </div>
     
     <div class="carousel-controls">

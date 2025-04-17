@@ -1,5 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { PlayerSoundtracksComponent } from "../../widgets/player-soundtracks/player-soundtracks.component";
+import { PLAYER_CONFIGS } from '../../configs/player-configs';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,9 @@ import { PlayerSoundtracksComponent } from "../../widgets/player-soundtracks/pla
 
 export class HomeComponent {
 
+  protected PLAYER_CONFIGS = PLAYER_CONFIGS;
+
+  // NE PAS TOUCHER CE CODE
   @ViewChild('playersWrapper') playersWrapper!: ElementRef;
   private isDragging = false;
   private startX: number = 0;

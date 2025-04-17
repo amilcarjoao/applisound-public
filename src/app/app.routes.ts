@@ -15,40 +15,49 @@ export const routes: Routes = [
       // La route vide '' pointera directement vers HomeComponent
       {
         path: '',
-        component: HomeComponent
+        component: HomeComponent,
+        data: { animation: 'HomePage' }
       },
       {
         path: 'music',
         component: MusicPageComponent,
-        data: { animation: 'music' }
+        data: { animation: 'MusicPage' }
       },
       {
         path: 'voiceover',
-        component: VoiceoverPageComponent
+        component: VoiceoverPageComponent,
+        data: { animation: 'VoiceoverPage'}
+        
       },
       {
         path: 'producsounds',
-        component: ProducsoundsPageComponent
+        component: ProducsoundsPageComponent,
+        data: { animation: 'Producsounds'}
       },
       {
         path: 'pricing',
-        component: PricingPageComponent
+        component: PricingPageComponent,
+        data: { animation: 'PricingPage'}
       },
       {
         path: 'enterprise',
-        component: EnterprisePageComponent
+        component: EnterprisePageComponent,
+        data: { animation: 'EnterprisePage'}
       },
       {
         path: 'how-it-works',
-        component: HowItWorksPageComponent
+        component: HowItWorksPageComponent,
+        data: { animation: 'HowItWorksPage'}
       },
       {
-        path: 'enterprise',
-        component: LoginSpaceComponent
+        path: 'login',
+        component: LoginSpaceComponent,
+        data: { animation: 'LoginSpace'}
       },
       {
-        path: 'how-it-works',
-        component: SignUpSpaceComponent
+        path: 'signup',
+        component: SignUpSpaceComponent,
+        data: { animation: 'SignUpSpace'}
       },
 
     // Rediriger /home vers la racine
