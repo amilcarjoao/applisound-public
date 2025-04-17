@@ -1,0 +1,113 @@
+@import '../../../styles/fonts';
+
+
+// H1
+.universeTitle{
+    font-family: 'coco-fat';
+    font-size: 50px;
+    margin-top: 4rem;
+    margin-left: 4rem;
+}
+
+
+// CARROUSSEL
+
+.players-carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: visible; // Changé de 'hidden' à 'visible' pour voir les flèches
+    padding: 1rem 0 5rem 0; // Ajout de padding-bottom pour l'espace des flèches
+    margin-bottom: 3rem; // Marge supplémentaire en bas du container
+    height: auto;
+
+    .players-wrapper {
+        overflow-x: auto;
+        overflow-y: visible; // Pour que le contenu ne soit pas coupé
+        // ... reste des styles existants ...
+      }
+
+
+      
+      &::before,
+    &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 5rem; // Ajusté pour s'arrêter au-dessus des flèches
+    width: 100px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+    // I DELETE THE BLACK BLUR
+    &::before {
+      left: 0;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0), transparent);
+    }
+  
+    // I DELETE THE BLACK BLUR
+    &::after {
+      right: 0;
+      background: linear-gradient(to left, rgba(0, 0, 0, 0), transparent);
+    }
+  }
+  
+  .players-wrapper {
+    display: flex;
+    gap: 2rem;
+    padding: 0 2rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    cursor: grab;
+  
+    &:active {
+      cursor: grabbing;
+    }
+  
+    /* Masquer la scrollbar tout en gardant la fonctionnalité */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  
+    app-player-soundtracks {
+      flex: 0 0 auto;
+      width: calc(100% - 4rem);
+      max-width: 500px;
+      transition: transform 0.3s ease;
+    }
+  }
+  
+  .carousel-controls {
+    position: absolute;
+  bottom: 0; // Ajusté
+  right: 2rem;
+  display: flex;
+  gap: 4rem;
+  z-index: 3; 
+  
+    .nav-button {
+      width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.272);
+      backdrop-filter: blur(5px);
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      
+  
+      &:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+  
+      img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+  

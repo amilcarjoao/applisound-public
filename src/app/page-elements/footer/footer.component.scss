@@ -1,0 +1,36 @@
+@import '../../../styles/_fonts';
+@import '../../../styles/variables';
+
+
+
+.footer-container{
+    background-color: #E6DADA;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+    padding: 20px 0;
+    width: 100%;
+
+    // Si vous voulez une hauteur fixe
+     min-height: 250px;
+
+     // Pour le contenu du footer
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    // Aide Amazon A
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        @media (max-width: 768px) {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+
+}

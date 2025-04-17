@@ -1,0 +1,21 @@
+
+
+<h1 class="universeTitle">YOUR SOUND UNIVERSE</h1>
+
+<div class="players-carousel-container">
+    <div class="players-wrapper" #playersWrapper>
+      <app-player-soundtracks></app-player-soundtracks>
+      <app-player-soundtracks></app-player-soundtracks>
+      <app-player-soundtracks></app-player-soundtracks>
+      <app-player-soundtracks></app-player-soundtracks>
+    </div>
+    
+    <div class="carousel-controls">
+      <button class="nav-button left" (click)="scrollToPrevious()">
+        <img src="https://applisound-images.s3.eu-west-3.amazonaws.com/mini-icones/flekPrev.svg" alt="">
+      </button>
+      <button class="nav-button right" (click)="scrollToNext()">
+        <img src="https://applisound-images.s3.eu-west-3.amazonaws.com/mini-icones/flekNext.svg" alt="">
+      </button>
+    </div>
+  </div>

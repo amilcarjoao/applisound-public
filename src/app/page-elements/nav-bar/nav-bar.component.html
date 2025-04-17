@@ -1,0 +1,27 @@
+
+<div class="nav-container" [ngClass]="{'scrolled': isScrolled}">
+
+    <div class="nav-left">
+      <a routerLink="/">
+        <img width="200" src="https://applisound-images.s3.eu-west-3.amazonaws.com/applisound-bleu.png" alt="Applisound logo">
+      </a>
+      
+      <nav class="nav-links">
+        <a routerLink="/music" routerLinkActive="active">Music</a>
+        <a routerLink="/voiceover" routerLinkActive="active">Voiceover</a>
+        <a routerLink="/producsounds" routerLinkActive="active">Producsounds</a>
+        <a routerLink="/pricing" routerLinkActive="active">Pricing</a>
+        <a routerLink="/enterprise" routerLinkActive="active">Enterprise</a>
+        <a routerLink="/how-it-works" routerLinkActive="active">How It Works</a>
+      </nav>
+
+    </div>
+  
+    <div class="nav-right">
+      <button class="btn-login" routerLink="/login">LOGIN</button>
+      <button class="btn-create-account" routerLink="/signup">CREATE ACCOUNT</button>
+    </div>
+
+</div>
+  
+

@@ -1,0 +1,177 @@
+@import '../../../styles/_variables.scss';
+
+@import '../../../styles/fonts';
+
+
+// DESIGN GRAPHIC
+.nav-container{
+    
+    background-color: $white-aps;
+    padding: $padding-vertical $padding-horizontal;
+    font-family: 'coco-bold';
+    font-size: 16px;
+
+}
+
+
+// INCLUS POSITION FIXE
+.nav-container {
+
+    // RELATIF AU POSITION FIXE
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 1000; // Pour s'assurer que la navbar reste au-dessus des autres éléments
+    height: 110px; // Ajustez selon votre design
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    // padding: 1rem 5;
+    padding: 0 300px;
+
+    //ANIMATION SCROLL
+
+    // État initial
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0);
+  -webkit-backdrop-filter: blur(0);
+
+  // État scrollé
+  &.scrolled {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.95);
+    }
+   
+  
+    .nav-left {
+      display: flex;
+      align-items: center;
+
+      gap: 40px;
+      // gap: 8rem; // Espace entre le logo et les liens
+  
+      img {
+        display: block;
+      }
+    }
+
+    .nav-left {
+      a {
+        text-decoration: none; // Enlève le soulignement du lien
+        display: inline-block; // Meilleur contrôle du layout
+        
+        img {
+          transition: transform 0.2s ease; // Animation douce au hover
+          height: 25px; // Ajustez selon votre logo
+          width: auto;
+        }
+        
+        &:hover img {
+          transform: scale(1.02); // Léger zoom au hover
+        }
+      }
+    }
+  
+    .nav-links {
+      display: flex;
+      gap: 5px; // Espace entre les liens
+
+      align-items: center;
+  
+      a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        transition: all 0.3s ease;
+        position: relative;
+  
+        &:hover {
+          color: $bleu3-aps;
+        }
+  
+        &.active {
+          color: $bleu1-aps;
+          
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 1rem;
+            right: 1rem;
+            height: 2px;
+            background-color: #007bff;
+          }
+        }
+      }
+    }
+  
+    .nav-right {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+  
+      button {
+
+        // POLICE DU BOUTTON
+        font-family: 'coco-bold';
+        padding: 25px 20px;
+        border-radius: 4px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+  
+        &.btn-login {
+          background: transparent;
+          border: 1px solid $bleu1-aps;
+          color: $bleu1-aps;
+  
+          &:hover {
+            background: rgba(0, 123, 255, 0.1);
+          }
+        }
+  
+        &.btn-create-account {
+          background: $bleu1-aps;
+          border: 0px solid $bleu1-aps;
+          color: white;
+  
+          &:hover {
+            background: $bleu3-aps;
+            border-color: $bleu3-aps;
+          }
+        }
+      }
+    }
+  
+    // Responsive design
+    @media (max-width: 1024px) {
+      .nav-left {
+        gap: 2rem;
+      }
+  
+      .nav-links {
+        gap: 1rem;
+      }
+    }
+  
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none; // Vous pourriez vouloir ajouter un menu hamburger ici
+      }
+  
+      .nav-right {
+        button {
+          padding: 0.4rem 0.8rem;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+  
