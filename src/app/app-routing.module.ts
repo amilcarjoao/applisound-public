@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
-
+import { PricingPageComponent } from './pages/pricing-page/pricing-page.component';
 
 const routes: Routes = [
+
+
   { 
     path: '', 
     redirectTo: 'home', 
@@ -16,7 +18,23 @@ const routes: Routes = [
   { 
     path: '**', 
     redirectTo: 'home' 
-  }
+  },
+
+  // TRADUCTION
+
+  {
+    path: ':lang',
+    children: [
+      { path: '', component: HomeComponent },
+      { path: 'pricing', component: PricingPageComponent },
+      // autres routes...
+    ]
+  },
+
+  { path: '', redirectTo: '/en', pathMatch: 'full' },
+  { path: '**', redirectTo: '/en' }
+
+
 ];
 
 @NgModule({

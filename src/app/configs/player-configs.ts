@@ -3,7 +3,7 @@ import { PlayerConfig } from '../../app/models/player-config.interface.cjs';
 export const PLAYER_CONFIGS: { [key: string]: PlayerConfig } = {
   soundtracks: {
     sectionTitle: 'SOUNDTRACKS',
-    createButtonText: 'CREATE MY SOUNDTRACK',
+    createButtonText: 'CREATE MY SOUNDTRACKS',
     typeformUrl: 'your-typeform-url-1',
     tracks: [
       {
@@ -64,6 +64,8 @@ export const PLAYER_CONFIGS: { [key: string]: PlayerConfig } = {
       },
     ]
   },
+
+  //JINGLES
   jingles: {
     sectionTitle: 'JINGLES',
     createButtonText: 'CREATE MY JINGLE',
@@ -72,14 +74,67 @@ export const PLAYER_CONFIGS: { [key: string]: PlayerConfig } = {
       // Tracks pour les jingles
     ]
   },
-  voiceover: {
+  voiceovers: {
     sectionTitle: 'VOICEOVER',
     createButtonText: 'CREATE MY VOICEOVER',
+    typeformUrl: 'your-typeform-url-3',
+    tracks: [
+      {
+        id: 1,
+        title: "SIMA",
+        artist: "Amilcar JOAO",
+        duration: "1:58",
+        url: "https://audio-applisound.s3.eu-west-3.amazonaws.com/soundtracks_homePage/Voice_Update/haleine+dingue.wav"
+      },
+      {
+        id: 2,
+        title: "CIRMI WEBINAIRE",
+        artist: "Amilcar Joao",
+        duration: "0:00",
+        url: "https://audio-applisound.s3.eu-west-3.amazonaws.com/soundtracks_homePage/Voice_Update/Cirmi+webinaire.mp3"
+      },
+      {
+        id: 3,
+        title: "CIRMI WEBINAIRE",
+        artist: "Amilcar Joao",
+        duration: "0:00",
+        url: "https://audio-applisound.s3.eu-west-3.amazonaws.com/soundtracks_homePage/Voice_Update/Cirmi+webinaire.mp3"
+      },
+      {
+        id: 4,
+        title: "CIRMI WEBINAIRE",
+        artist: "Amilcar Joao",
+        duration: "0:00",
+        url: "https://audio-applisound.s3.eu-west-3.amazonaws.com/soundtracks_homePage/Voice_Update/Cirmi+webinaire.mp3"
+      }
+    ]
+  },
+  assignment_music_rights: {
+    sectionTitle: 'ASSIGNEMENT',
+    createButtonText: 'GET MY ASSIGNEMENT OF RIGHTS',
     typeformUrl: 'your-typeform-url-3',
     tracks: [
       // Tracks pour les voiceovers
     ]
   },
+  sound_design: {
+    sectionTitle: 'SOUND DESIGN',
+    createButtonText: 'CREATE MY SOUND DESIGN',
+    typeformUrl: 'your-typeform-url-3',
+    tracks: [
+      // Tracks pour les voiceovers
+    ]
+  },
+  hymns: {
+    sectionTitle: 'HYMNS SOUNDTRACKS',
+    createButtonText: 'CREATE MY HYMNS SOUNDTRACKS',
+    typeformUrl: 'your-typeform-url-3',
+    tracks: [
+      // Tracks pour les voiceovers
+    ]
+  },
+
+
   // ... autres configurations ...
 };
   

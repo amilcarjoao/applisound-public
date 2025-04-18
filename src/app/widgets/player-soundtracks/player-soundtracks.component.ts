@@ -1,19 +1,12 @@
-import { Component, OnInit, OnDestroy  } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TimePipe } from "../../Pipes/time.pipe";
 import { AudioService } from '../../services/audio.service';
 import { Subscription } from 'rxjs';
+import { PlayerConfig, Track } from '../../models/player-config.interface.cjs';
 
 
-// Je définis l'interface Track
-interface Track {
-  id: number;
-  title: string;
-  artist: string;
-  duration: string;
-  url: string;
-}
 
 
 @Component({
@@ -26,76 +19,27 @@ interface Track {
 
 export class PlayerSoundtracksComponent implements OnInit, OnDestroy {
 
-  title = 'Soundtracks'; // Correspond au h2 du template
+  @Input() config!: PlayerConfig;
+
+  // Remplacer title par
+  get sectionTitle(): string {
+    return this.config?.sectionTitle || 'Soundtracks faux';
+  }
+
+  get createButtonText(): string {
+    return this.config?.createButtonText || 'CREATE MY SOUNDTRACK faux';
+  }
 
 
   // NE PAS SUPPRIMER CELA ON A BESOIN POUR APRES
   openTypeForm() {
-    // Cette méthode sera implémentée plus tard pour ouvrir le formulaire
-    console.log('Opening TypeForm...');
+    if (this.config?.typeformUrl) {
+      window.open(this.config.typeformUrl, '_blank');
+    }
   }
 
   // LES TRACKS JE LAISSE
-  tracks: Track[] = [
-
-    {
-      id: 1,
-      title: "Bad Boy (Radio Edit)",
-      artist: "Jeyslee",
-      duration: "1:58",
-      url: "https://audio-applisound.s3.eu-west-3.amazonaws.com/soundtracks_homePage/bad-boy-radio-edit.mp3"
-    },
-    {
-      id: 2,
-      title: "La Voie (Instrumental)",
-      artist: "Jeyslee",
-      duration: "3:52",
-      url: "https://audio-applisound.s3.eu-west-3.amazonaws.com/soundtracks_homePage/la-voie-instru.mp3"
-    },
-    {
-      id: 3,
-      title: "Luanda Spotlights",
-      artist: "Jeyslee",
-      duration: "3:40",
-      url: "https://audio-applisound.s3.eu-west-3.amazonaws.com/soundtracks_homePage/Jeyslee-Luanda+SpotlightsV2.mp3"
-    },
-    {
-      id: 4,
-      title: "Control",
-      artist: "Jeyslee",
-      duration: "2:26",
-      url: "https://audio-applisound.s3.eu-west-3.amazonaws.com/soundtracks_homePage/Control.mp3"
-    },
-    {
-      id: 5,
-      title: "EDLV Hymne",
-      artist: "Jeyslee",
-      duration: "3:17",
-      url: "https://audio-applisound.s3.eu-west-3.amazonaws.com/soundtracks_homePage/Jeyslee+-+EDLV+(Hymne)+v2.mp3"
-    },
-    {
-      id: 6,
-      title: "BYD",
-      artist: "Jeyslee",
-      duration: "0:40",
-      url: "https://audio-applisound.s3.eu-west-3.amazonaws.com/soundtracks_homePage/Jeyslee+-+Build+Your+Dreams+2.wav"
-    },
-    {
-      id: 7,
-      title: "Retroactive",
-      artist: "Jeyslee",
-      duration: "1:05",
-      url: "https://audio-applisound.s3.eu-west-3.amazonaws.com/soundtracks_homePage/Jeyslee+-+Retroactive+%5BInstrumental+v1%5D.wav"
-    },
-    {
-      id: 8,
-      title: "ZONE",
-      artist: "Jeyslee & Yūutsu",
-      duration: "3:14",
-      url: "https://audio-applisound.s3.eu-west-3.amazonaws.com/soundtracks_homePage/Jeyslee+%26+Y%C5%AButsu+-+Zone.mp3"
-    },
-
-  ];
+  tracks: Track[] = [];
 
   // LECTURE
   private componentId: string;
@@ -111,8 +55,9 @@ export class PlayerSoundtracksComponent implements OnInit, OnDestroy {
   isDragging = false;
 
   ngOnInit() {
-    // Initialiser la première piste au démarrage
-    if (this.tracks.length > 0) {
+    // Utiliser les tracks de la config
+    if (this.config?.tracks?.length > 0) {
+      this.tracks = this.config.tracks;
       this.currentTrack = this.tracks[0];
       this.audio.src = this.tracks[0].url;
       this.audio.load();

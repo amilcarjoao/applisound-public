@@ -1,4 +1,9 @@
+import { CommonModule } from '@angular/common';
 import { Component, ViewChild, ElementRef } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core'; // Assurez-vous d'avoir cet import
+
+
 
 interface PricingCard {
   title: string;
@@ -11,6 +16,11 @@ interface PricingCard {
 
 @Component({
   selector: 'app-pricing-page',
+  standalone: true,
+  imports: [
+    CommonModule,
+    TranslateModule  // Important : ajoutez TranslateModule ici
+  ],
   templateUrl: './pricing-page.component.html',
   styleUrls: ['./pricing-page.component.scss']
 })
@@ -82,6 +92,15 @@ export class PricingPageComponent {
     this.cardsContainer.nativeElement.scrollBy({
       left: 300,
       behavior: 'smooth'
+    });
+  }
+
+
+  // JE TRADUIT
+  constructor(private translate: TranslateService) {
+    // Utiliser les traductions programmatiquement
+    translate.get('PRICING.TITLE').subscribe((res: string) => {
+      console.log(res);
     });
   }
 }

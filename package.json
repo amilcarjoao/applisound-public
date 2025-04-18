@@ -18,6 +18,8 @@
     "@angular/router": "^17.3.0",
     "@aws-sdk/client-s3": "^3.787.0",
     "@aws-sdk/s3-request-presigner": "^3.787.0",
+    "@ngx-translate/core": "^16.0.4",
+    "@ngx-translate/http-loader": "^16.0.1",
     "aws-sdk": "^2.1692.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

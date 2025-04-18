@@ -5,9 +5,12 @@
 <div class="players-carousel-container">
     <div class="players-wrapper" #playersWrapper>
 
-      <app-player-soundtracks></app-player-soundtracks>
-      <app-player-soundtracks></app-player-soundtracks>
-      <app-player-soundtracks></app-player-soundtracks>
+      <app-player-soundtracks [config]="PLAYER_CONFIGS['soundtracks']" ></app-player-soundtracks>
+      <app-player-soundtracks [config]="PLAYER_CONFIGS['voiceovers']" ></app-player-soundtracks>
+      <app-player-soundtracks [config]="PLAYER_CONFIGS['jingles']" ></app-player-soundtracks>
+      <app-player-soundtracks [config]="PLAYER_CONFIGS['sound_design']" ></app-player-soundtracks>
+      <app-player-soundtracks [config]="PLAYER_CONFIGS['hymns']" ></app-player-soundtracks>
+      <app-player-soundtracks [config]="PLAYER_CONFIGS['assignment_music_rights']" ></app-player-soundtracks>
 
     </div>
     

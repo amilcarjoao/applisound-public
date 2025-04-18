@@ -1,13 +1,11 @@
-<!-- nav-bar.component.html -->
 <div class="nav-container" [ngClass]="{'scrolled': isScrolled, 'menu-open': isMenuOpen}">
   <div class="nav-left">
-    <a routerLink="/" class="logo-link">
+    <a [routerLink]="['/', translate.currentLang]"class="logo-link">
       <img width="200" src="https://applisound-images.s3.eu-west-3.amazonaws.com/applisound-bleu.png" 
            alt="Applisound logo" 
            [ngClass]="{'mobile-logo': isMobile}">
     </a>
     
-    <!-- Burger Menu Button -->
     <button class="burger-menu" (click)="toggleMenu()" *ngIf="isMobile">
       <span [class.active]="isMenuOpen"></span>
       <span [class.active]="isMenuOpen"></span>
@@ -15,29 +13,39 @@
     </button>
   </div>
 
-  <!-- Navigation Links -->
   <nav class="nav-links" [class.mobile-menu]="isMobile" [class.show]="isMenuOpen">
-    <a routerLink="/music" routerLinkActive="active" (click)="isMenuOpen = false">Music</a>
-    <a routerLink="/voiceover" routerLinkActive="active" (click)="isMenuOpen = false">Voiceover</a>
-    <a routerLink="/producsounds" routerLinkActive="active" (click)="isMenuOpen = false">Producsounds</a>
-    <a routerLink="/pricing" routerLinkActive="active" (click)="isMenuOpen = false">Pricing</a>
-    <a routerLink="/enterprise" routerLinkActive="active" (click)="isMenuOpen = false">Enterprise</a>
-    <a routerLink="/how-it-works" routerLinkActive="active" (click)="isMenuOpen = false">How It Works</a>
     
-    <!-- Auth buttons in mobile menu -->
+    <a [routerLink]="['/', translate.currentLang, 'music']" routerLinkActive="active" (click)="isMenuOpen = false">
+      {{ 'NAV.MUSIC' | translate }}
+    </a>
+    <a [routerLink]="['/', translate.currentLang, 'voiceover']" routerLinkActive="active" (click)="isMenuOpen = false">
+      {{ 'NAV.VOICEOVER' | translate }}
+    </a>
+    <a [routerLink]="['/', translate.currentLang, 'producsounds']" routerLinkActive="active" (click)="isMenuOpen = false">
+      {{ 'NAV.PRODUCSOUNDS' | translate }}
+    </a>
+    <a [routerLink]="['/', translate.currentLang, 'pricing']" routerLinkActive="active" (click)="isMenuOpen = false">
+      {{ 'NAV.PRICING' | translate }}
+    </a>
+    <a [routerLink]="['/', translate.currentLang, 'enterprise']" routerLinkActive="active" (click)="isMenuOpen = false">
+      {{ 'NAV.ENTERPRISE' | translate }}
+    </a>
+    <a [routerLink]="['/', translate.currentLang, 'how-it-works']" routerLinkActive="active" (click)="isMenuOpen = false">
+      {{ 'NAV.HOW_IT_WORKS' | translate }}
+    </a>
+    
     <div class="mobile-auth" *ngIf="isMobile">
       <button class="btn-login" [routerLink]="[{ outlets: { auth: ['login'] } }]" (click)="isMenuOpen = false">
-        LOGIN
+        {{ 'NAV.LOGIN' | translate }}
       </button>
       <button class="btn-create-account" [routerLink]="[{ outlets: { auth: ['signup'] } }]" (click)="isMenuOpen = false">
-        CREATE ACCOUNT
+        {{ 'NAV.CREATE_ACCOUNT' | translate }}
       </button>
     </div>
   </nav>
 
-  <!-- Auth buttons for desktop -->
   <div class="nav-right" *ngIf="!isMobile">
-    <button class="btn-login" [routerLink]="[{ outlets: { auth: ['login'] } }]">LOGIN</button>
-    <button class="btn-create-account" [routerLink]="[{ outlets: { auth: ['signup'] } }]">CREATE ACCOUNT</button>
+    <button class="btn-login" [routerLink]="[{ outlets: { auth: ['login'] } }]">{{ 'NAV.LOGIN' | translate }}</button>
+    <button class="btn-create-account" [routerLink]="[{ outlets: { auth: ['signup'] } }]">{{ 'NAV.CREATE_ACCOUNT' | translate }}</button>
   </div>
 </div>

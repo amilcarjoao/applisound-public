@@ -13,8 +13,8 @@ import { PLAYER_CONFIGS } from '../../configs/player-configs';
 export class HomeComponent {
 
   protected PLAYER_CONFIGS = PLAYER_CONFIGS;
-
-  // NE PAS TOUCHER CE CODE
+  
+  // NE PAS TOUCHER CE CODE - C'EST POUR LA CAROUSEL
   @ViewChild('playersWrapper') playersWrapper!: ElementRef;
   private isDragging = false;
   private startX: number = 0;

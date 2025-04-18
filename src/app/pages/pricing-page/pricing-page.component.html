@@ -1,31 +1,33 @@
 <div class="pricing-container">
-    <h1 class="pricing-title">PRICING AT A GLANCE</h1>
+  <h1 class="pricing-title">{{ 'PRICING.MAIN_TITLE' | translate }}</h1>
   
-    <div class="pricing-carousel">
-      <button class="nav-button prev" (click)="scrollLeft()">
-        <i class="fas fa-chevron-left"></i>
-      </button>
-  
-      <div class="cards-container" #cardsContainer>
+  <div class="pricing-cards-container">
+    <button class="scroll-button left" (click)="scrollLeft()">
+      <i class="fas fa-chevron-left"></i>
+    </button>
 
-        <div class="pricing-card" *ngFor="let card of pricingCards">
-          <h2 class="card-title">{{card.title}}</h2>
-          <div class="services-list">
-            <div class="service-item" *ngFor="let service of card.services">
-              <div class="service-name">
-                {{service.name}}
-                <span class="service-details" *ngIf="service.details">{{service.details}}</span>
-              </div>
-              <div class="service-price">{{service.price}}</div>
+    <div class="cards-container" #cardsContainer>
+      <div class="pricing-card" *ngFor="let card of pricingCards">
+        <h2>{{ card.title | translate }}</h2>
+        
+        <div class="services-list">
+          <div class="service-item" *ngFor="let service of card.services">
+            <div class="service-name">
+              {{ service.name | translate }}
+              <span class="service-details" *ngIf="service.details">
+                {{ service.details | translate }}
+              </span>
+            </div>
+            <div class="service-price">
+              {{ service.price | translate }}
             </div>
           </div>
         </div>
-
       </div>
-  
-      <button class="nav-button next" (click)="scrollRight()">
-        <i class="fas fa-chevron-right"></i>
-      </button>
     </div>
+
+    <button class="scroll-button right" (click)="scrollRight()">
+      <i class="fas fa-chevron-right"></i>
+    </button>
   </div>
-  
+</div>
