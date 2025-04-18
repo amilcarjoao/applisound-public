@@ -42,13 +42,13 @@
     // I DELETE THE BLACK BLUR
     &::before {
       left: 0;
-      background: linear-gradient(to right, rgba(0, 0, 0, 0), transparent);
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.010), transparent);
     }
   
     // I DELETE THE BLACK BLUR
     &::after {
       right: 0;
-      background: linear-gradient(to left, rgba(0, 0, 0, 0), transparent);
+      background: linear-gradient(to left, rgba(0, 0, 0, 0.064), transparent);
     }
   }
   

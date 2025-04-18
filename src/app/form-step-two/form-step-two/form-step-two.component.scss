@@ -1,0 +1,87 @@
+// form-step-two/form-step-two.component.scss
+.step-two-container {
+    color: white;
+    padding: 2rem;
+  
+    .intro-text {
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  
+    .process-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+  
+      @media (max-width: 1200px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+  
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+    }
+  
+    .process-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: transform 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      
+      &:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.08);
+      }
+  
+      .card-image {
+        height: 120px;
+        margin-bottom: 1.5rem;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+  
+      h3 {
+        color: #4CAF50;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+  
+      p {
+        margin-bottom: 0.8rem;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+  
+      .payment-methods {
+        margin-top: auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: center;
+        
+        img {
+          height: 30px;
+          opacity: 0.7;
+          transition: opacity 0.3s ease;
+          
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+  

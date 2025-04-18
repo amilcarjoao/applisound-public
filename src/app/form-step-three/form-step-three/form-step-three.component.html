@@ -1,0 +1,66 @@
+<div class="step-three-container">
+    <p class="intro-text">
+      Dans un soucis d'efficience, de rapidité et de fluidité nous vous mettons 
+      en place un devis avec les conditions générales de vente à prendre connaissance. 
+      Vous procéderez à la signature du devis après validation. 
+      Devis Blockchain-Contrat Intelligent.
+    </p>
+
+    <div class="documents-container">
+      <!-- Devis Section -->
+      <div class="devis-section">
+        <h3>DEVIS</h3>
+        <div class="devis-content" #devisContent>
+          <!-- Le contenu du devis sera injecté dynamiquement -->
+          <div class="devis-header">
+            <div class="company-info">
+              <h4>Applisound</h4>
+              <!-- Informations de l'entreprise -->
+            </div>
+            <div class="client-info">
+              <!-- Informations du client -->
+            </div>
+          </div>
+          <div class="devis-details">
+            <!-- Détails des services -->
+          </div>
+          <div class="devis-total">
+            <!-- Total et conditions de paiement -->
+          </div>
+        </div>
+      </div>
+
+      <!-- CGV Section -->
+      <div class="cgv-section">
+        <h3>CONDITIONS GÉNÉRALES DE VENTES</h3>
+        <div class="cgv-content" #cgvContent>
+          <!-- Contenu scrollable des CGV -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Section Signature -->
+    <div class="signature-section">
+      <div class="signature-container">
+        <canvas #signatureCanvas></canvas>
+        <div class="signature-actions">
+          <button type="button" (click)="clearSignature()">Effacer</button>
+          <button type="button" (click)="validateSignature()" 
+                  [disabled]="!hasSignature">
+            Signer le devis
+          </button>
+        </div>
+      </div>
+      
+      <!-- Option de retour ultérieur -->
+      <div class="return-later">
+        <button type="button" (click)="saveDraftAndReturn()">
+          Revenir plus tard
+        </button>
+        <button type="button" (click)="createAccount()" 
+                *ngIf="!isLoggedIn">
+          Créer un compte
+        </button>
+      </div>
+    </div>
+  </div>

@@ -1,1 +1,31 @@
-<p>pricing-page works!</p>
+<div class="pricing-container">
+    <h1 class="pricing-title">PRICING AT A GLANCE</h1>
+  
+    <div class="pricing-carousel">
+      <button class="nav-button prev" (click)="scrollLeft()">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+  
+      <div class="cards-container" #cardsContainer>
+
+        <div class="pricing-card" *ngFor="let card of pricingCards">
+          <h2 class="card-title">{{card.title}}</h2>
+          <div class="services-list">
+            <div class="service-item" *ngFor="let service of card.services">
+              <div class="service-name">
+                {{service.name}}
+                <span class="service-details" *ngIf="service.details">{{service.details}}</span>
+              </div>
+              <div class="service-price">{{service.price}}</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+  
+      <button class="nav-button next" (click)="scrollRight()">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+  

@@ -1,0 +1,243 @@
+
+<!-- form-step-one/form-step-one.component.html -->
+<form [formGroup]="form" class="form-container">
+    <!-- Informations personnelles -->
+    <section class="form-section" formGroupName="personalInfo">
+      <h3>Informations personnelles</h3>
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="nom">Votre NOM*</label>
+          <input id="nom" type="text" formControlName="nom">
+        </div>
+        <div class="form-field">
+          <label for="prenom">Votre Prénom*</label>
+          <input id="prenom" type="text" formControlName="prenom">
+        </div>
+        <div class="form-field">
+          <label for="email">Adresse Mail*</label>
+          <input id="email" type="email" formControlName="email">
+        </div>
+        <div class="form-field">
+          <label for="telephone">Numéro de téléphone</label>
+          <input id="telephone" type="tel" formControlName="telephone">
+        </div>
+        <div class="form-field">
+          <label for="entreprise">Entreprise</label>
+          <input id="entreprise" type="text" formControlName="entreprise">
+        </div>
+      </div>
+    </section>
+  
+    <!-- Description du projet -->
+    <section class="form-section">
+      <h3>Description du projet</h3>
+      <div class="form-field">
+        <label for="projectDescription">Expliquez nous votre projet</label>
+        <textarea 
+          id="projectDescription" 
+          formControlName="projectDescription"
+          rows="5"
+          placeholder="Expliquez vos besoins sonores...">
+        </textarea>
+      </div>
+    </section>
+  
+    <!-- Services -->
+    <section class="form-section">
+      <h3>Services souhaités</h3>
+      <div class="services-grid">
+        <div *ngFor="let service of serviceTypes" class="service-item">
+          <label [for]="service.id" class="checkbox-label">
+            <input 
+              type="checkbox" 
+              [id]="service.id"
+              (change)="onServiceSelect($event, service.id)">
+            <span>{{ service.label }}</span>
+            <small *ngIf="service.tooltip" class="tooltip">{{ service.tooltip }}</small>
+          </label>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Quantités -->
+    <section class="form-section" formGroupName="serviceCounts">
+      <h3>Quantités souhaitées</h3>
+      <div class="quantities-grid">
+        <!-- Inputs pour les quantités -->
+      </div>
+    </section>
+  
+    <!-- Suite du form-step-one/form-step-one.component.html -->
+  <!-- Durée -->
+  <section class="form-section">
+    <h3>Durée souhaitée</h3>
+    <div class="duration-selector">
+      <select formControlName="duration" (change)="onDurationChange($event)">
+        <option value="">Sélectionnez une durée</option>
+        <option *ngFor="let duration of durations" [value]="duration.value">
+          {{ duration.label }}
+        </option>
+      </select>
+      <input 
+        *ngIf="form.get('duration')?.value === 'custom'"
+        type="text"
+        formControlName="customDuration"
+        placeholder="Précisez la durée souhaitée">
+    </div>
+  </section>
+
+  <!-- Lieux de diffusion -->
+  <section class="form-section">
+    <h3>Lieux de diffusion</h3>
+    <div class="diffusion-grid">
+      <div *ngFor="let type of diffusionTypes" class="diffusion-item">
+        <label [for]="'diffusion-' + type" class="checkbox-label">
+          <input 
+            type="checkbox" 
+            [id]="'diffusion-' + type"
+            (change)="onDiffusionSelect($event, type)">
+          <span>{{ type }}</span>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formats audio -->
+  <section class="form-section">
+    <h3>Format de fichier souhaité</h3>
+    <div class="formats-grid">
+      <div *ngFor="let format of audioFormats" class="format-item">
+        <label [for]="'format-' + format.value" class="checkbox-label">
+          <input 
+            type="checkbox" 
+            [id]="'format-' + format.value"
+            (change)="onFormatSelect($event, format.value)">
+          <span>{{ format.label }}</span>
+        </label>
+      </div>
+      <div *ngIf="hasOtherFormat" class="other-format">
+        <input 
+          type="text" 
+          formControlName="otherFormat"
+          placeholder="Précisez le format">
+      </div>
+    </div>
+  </section>
+
+  <!-- Droits d'utilisation -->
+  <section class="form-section">
+    <h3>Droits d'utilisation</h3>
+    <div class="rights-options">
+      <label class="radio-label">
+        <input 
+          type="radio" 
+          formControlName="rightsType" 
+          value="complete">
+        <span>Cession de droits complète</span>
+      </label>
+      <label class="radio-label">
+        <input 
+          type="radio" 
+          formControlName="rightsType" 
+          value="limited">
+        <span>Licence Applisound (utilisation limitée)</span>
+      </label>
+    </div>
+  </section>
+
+  <!-- Option de démo -->
+  <section class="form-section">
+    <h3>Suivi de production</h3>
+    <div class="demo-options">
+      <label class="radio-label">
+        <input 
+          type="radio" 
+          formControlName="demoOption" 
+          value="withDemo">
+        <span>Oui, je veux une démo dans 2 jours</span>
+      </label>
+      <label class="radio-label">
+        <input 
+          type="radio" 
+          formControlName="demoOption" 
+          value="noDemo">
+        <span>Non, allez jusqu'au bout du projet</span>
+      </label>
+    </div>
+  </section>
+
+  <!-- Références -->
+  <section class="form-section">
+    <h3>Références sonores</h3>
+    <div class="reference-options">
+      <div class="reference-type">
+        <label>Type de référence</label>
+        <select formControlName="referenceType">
+          <option value="link">Lien (YouTube, SoundCloud)</option>
+          <option value="upload">Upload de fichier</option>
+          <option value="record">Enregistrer maintenant</option>
+          <option value="none">Aucune référence</option>
+        </select>
+      </div>
+
+      <div [ngSwitch]="form.get('referenceType')?.value" class="reference-content">
+        <div *ngSwitchCase="'link'" class="reference-link">
+          <input 
+            type="text" 
+            formControlName="referenceLink"
+            placeholder="Collez votre lien ici">
+        </div>
+
+        <div *ngSwitchCase="'upload'" class="reference-upload">
+          <input 
+            type="file" 
+            (change)="onFileUpload($event)"
+            accept="audio/*">
+          <small>Taille maximale : 5MB</small>
+        </div>
+
+        <div *ngSwitchCase="'record'" class="reference-record">
+          <div class="recorder-controls">
+            <button 
+              type="button"
+              [class.recording]="isRecording"
+              (click)="toggleRecording()">
+              {{ isRecording ? 'Arrêter' : 'Commencer' }} l'enregistrement
+            </button>
+            <span *ngIf="isRecording" class="recording-timer">
+              {{ recordingTime }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prise de rendez-vous -->
+  <section class="form-section">
+    <h3>Prise de rendez-vous</h3>
+    <div class="appointment-form" formGroupName="appointment">
+      <div class="appointment-type">
+        <select formControlName="type">
+          <option value="visio">Visioconférence</option>
+          <option value="physical">Rencontre physique (France uniquement)</option>
+        </select>
+      </div>
+      
+      <div class="appointment-datetime">
+        <input 
+          type="date" 
+          formControlName="date"
+          [min]="minDate">
+        <input 
+          type="time" 
+          formControlName="time"
+          [min]="'09:00'"
+          [max]="'18:00'">
+      </div>
+    </div>
+  </section>
+</form>
+
+
+  
