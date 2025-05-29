@@ -1,6 +1,6 @@
 // services/blockchain.service.ts
 import { Injectable } from '@angular/core';
-import Web3 from 'web3';
+import Web3 from 'web3'; 
 import { environment } from '../environments/environment';
 
 @Injectable({
@@ -23,8 +23,8 @@ export class BlockchainService {
 
   async connectWallet(): Promise<string> {
     try {
-      const accounts = await window.ethereum.request({ 
-        method: 'eth_requestAccounts' 
+      const accounts = await window.ethereum.request({
+        method: 'eth_requestAccounts'
       });
       return accounts[0];
     } catch (error) {
@@ -36,9 +36,9 @@ export class BlockchainService {
     try {
       const contract = new this.web3.eth.Contract(this.contractABI, this.contractAddress);
       const account = await this.connectWallet();
-      
+
       const devisHash = this.web3.utils.sha3(JSON.stringify(devisData));
-      
+
       const result = await contract.methods.createDevis(
         devisHash,
         devisData.clientAddress,
@@ -80,12 +80,12 @@ contract DevisContract {
         owner = msg.sender;
     }
 
-    function createDevis(bytes32 _devisHash, address _client, uint256 _amount) 
-        public 
-        returns (bool) 
+    function createDevis(bytes32 _devisHash, address _client, uint256 _amount)
+        public
+        returns (bool)
     {
         require(msg.sender == owner, "Seule l'entreprise peut creer un devis");
-        
+
         devis[_devisHash] = Devis({
             devisHash: _devisHash,
             client: _client,
@@ -103,7 +103,7 @@ contract DevisContract {
     function signDevis(bytes32 _devisHash) public {
         require(devis[_devisHash].client == msg.sender, "Seul le client peut signer");
         require(devis[_devisHash].isValid, "Le devis n'est pas valide");
-        
+
         emit DevisSigned(_devisHash, msg.sender);
     }
 

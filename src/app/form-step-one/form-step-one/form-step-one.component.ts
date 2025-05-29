@@ -1,6 +1,9 @@
 // form-step-one/form-step-one.component.ts
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-form-step-one',
@@ -42,6 +45,7 @@ export class FormStepOneComponent implements OnInit {
     { value: 'ogg', label: 'OGG' },
     { value: 'other', label: 'Autre' }
   ];
+recordingTime: any;
 
   constructor(private fb: FormBuilder) {
     this.initForm();

@@ -23,11 +23,11 @@ export class PlayerSoundtracksComponent implements OnInit, OnDestroy {
 
   // Remplacer title par
   get sectionTitle(): string {
-    return this.config?.sectionTitle || 'Soundtracks faux';
+    return this.config?.sectionTitle || 'SOUND test';
   }
 
   get createButtonText(): string {
-    return this.config?.createButtonText || 'CREATE MY SOUNDTRACK faux';
+    return this.config?.createButtonText || 'CREATE test';
   }
 
 

@@ -8,6 +8,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { NavBarComponent } from './page-elements/nav-bar/nav-bar.component';
 import { AppComponent } from './app.component';
+import { FormStepOneComponent } from './form-step-one/form-step-one/form-step-one.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -17,11 +20,17 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
+  declarations: [
+    FormStepOneComponent
+  ],
   
   imports: [
     BrowserAnimationsModule,
     AppComponent,
+    ReactiveFormsModule,
     BrowserModule,
+    AppRoutingModule,
+    NavBarComponent,
     HttpClientModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',

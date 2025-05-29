@@ -11,47 +11,78 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 
 export class FormStepThreeComponent implements OnInit {
-  constructor(
-    private blockchainService: BlockchainService,
-    private signatureService: SignatureService,
-    private devisService: DevisService,
-    private emailService: EmailService
-  ) {}
-  ngOnInit(): void {
+
+  private signaturePad: any;
+  hasSignature = false;
+  isLoggedIn = false;
+
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit() {
+    this.initializeSignaturePad();
+    this.loadDevisContent();
+    this.loadCGVContent();
+  }
+  loadCGVContent() {
+    throw new Error('Method not implemented.');
+  }
+  loadDevisContent() {
     throw new Error('Method not implemented.');
   }
 
-  async validateAndSign() {
-    try {
-      // 1. Vérifier la signature
-      if (this.signatureService.isEmpty()) {
-        throw new Error('Signature requise');
+  private initializeSignaturePad() {
+    const canvas = document.querySelector('canvas');
+    // Initialisation du pad de signature
+  }
+
+  clearSignature() {
+    this.signaturePad.clear();
+    this.hasSignature = false;
+  }
+
+  async validateSignature() {
+    if (this.hasSignature) {
+      try {
+        // 1. Générer le PDF du devis
+        const devisPDF = await this.generateDevisPDF();
+        
+        // 2. Créer le smart contract
+        const contract = await this.createSmartContract();
+        
+        // 3. Envoyer le mail de confirmation
+        await this.sendConfirmationEmails();
+        
+        // 4. Rediriger vers la page de succès
+        this.redirectToSuccess();
+      } catch (error) {
+        console.error('Erreur lors de la validation:', error);
+        // Gérer l'erreur
       }
-
-      // 2. Connecter le wallet
-      const clientAddress = await this.blockchainService.connectWallet();
-
-      // 3. Créer le contrat sur la blockchain
-      const devisData = await this.devisService.generateDevis(this.formData);
-      const transactionHash = await this.blockchainService.createDevisContract(devisData);
-
-      // 4. Sauvegarder la signature
-      await this.signatureService.saveSignature(devisData.id, clientAddress);
-
-      // 5. Envoyer les emails de confirmation
-      await this.emailService.sendConfirmationEmails(devisData.id);
-
-      // 6. Rediriger vers la page de succès
-      this.router.navigate(['/success'], { 
-        queryParams: { 
-          devisId: devisData.id,
-          transactionHash 
-        }
-      });
-
-    } catch (error) {
-      console.error('Erreur lors de la validation:', error);
-      // Gérer l'erreur et afficher un message à l'utilisateur
     }
   }
+  redirectToSuccess() {
+    throw new Error('Method not implemented.');
+  }
+
+  private async generateDevisPDF() {
+    // Logique de génération du PDF
+  }
+
+  private async createSmartContract() {
+    // Logique de création du smart contract
+  }
+
+  private async sendConfirmationEmails() {
+    // Logique d'envoi des emails
+  }
+
+  saveDraftAndReturn() {
+    // Sauvegarder l'état actuel
+    // Rediriger vers la page principale
+  }
+
+  createAccount() {
+    // Logique de création de compte
+  }
+  
 }

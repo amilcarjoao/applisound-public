@@ -1,37 +1,230 @@
 @import '../../../styles/_variables.scss';
-
 @import '../../../styles/fonts';
 
-
-// DESIGN GRAPHIC
-.nav-container{
-    
-    background-color: $white-aps;
-    padding: $padding-vertical $padding-horizontal;
-    font-family: 'coco-bold';
-    font-size: 16px;
-
-    img {
-      user-select: none;
-      -webkit-user-drag: none;
-      -khtml-user-drag: none;
-      -moz-user-drag: none;
-      -o-user-drag: none;
-      pointer-events: none;
-    }
-
-    &.menu-open {
-      background: rgba(255, 255, 255, 0.98);
-    }
-
-      // Modifiez le padding en mobile
-    @media (max-width: 768px) {
-      padding: 0 2rem; // Au lieu de padding: 0 300px;
-    }
-
+// Mixins pour les breakpoints
+@mixin mobile {
+  @media (max-width: 767px) { @content; }
 }
 
-// Nouveau - Burger Menu
+@mixin tablet {
+  @media (min-width: 768px) and (max-width: 1023px) { @content; }
+}
+
+@mixin desktop {
+  @media (min-width: 1024px) { @content; }
+}
+
+// Variables pour le responsive
+$nav-height-mobile: 70px;
+$nav-height-desktop: 110px;
+$padding-mobile: 1rem;
+$padding-tablet: 2rem;
+$padding-desktop: 300px;
+
+// DESIGN GRAPHIC
+.nav-container {
+  background-color: $white-aps;
+  font-family: 'coco-bold';
+  font-size: 16px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+
+  // Responsive padding et hauteur
+  @include desktop {
+    height: $nav-height-desktop;
+    padding: 0 $padding-desktop;
+  }
+
+  @include tablet {
+    height: $nav-height-desktop;
+    padding: 0 $padding-tablet;
+  }
+
+  @include mobile {
+    height: $nav-height-mobile;
+    padding: 0 $padding-mobile;
+    width: 100%;
+    display: flex;
+    justify-content: space-between; // Important pour l'espacement
+    align-items: center;
+
+    
+  }
+
+  // État initial et scrollé
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0);
+  -webkit-backdrop-filter: blur(0);
+
+  &.scrolled {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+
+  &.menu-open {
+    background: rgba(255, 255, 255, 0.98);
+  }
+
+  // Images globales
+  img {
+    user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    pointer-events: none;
+  }
+
+  // Navigation gauche
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
+    @include mobile {
+      gap: 20px;
+    }
+
+    a {
+      text-decoration: none;
+      display: inline-block;
+      
+      img {
+        transition: transform 0.2s ease;
+        height: 25px;
+        width: auto;
+
+        @include mobile {
+          height: 20px;
+        }
+
+        &:hover {
+          transform: scale(1.02);
+        }
+
+        &.mobile-logo {
+          height: 20px;
+          width: auto;
+        }
+      }
+    }
+  }
+
+  // Navigation liens
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    @include mobile {
+      display: none;
+      position: fixed;
+      top: $nav-height-mobile;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.98);
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 2rem;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+
+      &.mobile-menu.show {
+        display: flex;
+        transform: translateX(0);
+      }
+
+      a {
+        font-size: 1.2rem;
+        padding: 1rem 0;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+
+      &:hover {
+        color: $bleu3-aps;
+      }
+
+      &.active {
+        color: $bleu1-aps;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -2px;
+          left: 1rem;
+          right: 1rem;
+          height: 2px;
+          background-color: #007bff;
+        }
+      }
+    }
+  }
+
+  // Navigation droite
+  .nav-right {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+
+    @include mobile {
+      display: none;
+    }
+
+    button {
+      font-family: 'coco-bold';
+      padding: 25px 20px;
+      border-radius: 4px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      @include tablet {
+        padding: 15px 15px;
+      }
+
+      &.btn-login {
+        background: transparent;
+        border: 1px solid $bleu1-aps;
+        color: $bleu1-aps;
+
+        &:hover {
+          background: rgba(0, 123, 255, 0.1);
+        }
+      }
+
+      &.btn-create-account {
+        background: $bleu1-aps;
+        border: 0px solid $bleu1-aps;
+        color: white;
+
+        &:hover {
+          background: $bleu3-aps;
+          border-color: $bleu3-aps;
+        }
+      }
+    }
+  }
+}
+
+// Burger Menu
 .burger-menu {
   display: none;
   background: none;
@@ -40,6 +233,10 @@
   padding: 0.5rem;
   margin-left: auto;
   z-index: 1001;
+
+  @include mobile {
+    display: block;
+  }
 
   span {
     display: block;
@@ -61,216 +258,13 @@
       }
     }
   }
-
-  @media (max-width: 768px) {
-    display: block;
-  }
 }
 
-
-// INCLUS POSITION FIXE
-.nav-container {
-
-    // RELATIF AU POSITION FIXE
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-
-    z-index: 1000; // Pour s'assurer que la navbar reste au-dessus des autres éléments
-    height: 110px; // Ajustez selon votre design
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    // padding: 1rem 5;
-    padding: 0 300px;
-
-    //ANIMATION SCROLL
-
-    // État initial
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-  backdrop-filter: blur(0);
-  -webkit-backdrop-filter: blur(0);
-
-  // État scrollé
-  &.scrolled {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.95);
-    }
-   
-  
-    .nav-left {
-      display: flex;
-      align-items: center;
-
-      gap: 40px;
-      // gap: 8rem; // Espace entre le logo et les liens
-  
-      img {
-        display: block;
-      }
-    }
-
-    .nav-left {
-      a {
-        text-decoration: none; // Enlève le soulignement du lien
-        display: inline-block; // Meilleur contrôle du layout
-        
-        img {
-          transition: transform 0.2s ease; // Animation douce au hover
-          height: 25px; // Ajustez selon votre logo
-          width: auto;
-        }
-        
-        &:hover img {
-          transform: scale(1.02); // Léger zoom au hover
-        }
-
-        img {
-          &.mobile-logo {
-            height: 20px; // Ajustez selon vos besoins
-            width: auto;
-          }
-        }
-
-
-      }
-    }
-  
-    .nav-links {
-      display: flex;
-      gap: 5px; // Espace entre les liens
-
-      align-items: center;
-  
-      a {
-        text-decoration: none;
-        color: #333;
-        font-weight: 500;
-        padding: 0.5rem 1rem;
-        transition: all 0.3s ease;
-        position: relative;
-  
-        &:hover {
-          color: $bleu3-aps;
-        }
-  
-        &.active {
-          color: $bleu1-aps;
-          
-          &::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 1rem;
-            right: 1rem;
-            height: 2px;
-            background-color: #007bff;
-          }
-        }
-      }
-    }
-  
-    .nav-right {
-      display: flex;
-      gap: 15px;
-      align-items: center;
-  
-      button {
-
-        // POLICE DU BOUTTON
-        font-family: 'coco-bold';
-        padding: 25px 20px;
-        border-radius: 4px;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.3s ease;
-  
-        &.btn-login {
-          background: transparent;
-          border: 1px solid $bleu1-aps;
-          color: $bleu1-aps;
-  
-          &:hover {
-            background: rgba(0, 123, 255, 0.1);
-          }
-        }
-  
-        &.btn-create-account {
-          background: $bleu1-aps;
-          border: 0px solid $bleu1-aps;
-          color: white;
-  
-          &:hover {
-            background: $bleu3-aps;
-            border-color: $bleu3-aps;
-          }
-        }
-      }
-    }
-  
-    // Responsive design
-    @media (max-width: 1024px) {
-      .nav-left {
-        gap: 2rem;
-      }
-  
-      .nav-links {
-        gap: 1rem;
-      }
-    }
-  
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none; // Vous pourriez vouloir ajouter un menu hamburger ici
-      }
-  
-      .nav-right {
-        button {
-          padding: 0.4rem 0.8rem;
-          font-size: 0.9rem;
-        }
-      }
-    }
-
-
-    // Modifications pour le menu mobile
-.nav-links {
-  @media (max-width: 768px) {
-    position: fixed;
-    top: 110px; // Hauteur de votre navbar
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.98);
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 2rem;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    
-    &.mobile-menu {
-      &.show {
-        transform: translateX(0);
-      }
-    }
-
-    a {
-      font-size: 1.2rem;
-      padding: 1rem 0;
-    }
-  }
-}
-
-// Nouveau - Auth buttons en mobile
+// Mobile Auth
 .mobile-auth {
   display: none;
 
-  @media (max-width: 768px) {
+  @include mobile {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -284,13 +278,3 @@
     }
   }
 }
-
-// Modification des boutons auth existants
-.nav-right {
-  @media (max-width: 768px) {
-    display: none; // Cache les boutons auth desktop en mobile
-  }
-}
-
-  }
-  
