@@ -86,7 +86,7 @@
   
   .select-wrapper {
     position: relative;
-    width: 150px;
+    width: 180px;
     
     select {
       width: 100%;
@@ -102,6 +102,8 @@
       font-size: 14px;
       cursor: pointer;
       transition: all 0.3s ease;
+      max-height: 300px;
+      overflow-y: auto;
       
       &:hover, &:focus {
         background-color: rgba(255, 255, 255, 0.15);
@@ -112,6 +114,8 @@
       option {
         background-color: #030814;
         color: white;
+        padding: 8px;
+        font-family: 'Montserrat', 'Arial Unicode MS', sans-serif;
       }
     }
     
@@ -139,6 +143,18 @@
   }
 }
 
+[dir="rtl"] {
+  .footer-section h3:after {
+    left: auto;
+    right: 0;
+  }
+  
+  .select-wrapper .select-arrow {
+    right: auto;
+    left: 15px;
+  }
+}
+
 @media (max-width: 768px) {
   .footer-main {
     grid-template-columns: 1fr;
@@ -157,5 +173,10 @@
   
   .language-selector .select-wrapper {
     margin: 0 auto;
+  }
+  
+  [dir="rtl"] .footer-section h3:after {
+    right: 50%;
+    left: auto;
   }
 }

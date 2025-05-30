@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
     private router: Router
   ) {
     // Langues supportées
-    translate.addLangs(['en', 'fr']);
+    translate.addLangs(['en', 'fr', 'cn', 'de', 'es', 'it', 'jp', 'nl', 'no', 'pl', 'pt', 'se', 'ch-fr', 'ch-de', 'ar']);
 
     // Récupérer la langue sauvegardée ou utiliser celle du navigateur
     const savedLang = localStorage.getItem('preferredLanguage');
@@ -41,8 +41,8 @@ export class AppComponent implements OnInit {
     
     // Détection automatique de la langue du navigateur
     const browserLang = translate.getBrowserLang();
-    const lang = browserLang?.match(/en|fr/) ? browserLang : 'en';
-    const defaultLang = savedLang || (browserLang?.match(/en|fr/) ? browserLang : 'en');
+    const lang = browserLang?.match(/en|fr|cn|de|es|it|jp|nl|no|pl|pt|se|ch-fr|ch-de|ar/) ? browserLang : 'en';
+    const defaultLang = savedLang || (browserLang?.match(/en|fr|cn|de|es|it|jp|nl|no|pl|pt|se|ch-fr|ch-de|ar/) ? browserLang : 'en');
     
     // Applique la langue
     translate.use(defaultLang || lang);
@@ -69,7 +69,7 @@ export class AppComponent implements OnInit {
         const urlSegments = this.router.url.split('/');
         if (urlSegments.length > 1) {
           const langInUrl = urlSegments[1];
-          if (langInUrl.match(/en|fr/)) {
+          if (langInUrl.match(/en|fr|cn|de|es|it|jp|nl|no|pl|pt|se|ch-fr|ch-de|ar/)) {
             // Sauvegarder la langue préférée
             localStorage.setItem('preferredLanguage', langInUrl);
             this.translate.use(langInUrl);
