@@ -146,6 +146,348 @@
   }
 }
 
+// Services Section
+.services-section {
+  padding: 4rem 2rem;
+  background-color: #f8f8f8;
+}
+
+.section-title {
+  font-family: "coco-fat";
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, #333, #999);
+  }
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  h3 {
+    font-family: "coco-medium";
+    font-size: 22px;
+    margin: 1rem 0;
+    color: #333;
+  }
+  
+  p {
+    font-family: "coco-light";
+    color: #666;
+    line-height: 1.6;
+  }
+}
+
+.service-icon-placeholder {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  margin-bottom: 1rem;
+}
+
+// Media queries for responsive design
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-title {
+    font-size: 28px;
+  }
+}
+
+// Clients Section
+.clients-section {
+  padding: 4rem 2rem;
+  background-color: #fff;
+  border-top: 1px solid #eaeaea;
+}
+
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.client-card {
+  text-align: center;
+  padding: 2rem;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
+  
+  h3 {
+    font-family: "coco-medium";
+    font-size: 22px;
+    margin: 1rem 0;
+    color: #333;
+    position: relative;
+    
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(to right, #555, #999);
+    }
+  }
+  
+  p {
+    font-family: "coco-light";
+    color: #666;
+    line-height: 1.6;
+    margin-top: 1.5rem;
+  }
+}
+
+.client-image-placeholder {
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+  margin: 0 auto 1.5rem;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media (max-width: 768px) {
+  .clients-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Rights Section
+.rights-section {
+  position: relative;
+  padding: 6rem 0;
+  background-color: #030814;
+  color: white;
+  overflow: hidden;
+  text-align: center;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  box-sizing: border-box;
+}
+
+.floating-logo {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  opacity: 0.2;
+  animation: float 8s ease-in-out infinite;
+  
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    right: 10%;
+    top: 20%;
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+    right: 15%;
+    top: 25%;
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+    right: 10%;
+    top: 20%;
+  }
+}
+
+.rights-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  
+  .section-title {
+    color: white;
+    
+    &:after {
+      background: linear-gradient(to right, #fff, rgba(255,255,255,0.3));
+    }
+  }
+}
+
+.rights-description {
+  font-family: 'Arial', sans-serif;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 1.8;
+  margin-top: 2rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  letter-spacing: 0.8px;
+}
+
+// Testimonials Section
+.testimonials-section {
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+  border-top: 1px solid #eaeaea;
+}
+
+.testimonials-subtitle {
+  text-align: center;
+  font-family: "coco-light";
+  font-size: 18px;
+  margin-top: -1.5rem;
+  margin-bottom: 3rem;
+  color: #666;
+}
+
+.testimonials-carousel {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+  scroll-behavior: smooth;
+  max-width: 1200px;
+  margin: 0 auto;
+  
+  /* Masquer la scrollbar */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.testimonial-card {
+  flex: 0 0 auto;
+  width: 300px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  &.empty-card {
+    background-color: #f5f5f5;
+    border: 2px dashed #ddd;
+    box-shadow: none;
+    
+    .testimonial-content {
+      opacity: 0.6;
+    }
+    
+    .client-logo-placeholder {
+      border: 2px dashed #ccc;
+      background-color: #eaeaea;
+    }
+  }
+}
+
+.client-logo-container {
+  padding: 1.5rem 1.5rem 0;
+}
+
+.client-logo-placeholder {
+  width: 100%;
+  height: 80px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.testimonial-content {
+  padding: 1.5rem;
+  
+  h3 {
+    font-family: "coco-medium";
+    font-size: 20px;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  p {
+    font-family: "coco-light";
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+}
+
+.mini-player {
+  margin-top: 1rem;
+  
+  .play-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #333, #666);
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #444, #777);
+    }
+    
+    i {
+      font-size: 16px;
+    }
+  }
+}
+
 // Dans chaque composant .scss
 :host {
   display: block;
