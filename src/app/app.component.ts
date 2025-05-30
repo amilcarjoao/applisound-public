@@ -3,9 +3,10 @@ import { RouterOutlet, Router, NavigationEnd, NavigationStart } from '@angular/r
 import { FooterComponent } from "./page-elements/footer/footer.component";
 import { NavBarComponent } from './page-elements/nav-bar/nav-bar.component';
 import { routeAnimations } from './route-animations';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { filter } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
+import { LanguageService } from './services/language.service';
 
 @Component({
   selector: 'app-root',
@@ -27,34 +28,12 @@ export class AppComponent implements OnInit {
   @HostBinding('class.route-animating') routeAnimating = false;
   
   constructor(
-    private translate: TranslateService,
-    private router: Router
-  ) {
-    // Langues supportées
-    translate.addLangs(['en', 'fr', 'cn', 'de', 'es', 'it', 'jp', 'nl', 'no', 'pl', 'pt', 'se', 'ch-fr', 'ch-de', 'ar']);
-
-    // Récupérer la langue sauvegardée ou utiliser celle du navigateur
-    const savedLang = localStorage.getItem('preferredLanguage');
-    
-    // Langue par défaut
-    translate.setDefaultLang('en');
-    
-    // Détection automatique de la langue du navigateur
-    const browserLang = translate.getBrowserLang();
-    const lang = browserLang?.match(/en|fr|cn|de|es|it|jp|nl|no|pl|pt|se|ch-fr|ch-de|ar/) ? browserLang : 'en';
-    const defaultLang = savedLang || (browserLang?.match(/en|fr|cn|de|es|it|jp|nl|no|pl|pt|se|ch-fr|ch-de|ar/) ? browserLang : 'en');
-    
-    // Applique la langue
-    translate.use(defaultLang || lang);
-    
-    // Redirection vers la bonne URL avec la langue
-    if (this.router.url === '/' || this.router.url === '') {
-      this.router.navigate([`/${defaultLang || lang}`]);
-    }
-  }
+    private router: Router,
+    private languageService: LanguageService
+  ) {}
 
   ngOnInit() {
-    // Gérer les changements de route
+    // Gérer les changements de route pour les animations
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd || event instanceof NavigationStart)
     ).subscribe(event => {
@@ -65,16 +44,6 @@ export class AppComponent implements OnInit {
         setTimeout(() => {
           this.routeAnimating = false;
         }, 1000); // Durée totale de l'animation + marge
-        
-        const urlSegments = this.router.url.split('/');
-        if (urlSegments.length > 1) {
-          const langInUrl = urlSegments[1];
-          if (langInUrl.match(/en|fr|cn|de|es|it|jp|nl|no|pl|pt|se|ch-fr|ch-de|ar/)) {
-            // Sauvegarder la langue préférée
-            localStorage.setItem('preferredLanguage', langInUrl);
-            this.translate.use(langInUrl);
-          }
-        }
       }
     });
   }

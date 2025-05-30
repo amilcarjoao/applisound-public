@@ -3,6 +3,7 @@ import { RouterModule, Router, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { filter } from 'rxjs/operators';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -27,7 +28,8 @@ export class NavBarComponent implements OnInit, AfterViewInit {
   constructor(
     public translate: TranslateService,
     private renderer: Renderer2,
-    private router: Router
+    private router: Router,
+    public languageService: LanguageService
   ) {}
 
   ngOnInit() {
@@ -113,5 +115,18 @@ export class NavBarComponent implements OnInit, AfterViewInit {
       // Aucun lien actif, masquer l'indicateur
       this.hasActiveLink = false;
     }
+  }
+  
+  // Générer l'URL correcte en fonction de la langue
+  getRouterLink(path: string): any[] {
+    const currentLang = this.languageService.getCurrentLanguage();
+    
+    // Pour la page d'accueil
+    if (path === '') {
+      return currentLang === 'en' ? ['/'] : ['/', currentLang];
+    }
+    
+    // Pour les autres pages
+    return currentLang === 'en' ? ['/', path] : ['/', currentLang, path];
   }
 }

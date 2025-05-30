@@ -1,44 +1,44 @@
-
 {
-    "NAV": {
-      "HOME": "Home",
-      "MUSIC": "Music",
-      "VOICEOVER": "Voiceover",
-      "PRODUCSOUNDS": "Producsounds",
-      "PRICING": "Pricing",
-      "ENTERPRISE": "Enterprise",
-      "HOW_IT_WORKS": "How It Works",
-      "LOGIN": "Login",
-      "CREATE_ACCOUNT": "Create Account"
-    },
-    "PRICING": {
-    "MAIN_TITLE": "PRICING AT A GLANCE",
-    "FROM_PRICE": {
-      "€170": "from €170",
-      "€2000": "from €2000",
-      "€3500": "from €3500"
-    },
-    "SOUNDTRACKS": {
-      "TITLE": "SOUNDTRACKS",
-      "EXISTING_LIBRARY": "Existing Library",
-      "LIMITED_RIGHTS": "(Limited Rights)",
-      "CUSTOM_30": "Custom 30 seconds",
-      "CUSTOM_1_2": "Custom 1-2 minutes",
-      "CUSTOM_2_3": "Custom 2-3 minutes",
-      "CUSTOM_3_4": "Custom 3-4 minutes",
-      "CUSTOM_OVER_4": "Custom over 4 minutes"
-    },
-    "JINGLES": {
-      "TITLE": "JINGLES",
-      "SHORT_NON_EXCLUSIVE": "Short Non-Exclusive Jingle",
-      "STANDARD_NON_EXCLUSIVE": "Standard Non-Exclusive Jingle",
-      "CORPORATE_EXCLUSIVE": "Corporate Exclusive Jingle",
-      "TV_RADIO_EXCLUSIVE": "TV & Radio Exclusive Jingle",
-      "MAX_15_SEC": "(max 15 seconds)",
-      "MAX_40_SEC": "(max 40 seconds)",
-      "ALL_RIGHTS": "(All Rights)"
-    }
- }
-
+  "NAV": {
+    "MUSIC": "Music",
+    "VOICEOVER": "Voice Over",
+    "PRODUCSOUNDS": "ProducSounds",
+    "PRICING": "Pricing",
+    "ENTERPRISE": "Enterprise",
+    "HOW_IT_WORKS": "How It Works",
+    "LOGIN": "Login",
+    "CREATE_ACCOUNT": "Create Account"
+  },
+  "FOOTER": {
+    "LOCATION": "Location",
+    "CONTACTS": "Contacts",
+    "REGISTRATION": "Registration",
+    "FOLLOW_US": "Follow Us",
+    "LANGUAGE": "Language",
+    "COPYRIGHT": "Copyright © {{year}} Applisound. All rights reserved."
+  },
+  "HOME": {
+    "TITLE": "YOUR SOUND UNIVERSE",
+    "TAGLINE": "We create it with Quality, Devotion, Originality, and Emotion.",
+    "WHAT_WE_DO": "WHAT WE DO",
+    "SOUNDTRACKS": "Soundtracks",
+    "HYMNS": "Hymns",
+    "JINGLES": "Jingles",
+    "THEME_MUSIC": "Theme Music",
+    "SOUND_DESIGN": "Sound Design",
+    "VOICE_OVER": "Voice Over",
+    "AT_YOUR_SERVICE": "AT YOUR SERVICE",
+    "COMPANIES": "Companies & Brands",
+    "ORGANIZATIONS": "Organizations & Institutions",
+    "PERSONALITIES": "Public & Web Personalities",
+    "GAME_PUBLISHERS": "Game Publishers",
+    "BE_MORE_THAN_WINNER": "BE MORE THAN A WINNER",
+    "RIGHTS_DESCRIPTION": "With Applisound, seize the untapped potential before everyone else by becoming a 10% co-owner of the music rights. Receive broadcasting revenues from soundtracks everywhere and on music streaming platforms.",
+    "TESTIMONIALS": "They Appreciate Our Creations 𝄞",
+    "TESTIMONIALS_SUBTITLE": "Brands and companies that trust our talents!",
+    "COMING_SOON": "Coming Soon"
+  },
+  "PRICING": {
+    "MAIN_TITLE": "Our Pricing"
+  }
 }
-  

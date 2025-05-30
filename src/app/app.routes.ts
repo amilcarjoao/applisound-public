@@ -11,14 +11,58 @@ import { LoginSpaceComponent } from './pages/login-space/login-space.component';
 import { SignUpSpaceComponent } from './pages/sign-up-space/sign-up-space.component';
 
 export const routes: Routes = [
-  // Redirection racine vers la langue par défaut
-  { 
-    path: '', 
-    redirectTo: '/en', 
-    pathMatch: 'full' 
+  // Routes principales sans préfixe de langue (anglais par défaut)
+  {
+    path: '',
+    component: HomeComponent,
+    data: { animation: 'HomePage' }
+  },
+  {
+    path: 'music',
+    component: MusicPageComponent,
+    data: { animation: 'MusicPage' }
+  },
+  {
+    path: 'voiceover',
+    component: VoiceoverPageComponent,
+    data: { animation: 'VoiceoverPage'}
+  },
+  {
+    path: 'producsounds',
+    component: ProducsoundsPageComponent,
+    data: { animation: 'Producsounds'}
+  },
+  {
+    path: 'pricing',
+    component: PricingPageComponent,
+    data: { animation: 'PricingPage'}
+  },
+  {
+    path: 'enterprise',
+    component: EnterprisePageComponent,
+    data: { animation: 'EnterprisePage'}
+  },
+  {
+    path: 'how-it-works',
+    component: HowItWorksPageComponent,
+    data: { animation: 'HowItWorksPage'}
+  },
+  {
+    path: 'login',
+    component: LoginSpaceComponent,
+    data: { animation: 'LoginSpace'}
+  },
+  {
+    path: 'signup',
+    component: SignUpSpaceComponent,
+    data: { animation: 'SignUpSpace'}
+  },
+  {
+    path: '404',
+    component: NotFoundPageComponent
   },
   
-  // Routes principales avec paramètre de langue
+  // Routes avec préfixe de langue (toutes les langues sauf anglais)
   {
     path: ':lang',
     children: [
@@ -67,70 +111,68 @@ export const routes: Routes = [
         component: SignUpSpaceComponent,
         data: { animation: 'SignUpSpace'}
       },
-      // Page 404 dans le contexte de la langue
       {
         path: '404',
         component: NotFoundPageComponent
-      },
-      // Redirection des routes inconnues vers 404 dans le contexte de la langue
-      // {
-      //   path: '**',
-      //   redirectTo: '404'
-      // }
+      }
     ]
   },
 
-  // Redirection des anciennes URLs vers les nouvelles avec langue
+  // Redirection pour /en vers la racine (pour supprimer le préfixe /en)
   {
-    path: 'home',
-    redirectTo: '/en',
+    path: 'en',
+    redirectTo: '',
     pathMatch: 'full'
   },
   {
-    path: 'music',
-    redirectTo: '/en/music',
+    path: 'en/music',
+    redirectTo: 'music',
     pathMatch: 'full'
   },
   {
-    path: 'voiceover',
-    redirectTo: '/en/voiceover',
+    path: 'en/voiceover',
+    redirectTo: 'voiceover',
     pathMatch: 'full'
   },
   {
-    path: 'producsounds',
-    redirectTo: '/en/producsounds',
+    path: 'en/producsounds',
+    redirectTo: 'producsounds',
     pathMatch: 'full'
   },
   {
-    path: 'pricing',
-    redirectTo: '/en/pricing',
+    path: 'en/pricing',
+    redirectTo: 'pricing',
     pathMatch: 'full'
   },
   {
-    path: 'enterprise',
-    redirectTo: '/en/enterprise',
+    path: 'en/enterprise',
+    redirectTo: 'enterprise',
     pathMatch: 'full'
   },
   {
-    path: 'how-it-works',
-    redirectTo: '/en/how-it-works',
+    path: 'en/how-it-works',
+    redirectTo: 'how-it-works',
     pathMatch: 'full'
   },
   {
-    path: 'login',
-    redirectTo: '/en/login',
+    path: 'en/login',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
-    path: 'signup',
-    redirectTo: '/en/signup',
+    path: 'en/signup',
+    redirectTo: 'signup',
+    pathMatch: 'full'
+  },
+  {
+    path: 'en/404',
+    redirectTo: '404',
     pathMatch: 'full'
   },
 
   // Redirection finale pour toutes les autres routes inconnues
   {
     path: '**',
-    redirectTo: '/en'
+    redirectTo: '/404'
   }
-  
 ];

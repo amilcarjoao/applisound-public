@@ -1,42 +1,44 @@
 {
-    "NAV": {
-      "HOME": "Accueil",
-      "MUSIC": "Musique",
-      "VOICEOVER": "Voix Off",
-      "PRODUCSOUNDS": "Producsounds",
-      "PRICING": "Tarifs",
-      "ENTERPRISE": "Entreprise",
-      "HOW_IT_WORKS": "Fonctionnement",
-      "LOGIN": "Connexion",
-      "CREATE_ACCOUNT": "Créer un compte"
-    },
-    "PRICING": {
-    "MAIN_TITLE": "TARIFS EN UN COUP D'ŒIL",
-    "FROM_PRICE": {
-      "€170": "à partir de 170€",
-      "€2000": "à partir de 2000€",
-      "€3500": "à partir de 3500€"
-    },
-    "SOUNDTRACKS": {
-      "TITLE": "BANDES SONORES",
-      "EXISTING_LIBRARY": "Bibliothèque existante",
-      "LIMITED_RIGHTS": "(Droits limités)",
-      "CUSTOM_30": "Personnalisé 30 secondes",
-      "CUSTOM_1_2": "Personnalisé 1-2 minutes",
-      "CUSTOM_2_3": "Personnalisé 2-3 minutes",
-      "CUSTOM_3_4": "Personnalisé 3-4 minutes",
-      "CUSTOM_OVER_4": "Personnalisé plus de 4 minutes"
-    },
-    "JINGLES": {
-      "TITLE": "JINGLES",
-      "SHORT_NON_EXCLUSIVE": "Jingle court non exclusif",
-      "STANDARD_NON_EXCLUSIVE": "Jingle standard non exclusif",
-      "CORPORATE_EXCLUSIVE": "Jingle exclusif entreprise",
-      "TV_RADIO_EXCLUSIVE": "Jingle exclusif TV & Radio",
-      "MAX_15_SEC": "(max 15 secondes)",
-      "MAX_40_SEC": "(max 40 secondes)",
-      "ALL_RIGHTS": "(Tous droits)"
-    }
+  "NAV": {
+    "MUSIC": "Musique",
+    "VOICEOVER": "Voix Off",
+    "PRODUCSOUNDS": "ProducSounds",
+    "PRICING": "Tarifs",
+    "ENTERPRISE": "Entreprise",
+    "HOW_IT_WORKS": "Comment ça marche",
+    "LOGIN": "Connexion",
+    "CREATE_ACCOUNT": "Créer un compte"
+  },
+  "FOOTER": {
+    "LOCATION": "Localisation",
+    "CONTACTS": "Contacts",
+    "REGISTRATION": "Immatriculation",
+    "FOLLOW_US": "Suivez-nous",
+    "LANGUAGE": "Langue",
+    "COPYRIGHT": "Copyright © {{year}} Applisound. Tous droits réservés."
+  },
+  "HOME": {
+    "TITLE": "VOTRE UNIVERS SONORE",
+    "TAGLINE": "Nous le créons avec Qualité, Dévotion, Originalité et Émotion.",
+    "WHAT_WE_DO": "CE QUE NOUS FAISONS",
+    "SOUNDTRACKS": "Bandes sonores",
+    "HYMNS": "Hymnes",
+    "JINGLES": "Jingles",
+    "THEME_MUSIC": "Musiques thématiques",
+    "SOUND_DESIGN": "Design sonore",
+    "VOICE_OVER": "Voix off",
+    "AT_YOUR_SERVICE": "À VOTRE SERVICE",
+    "COMPANIES": "Entreprises & Marques",
+    "ORGANIZATIONS": "Organisations & Institutions",
+    "PERSONALITIES": "Personnalités publiques & Web",
+    "GAME_PUBLISHERS": "Éditeurs de jeux",
+    "BE_MORE_THAN_WINNER": "SOYEZ PLUS QU'UN GAGNANT",
+    "RIGHTS_DESCRIPTION": "Avec Applisound, saisissez le potentiel inexploité avant tout le monde en devenant copropriétaire à 10% des droits musicaux. Recevez des revenus de diffusion des bandes sonores partout et sur les plateformes de streaming musical.",
+    "TESTIMONIALS": "Ils apprécient nos créations 𝄞",
+    "TESTIMONIALS_SUBTITLE": "Les marques et entreprises qui font confiance à nos talents !",
+    "COMING_SOON": "Bientôt disponible"
+  },
+  "PRICING": {
+    "MAIN_TITLE": "Nos tarifs"
   }
-
 }
