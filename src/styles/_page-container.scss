@@ -1,0 +1,22 @@
+// Style partagé pour limiter la largeur des contenus de page
+.page-container {
+  width: 100%;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
+// Pour les sections qui doivent s'étendre sur toute la largeur mais avec contenu limité
+.full-width-section {
+  width: 100%;
+  
+  .content-container {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 2rem;
+    box-sizing: border-box;
+  }
+}

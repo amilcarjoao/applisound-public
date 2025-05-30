@@ -7,16 +7,13 @@
 <app-nav-bar></app-nav-bar>
 
 <div class="app-wrapper">
-
-
     <main class="main-content">
         <!-- TOUTES LES ROUTES SE LANCENT ICI AU MILIEU DU NAV ET FOOTER --> 
-        <router-outlet />
+        <div [@routeAnimations]="prepareRoute(outlet)" class="route-container">
+            <router-outlet #outlet="outlet"></router-outlet>
+        </div>
     </main>
-
-    
 
     <!-- FOOTER PERMANENT --> 
     <app-footer></app-footer>
-
 </div>

@@ -1,16 +1,35 @@
-
 .app-wrapper {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    padding-top: 110px; // Même hauteur que votre navbar
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.main-content{
-    flex: 1;
+.main-content {
+  flex: 1;
+  margin-top: 110px; // Ajustez selon la hauteur de votre navbar
+  
+  @media (max-width: 767px) {
+    margin-top: 70px; // Hauteur de la navbar en mobile
+  }
+}
 
-    width: 100%;
-    max-width: 1360px; // ou votre largeur maximale préférée
-    margin: 0 auto;
-    padding: 20px;
+.route-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+}
+
+.lang-selector {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1001;
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background-color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
 }
