@@ -1,12 +1,12 @@
 <div class="nav-container" [ngClass]="{'scrolled': isScrolled, 'menu-open': isMenuOpen}">
   <div class="nav-left">
-    <a [routerLink]="['/', translate.currentLang]"class="logo-link">
+    <a [routerLink]="['/', translate.currentLang]" class="logo-link">
       <img width="200" src="https://applisound-images.s3.eu-west-3.amazonaws.com/applisound-bleu.png" 
            alt="Applisound logo" 
            [ngClass]="{'mobile-logo': isMobile}">
     </a>
     
-    <button class="burger-menu" (click)="toggleMenu()" *ngIf="isMobile">
+    <button class="burger-menu" (click)="toggleMenu()" *ngIf="isMobile" aria-label="Toggle menu">
       <span [class.active]="isMenuOpen"></span>
       <span [class.active]="isMenuOpen"></span>
       <span [class.active]="isMenuOpen"></span>
@@ -14,31 +14,32 @@
   </div>
 
   <nav class="nav-links" [class.mobile-menu]="isMobile" [class.show]="isMenuOpen">
+    <div class="nav-indicator" [style.transform]="'translateX(' + indicatorPosition + 'px)'" [style.width]="indicatorWidth + 'px'" [style.opacity]="hasActiveLink ? 1 : 0"></div>
     
-    <a [routerLink]="['/', translate.currentLang, 'music']" routerLinkActive="active" (click)="isMenuOpen = false">
+    <a [routerLink]="['/', translate.currentLang, 'music']" routerLinkActive="active" (click)="closeMenuIfMobile()" #navLink>
       {{ 'NAV.MUSIC' | translate }}
     </a>
-    <a [routerLink]="['/', translate.currentLang, 'voiceover']" routerLinkActive="active" (click)="isMenuOpen = false">
+    <a [routerLink]="['/', translate.currentLang, 'voiceover']" routerLinkActive="active" (click)="closeMenuIfMobile()" #navLink>
       {{ 'NAV.VOICEOVER' | translate }}
     </a>
-    <a [routerLink]="['/', translate.currentLang, 'producsounds']" routerLinkActive="active" (click)="isMenuOpen = false">
+    <a [routerLink]="['/', translate.currentLang, 'producsounds']" routerLinkActive="active" (click)="closeMenuIfMobile()" #navLink>
       {{ 'NAV.PRODUCSOUNDS' | translate }}
     </a>
-    <a [routerLink]="['/', translate.currentLang, 'pricing']" routerLinkActive="active" (click)="isMenuOpen = false">
+    <a [routerLink]="['/', translate.currentLang, 'pricing']" routerLinkActive="active" (click)="closeMenuIfMobile()" #navLink>
       {{ 'NAV.PRICING' | translate }}
     </a>
-    <a [routerLink]="['/', translate.currentLang, 'enterprise']" routerLinkActive="active" (click)="isMenuOpen = false">
+    <a [routerLink]="['/', translate.currentLang, 'enterprise']" routerLinkActive="active" (click)="closeMenuIfMobile()" #navLink>
       {{ 'NAV.ENTERPRISE' | translate }}
     </a>
-    <a [routerLink]="['/', translate.currentLang, 'how-it-works']" routerLinkActive="active" (click)="isMenuOpen = false">
+    <a [routerLink]="['/', translate.currentLang, 'how-it-works']" routerLinkActive="active" (click)="closeMenuIfMobile()" #navLink>
       {{ 'NAV.HOW_IT_WORKS' | translate }}
     </a>
     
     <div class="mobile-auth" *ngIf="isMobile">
-      <button class="btn-login" [routerLink]="[{ outlets: { auth: ['login'] } }]" (click)="isMenuOpen = false">
+      <button class="btn-login" [routerLink]="[{ outlets: { auth: ['login'] } }]" (click)="closeMenuIfMobile()">
         {{ 'NAV.LOGIN' | translate }}
       </button>
-      <button class="btn-create-account" [routerLink]="[{ outlets: { auth: ['signup'] } }]" (click)="isMenuOpen = false">
+      <button class="btn-create-account" [routerLink]="[{ outlets: { auth: ['signup'] } }]" (click)="closeMenuIfMobile()">
         {{ 'NAV.CREATE_ACCOUNT' | translate }}
       </button>
     </div>

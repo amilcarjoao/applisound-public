@@ -1,7 +1,8 @@
-import { Component, HostListener } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, HostListener, OnInit, Renderer2, ViewChildren, QueryList, ElementRef, AfterViewInit } from '@angular/core';
+import { RouterModule, Router, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,12 +11,41 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.scss'
 })
-export class NavBarComponent {
+export class NavBarComponent implements OnInit, AfterViewInit {
 
   isScrolled = false;
-
   isMenuOpen = false;
-  isMobile = window.innerWidth <= 768;
+  isMobile = window.innerWidth <= 767;
+  
+  // Variables pour l'indicateur
+  indicatorPosition = 0;
+  indicatorWidth = 0;
+  hasActiveLink = false;
+  
+  @ViewChildren('navLink') navLinks!: QueryList<ElementRef>;
+
+  constructor(
+    public translate: TranslateService,
+    private renderer: Renderer2,
+    private router: Router
+  ) {}
+
+  ngOnInit() {
+    this.checkScreenSize();
+    this.updateBodyScroll();
+    
+    // Écouter les changements de route pour mettre à jour l'indicateur
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      setTimeout(() => this.updateIndicator(), 100);
+    });
+  }
+  
+  ngAfterViewInit() {
+    // Mettre à jour l'indicateur après le rendu initial
+    setTimeout(() => this.updateIndicator(), 200);
+  }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
@@ -24,17 +54,64 @@ export class NavBarComponent {
 
   @HostListener('window:resize')
   onResize() {
-    this.isMobile = window.innerWidth <= 768;
+    this.checkScreenSize();
     if (!this.isMobile) {
-      this.isMenuOpen = false;
+      setTimeout(() => this.updateIndicator(), 100);
     }
   }
 
-  constructor(public translate: TranslateService) {} // Notez le 'public' pour l'utiliser dans le template
-
+  checkScreenSize() {
+    const wasAlreadyMobile = this.isMobile;
+    this.isMobile = window.innerWidth <= 767;
+    
+    // Si on passe de mobile à desktop, fermer le menu
+    if (wasAlreadyMobile && !this.isMobile) {
+      this.isMenuOpen = false;
+      this.updateBodyScroll();
+    }
+  }
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
+    this.updateBodyScroll();
   }
 
+  closeMenuIfMobile() {
+    if (this.isMobile) {
+      this.isMenuOpen = false;
+      this.updateBodyScroll();
+    }
+  }
+
+  // Empêcher le défilement du body quand le menu mobile est ouvert
+  private updateBodyScroll() {
+    if (this.isMenuOpen) {
+      this.renderer.setStyle(document.body, 'overflow', 'hidden');
+    } else {
+      this.renderer.removeStyle(document.body, 'overflow');
+    }
+  }
+  
+  // Mettre à jour la position et la largeur de l'indicateur
+  updateIndicator() {
+    if (this.isMobile) return;
+    
+    const activeLink = this.navLinks.find(link => 
+      link.nativeElement.classList.contains('active')
+    );
+    
+    if (activeLink) {
+      const linkElement = activeLink.nativeElement;
+      const rect = linkElement.getBoundingClientRect();
+      const navRect = linkElement.parentElement.getBoundingClientRect();
+      
+      // Calculer la position relative par rapport au conteneur de navigation
+      this.indicatorPosition = rect.left - navRect.left;
+      this.indicatorWidth = rect.width;
+      this.hasActiveLink = true;
+    } else {
+      // Aucun lien actif, masquer l'indicateur
+      this.hasActiveLink = false;
+    }
+  }
 }
