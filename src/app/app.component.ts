@@ -44,8 +44,13 @@ export class AppComponent implements OnInit {
     const lang = browserLang?.match(/en|fr/) ? browserLang : 'en';
     const defaultLang = savedLang || (browserLang?.match(/en|fr/) ? browserLang : 'en');
     
-    // Applique la langue et met à jour l'URL
-    this.switchLang(lang);
+    // Applique la langue
+    translate.use(defaultLang || lang);
+    
+    // Redirection vers la bonne URL avec la langue
+    if (this.router.url === '/' || this.router.url === '') {
+      this.router.navigate([`/${defaultLang || lang}`]);
+    }
   }
 
   ngOnInit() {
@@ -72,15 +77,6 @@ export class AppComponent implements OnInit {
         }
       }
     });
-  }
-
-  switchLang(lang: string | Event) {
-    const language = typeof lang === 'string' ? lang : (lang.target as HTMLSelectElement).value;
-    this.translate.use(language);
-    
-    // Met à jour l'URL avec le préfixe de langue
-    const currentUrl = this.router.url.split('/').slice(2).join('/');
-    this.router.navigate([`/${language}/${currentUrl}`]);
   }
 
   // Fonction pour préparer les animations de route

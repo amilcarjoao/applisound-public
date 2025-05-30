@@ -29,6 +29,17 @@
                 <a href="#" class="social-icon-placeholder" title="SoundCloud"></a>
                 <a href="#" class="social-icon-placeholder" title="Spotify"></a>
             </div>
+            
+            <div class="language-selector">
+                <h3>Language</h3>
+                <div class="select-wrapper">
+                    <select (change)="switchLang($event)">
+                        <option value="en">English</option>
+                        <option value="fr">Français</option>
+                    </select>
+                    <span class="select-arrow">▼</span>
+                </div>
+            </div>
         </div>
     </div>
 
