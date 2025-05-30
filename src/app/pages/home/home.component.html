@@ -1,25 +1,27 @@
-
+<div class="logo-container">
+  <img src="https://applisound-images.s3.eu-west-3.amazonaws.com/images-grosses/Logo+carr%C3%A9+Site+sp%C3%A9cial+eclat.png" alt="Applisound Logo" class="rotating-logo">
+</div>
 
 <h1 class="universeTitle">YOUR SOUND UNIVERSE</h1>
 
+<p class="tagline">We create it with <span>Quality, Devotion, Originality, and Emotion.</span></p>
+
 <div class="players-carousel-container">
-    <div class="players-wrapper" #playersWrapper>
-
-      <app-player-soundtracks [config]="PLAYER_CONFIGS['soundtracks']" ></app-player-soundtracks>
-      <app-player-soundtracks [config]="PLAYER_CONFIGS['voiceovers']" ></app-player-soundtracks>
-      <app-player-soundtracks [config]="PLAYER_CONFIGS['jingles']" ></app-player-soundtracks>
-      <app-player-soundtracks [config]="PLAYER_CONFIGS['sound_design']" ></app-player-soundtracks>
-      <app-player-soundtracks [config]="PLAYER_CONFIGS['hymns']" ></app-player-soundtracks>
-      <app-player-soundtracks [config]="PLAYER_CONFIGS['assignment_music_rights']" ></app-player-soundtracks>
-
-    </div>
-    
-    <div class="carousel-controls">
-      <button class="nav-button left" (click)="scrollToPrevious()">
-        <img src="https://applisound-images.s3.eu-west-3.amazonaws.com/mini-icones/flekPrev.svg" alt="">
-      </button>
-      <button class="nav-button right" (click)="scrollToNext()">
-        <img src="https://applisound-images.s3.eu-west-3.amazonaws.com/mini-icones/flekNext.svg" alt="">
-      </button>
-    </div>
+  <div class="players-wrapper" #playersWrapper>
+    <app-player-soundtracks [config]="PLAYER_CONFIGS['soundtracks']" ></app-player-soundtracks>
+    <app-player-soundtracks [config]="PLAYER_CONFIGS['voiceovers']" ></app-player-soundtracks>
+    <app-player-soundtracks [config]="PLAYER_CONFIGS['jingles']" ></app-player-soundtracks>
+    <app-player-soundtracks [config]="PLAYER_CONFIGS['sound_design']" ></app-player-soundtracks>
+    <app-player-soundtracks [config]="PLAYER_CONFIGS['hymns']" ></app-player-soundtracks>
+    <app-player-soundtracks [config]="PLAYER_CONFIGS['assignment_music_rights']" ></app-player-soundtracks>
   </div>
+  
+  <div class="carousel-controls">
+    <button class="nav-button left" (click)="scrollToPrevious()">
+      <img src="https://applisound-images.s3.eu-west-3.amazonaws.com/mini-icones/flekPrev.svg" alt="">
+    </button>
+    <button class="nav-button right" (click)="scrollToNext()">
+      <img src="https://applisound-images.s3.eu-west-3.amazonaws.com/mini-icones/flekNext.svg" alt="">
+    </button>
+  </div>
+</div>
