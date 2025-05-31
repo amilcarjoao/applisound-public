@@ -9,6 +9,20 @@
     "LOGIN": "تسجيل الدخول",
     "CREATE_ACCOUNT": "إنشاء حساب"
   },
+  "PLAYER": {
+    "SOUNDTRACKS": "المقاطع الصوتية",
+    "CREATE_MY_SOUNDTRACKS": "إنشاء المقطع الصوتي الخاص بي",
+    "JINGLES": "الجينجلز",
+    "CREATE_MY_JINGLE": "إنشاء الجينجل الخاص بي",
+    "VOICEOVER": "التعليق الصوتي",
+    "CREATE_MY_VOICEOVER": "إنشاء التعليق الصوتي الخاص بي",
+    "ASSIGNEMENT": "تنازل عن الحقوق",
+    "GET_MY_ASSIGNEMENT_OF_RIGHTS": "الحصول على تنازل عن الحقوق",
+    "SOUND_DESIGN": "تصميم الصوت",
+    "CREATE_MY_SOUND_DESIGN": "إنشاء تصميم الصوت الخاص بي",
+    "HYMNS_SOUNDTRACKS": "الأناشيد",
+    "CREATE_MY_HYMNS_SOUNDTRACKS": "إنشاء النشيد الخاص بي"
+  },
   "LOGIN": {
     "WELCOME_BACK": "مرحبًا بعودتك",
     "SUBTITLE": "سجل الدخول للوصول إلى حسابك",

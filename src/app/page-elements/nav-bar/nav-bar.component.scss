@@ -15,8 +15,9 @@
 }
 
 // Variables pour le responsive
-$nav-height-mobile: 70px;
-$nav-height-desktop: 110px;
+$nav-height-mobile: 80px;
+$nav-height-desktop: 120px;
+$nav-height-scrolled: 100px;
 $padding-mobile: 1rem;
 $padding-tablet: 2rem;
 $padding-desktop: 300px;
@@ -66,7 +67,7 @@ $padding-desktop: 300px;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     background-color: rgba(255, 255, 255, 0.95);
-    height: $nav-height-mobile;
+    height: $nav-height-scrolled;
     transition: all 0.4s ease;
     
     @include desktop {
@@ -225,7 +226,7 @@ $padding-desktop: 300px;
       font-family: 'Montserrat', sans-serif;
       font-weight: 600;
       padding: 12px 20px;
-      border-radius: 6px;
+      border-radius: 2px;
       cursor: pointer;
       transition: all 0.3s ease;
       font-size: 14px;
@@ -329,7 +330,7 @@ $padding-desktop: 300px;
       padding: 1rem;
       font-family: 'Montserrat', sans-serif;
       font-weight: 600;
-      border-radius: 6px;
+      border-radius: 2px;
       transition: all 0.3s ease;
       font-size: 16px;
       

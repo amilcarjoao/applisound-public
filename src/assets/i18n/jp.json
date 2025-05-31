@@ -9,6 +9,20 @@
     "LOGIN": "ログイン",
     "CREATE_ACCOUNT": "アカウント作成"
   },
+  "PLAYER": {
+    "SOUNDTRACKS": "サウンドトラック",
+    "CREATE_MY_SOUNDTRACKS": "サウンドトラックを作成",
+    "JINGLES": "ジングル",
+    "CREATE_MY_JINGLE": "ジングルを作成",
+    "VOICEOVER": "ボイスオーバー",
+    "CREATE_MY_VOICEOVER": "ボイスオーバーを作成",
+    "ASSIGNEMENT": "権利譲渡",
+    "GET_MY_ASSIGNEMENT_OF_RIGHTS": "権利譲渡を取得",
+    "SOUND_DESIGN": "サウンドデザイン",
+    "CREATE_MY_SOUND_DESIGN": "サウンドデザインを作成",
+    "HYMNS_SOUNDTRACKS": "賛歌サウンドトラック",
+    "CREATE_MY_HYMNS_SOUNDTRACKS": "賛歌サウンドトラックを作成"
+  },
   "LOGIN": {
     "WELCOME_BACK": "おかえりなさい",
     "SUBTITLE": "アカウントにアクセスするにはログインしてください",
