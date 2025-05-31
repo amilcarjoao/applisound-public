@@ -1,3 +1,129 @@
-<p>sign-up-space works!</p>
-
-<p>Déjà un compte ? Sigin rapidement</p>
+<div class="signup-container">
+  <div class="signup-card">
+    <div class="signup-header">
+      <img src="https://applisound-images.s3.eu-west-3.amazonaws.com/applisound-bleu.png" alt="Applisound logo">
+      <h1>{{ 'SIGNUP.CREATE_ACCOUNT' | translate }}</h1>
+      <p>{{ 'SIGNUP.SUBTITLE' | translate }}</p>
+    </div>
+    
+    <form class="signup-form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">{{ 'SIGNUP.FIRST_NAME' | translate }}</label>
+          <input 
+            type="text" 
+            id="firstName" 
+            formControlName="firstName" 
+            [placeholder]="'SIGNUP.FIRST_NAME_PLACEHOLDER' | translate"
+            [ngClass]="{'invalid': submitted && f['firstName'].errors}"
+          >
+          <div class="error-message" *ngIf="submitted && f['firstName'].errors">
+            <span *ngIf="f['firstName'].errors?.['required']">{{ 'SIGNUP.FIRST_NAME_REQUIRED' | translate }}</span>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="lastName">{{ 'SIGNUP.LAST_NAME' | translate }}</label>
+          <input 
+            type="text" 
+            id="lastName" 
+            formControlName="lastName" 
+            [placeholder]="'SIGNUP.LAST_NAME_PLACEHOLDER' | translate"
+            [ngClass]="{'invalid': submitted && f['lastName'].errors}"
+          >
+          <div class="error-message" *ngIf="submitted && f['lastName'].errors">
+            <span *ngIf="f['lastName'].errors?.['required']">{{ 'SIGNUP.LAST_NAME_REQUIRED' | translate }}</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="email">{{ 'SIGNUP.EMAIL' | translate }}</label>
+        <input 
+          type="email" 
+          id="email" 
+          formControlName="email" 
+          [placeholder]="'SIGNUP.EMAIL_PLACEHOLDER' | translate"
+          [ngClass]="{'invalid': submitted && f['email'].errors}"
+        >
+        <div class="error-message" *ngIf="submitted && f['email'].errors">
+          <span *ngIf="f['email'].errors?.['required']">{{ 'SIGNUP.EMAIL_REQUIRED' | translate }}</span>
+          <span *ngIf="f['email'].errors?.['email']">{{ 'SIGNUP.EMAIL_INVALID' | translate }}</span>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="password">{{ 'SIGNUP.PASSWORD' | translate }}</label>
+        <div class="password-input">
+          <input 
+            [type]="showPassword ? 'text' : 'password'" 
+            id="password" 
+            formControlName="password" 
+            [placeholder]="'SIGNUP.PASSWORD_PLACEHOLDER' | translate"
+            [ngClass]="{'invalid': submitted && f['password'].errors}"
+          >
+          <button type="button" class="toggle-password" (click)="togglePasswordVisibility()">
+            <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+          </button>
+        </div>
+        <div class="error-message" *ngIf="submitted && f['password'].errors">
+          <span *ngIf="f['password'].errors?.['required']">{{ 'SIGNUP.PASSWORD_REQUIRED' | translate }}</span>
+          <span *ngIf="f['password'].errors?.['minlength']">{{ 'SIGNUP.PASSWORD_MIN_LENGTH' | translate }}</span>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="confirmPassword">{{ 'SIGNUP.CONFIRM_PASSWORD' | translate }}</label>
+        <div class="password-input">
+          <input 
+            [type]="showConfirmPassword ? 'text' : 'password'" 
+            id="confirmPassword" 
+            formControlName="confirmPassword" 
+            [placeholder]="'SIGNUP.CONFIRM_PASSWORD_PLACEHOLDER' | translate"
+            [ngClass]="{'invalid': submitted && f['confirmPassword'].errors}"
+          >
+          <button type="button" class="toggle-password" (click)="toggleConfirmPasswordVisibility()">
+            <i class="fa" [ngClass]="showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+          </button>
+        </div>
+        <div class="error-message" *ngIf="submitted && f['confirmPassword'].errors">
+          <span *ngIf="f['confirmPassword'].errors?.['required']">{{ 'SIGNUP.CONFIRM_PASSWORD_REQUIRED' | translate }}</span>
+          <span *ngIf="f['confirmPassword'].errors?.['matching']">{{ 'SIGNUP.PASSWORDS_MUST_MATCH' | translate }}</span>
+        </div>
+      </div>
+      
+      <div class="terms-privacy">
+        <label class="checkbox-container">
+          <input type="checkbox" formControlName="acceptTerms">
+          <span class="checkmark"></span>
+          <span [innerHTML]="'SIGNUP.ACCEPT_TERMS' | translate"></span>
+        </label>
+        <div class="error-message" *ngIf="submitted && f['acceptTerms'].errors">
+          <span *ngIf="f['acceptTerms'].errors?.['required']">{{ 'SIGNUP.ACCEPT_TERMS_REQUIRED' | translate }}</span>
+        </div>
+      </div>
+      
+      <button type="submit" class="btn-signup-submit" [disabled]="loading">
+        <span *ngIf="!loading">{{ 'SIGNUP.CREATE_ACCOUNT_BUTTON' | translate }}</span>
+        <span *ngIf="loading" class="spinner"></span>
+      </button>
+      
+      <div class="signup-divider">
+        <span>{{ 'SIGNUP.OR' | translate }}</span>
+      </div>
+      
+      <div class="social-signup">
+        <button type="button" class="btn-social google">
+          <i class="fab fa-google"></i> Google
+        </button>
+        <button type="button" class="btn-social facebook">
+          <i class="fab fa-facebook-f"></i> Facebook
+        </button>
+      </div>
+    </form>
+    
+    <div class="login-prompt">
+      <p>{{ 'SIGNUP.ALREADY_HAVE_ACCOUNT' | translate }} <a [routerLink]="getRouterLink('login')">{{ 'SIGNUP.SIGN_IN' | translate }}</a></p>
+    </div>
+  </div>
+</div>

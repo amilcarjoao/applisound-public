@@ -4,15 +4,15 @@ import { RouterModule } from '@angular/router';
 import { TimePipe } from "../../Pipes/time.pipe";
 import { AudioService } from '../../services/audio.service';
 import { Subscription } from 'rxjs';
-import { PlayerConfig, Track } from '../../models/player-config.interface.cjs';
-
+import { PlayerConfig, Track } from '../../models/player-config.interface';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
 @Component({
   selector: 'app-player-soundtracks',
   standalone: true,
-  imports: [CommonModule, RouterModule, TimePipe],
+  imports: [CommonModule, RouterModule, TimePipe, TranslateModule],
   templateUrl: './player-soundtracks.component.html',
   styleUrl: './player-soundtracks.component.scss'
 })
@@ -21,11 +21,12 @@ export class PlayerSoundtracksComponent implements OnInit, OnDestroy {
 
   @Input() config!: PlayerConfig;
 
-  // Remplacer title par
+  // Obtenir le titre traduit
   get sectionTitle(): string {
     return this.config?.sectionTitle || 'SOUND test';
   }
 
+  // Obtenir le texte du bouton traduit
   get createButtonText(): string {
     return this.config?.createButtonText || 'CREATE test';
   }

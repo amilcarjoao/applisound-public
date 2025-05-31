@@ -10,7 +10,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class LanguageService {
   // Liste des langues supportées
-  supportedLanguages = ['en', 'fr', 'cn', 'de', 'es', 'it', 'jp', 'nl', 'no', 'pl', 'pt', 'se', 'ch-fr', 'ch-de', 'ar'];
+  supportedLanguages = ['en', 'fr', 'cn', 'de', 'es', 'it', 'jp', 'kr', 'nl', 'no', 'pl', 'pt', 'se', 'ch-fr', 'ch-de', 'ar'];
   
   // Langues RTL
   rtlLanguages = ['ar'];

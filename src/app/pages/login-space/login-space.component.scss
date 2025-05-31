@@ -1,0 +1,314 @@
+@import '../../../styles/_variables.scss';
+@import '../../../styles/fonts';
+
+// Mixins pour les breakpoints
+@mixin mobile {
+  @media (max-width: 767px) { @content; }
+}
+
+@mixin tablet {
+  @media (min-width: 768px) and (max-width: 1023px) { @content; }
+}
+
+@mixin desktop {
+  @media (min-width: 1024px) { @content; }
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  background-color: #f8f9fa;
+  font-family: 'Montserrat', sans-serif;
+  
+  @include mobile {
+    padding: 1rem;
+  }
+}
+
+.login-card {
+  background-color: $white-aps;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+  padding: 2.5rem;
+  
+  @include mobile {
+    padding: 1.5rem;
+  }
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  
+  img {
+    height: 30px;
+    margin-bottom: 1.5rem;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  p {
+    color: #666;
+    font-size: 0.95rem;
+  }
+}
+
+.login-form {
+  .form-group {
+    margin-bottom: 1.5rem;
+    
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: #333;
+    }
+    
+    input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      
+      &:focus {
+        outline: none;
+        border-color: $bleu1-aps;
+        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+      }
+      
+      &.invalid {
+        border-color: #dc3545;
+      }
+    }
+    
+    .error-message {
+      color: #dc3545;
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+    }
+  }
+  
+  .password-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    
+    .forgot-link {
+      font-size: 0.8rem;
+      color: $bleu1-aps;
+      text-decoration: none;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  .password-input {
+    position: relative;
+    
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #666;
+      cursor: pointer;
+      padding: 5px;
+      
+      &:hover {
+        color: $bleu1-aps;
+      }
+    }
+  }
+  
+  .remember-me {
+    margin-bottom: 1.5rem;
+    
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: #555;
+      
+      input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+      
+      .checkmark {
+        height: 18px;
+        width: 18px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        margin-right: 10px;
+        position: relative;
+        
+        &:after {
+          content: "";
+          position: absolute;
+          display: none;
+          left: 6px;
+          top: 2px;
+          width: 5px;
+          height: 10px;
+          border: solid white;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+        }
+      }
+      
+      input:checked ~ .checkmark {
+        background-color: $bleu1-aps;
+        border-color: $bleu1-aps;
+      }
+      
+      input:checked ~ .checkmark:after {
+        display: block;
+      }
+    }
+  }
+  
+  .btn-login-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: $bleu1-aps;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background-color: $bleu3-aps;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+    }
+    
+    &:disabled {
+      background-color: #b3d7ff;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  }
+  
+  .login-divider {
+    position: relative;
+    text-align: center;
+    margin: 1.5rem 0;
+    
+    &:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background-color: #ddd;
+    }
+    
+    span {
+      position: relative;
+      background-color: $white-aps;
+      padding: 0 15px;
+      color: #777;
+      font-size: 0.9rem;
+    }
+  }
+  
+  .social-login {
+    display: flex;
+    gap: 10px;
+    
+    .btn-social {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background-color: white;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      i {
+        margin-right: 8px;
+      }
+      
+      &:hover {
+        background-color: #f8f9fa;
+        transform: translateY(-2px);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+      
+      &.google {
+        color: #ea4335;
+      }
+      
+      &.facebook {
+        color: #3b5998;
+      }
+    }
+  }
+}
+
+.signup-prompt {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #555;
+  
+  a {
+    color: $bleu1-aps;
+    text-decoration: none;
+    font-weight: 600;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
