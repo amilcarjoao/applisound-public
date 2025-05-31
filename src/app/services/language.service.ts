@@ -10,10 +10,10 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class LanguageService {
   // Liste des langues supportées
-  supportedLanguages = ['en', 'fr', 'cn', 'de', 'es', 'it', 'jp', 'kr', 'nl', 'no', 'pl', 'pt', 'se', 'ch-fr', 'ch-de', 'ar'];
+  supportedLanguages = ['en', 'fr', 'cn', 'de', 'dk', 'es', 'fi', 'he', 'hi', 'it', 'jp', 'kr', 'nl', 'no', 'pl', 'pt', 'ru', 'se', 'tr', 'vi', 'ch-fr', 'ch-de', 'ar'];
   
   // Langues RTL
-  rtlLanguages = ['ar'];
+  rtlLanguages = ['ar', 'he'];
   
   // Observable pour la langue actuelle
   private currentLanguageSubject = new BehaviorSubject<string>('en');
