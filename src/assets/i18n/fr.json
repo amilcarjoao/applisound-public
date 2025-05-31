@@ -110,6 +110,46 @@
     "MORE_TESTIMONIALS": "Plus de témoignages clients seront ajoutés ici."
   },
   "PRICING": {
-    "MAIN_TITLE": "Nos tarifs"
-  }
+  "MAIN_TITLE": "Nos tarifs",
+  "SOUNDTRACKS_TITLE": "Bandes sonores",
+  "JINGLES_TITLE": "Jingles",
+  "VOICEOVER_TITLE": "Voix off",
+  "SOUND_DESIGN_TITLE": "Design sonore",
+  "HYMNS_TITLE": "Hymnes",
+  "STANDARD_TRACK": "Piste standard",
+  "CUSTOM_TRACK": "Piste personnalisée",
+  "PREMIUM_TRACK": "Piste premium",
+  "SHORT_FORMAT": "Format court",
+  "MEDIUM_FORMAT": "Format moyen",
+  "LONG_FORMAT": "Format long",
+  "MALE_VOICE": "Voix masculine",
+  "FEMALE_VOICE": "Voix féminine",
+  "SOUND_EFFECTS": "Effets sonores",
+  "AMBIENT_SOUNDS": "Sons d'ambiance",
+  "CORPORATE_HYMN": "Hymne d'entreprise",
+  "ORGANIZATION_HYMN": "Hymne d'organisation",
+  "UP_TO_30_SEC": "jusqu'à 30 secondes",
+  "UP_TO_2_MIN": "jusqu'à 2 minutes",
+  "UP_TO_5_MIN": "jusqu'à 5 minutes",
+  "NATIVE_SPEAKER": "locuteur natif",
+  "PROFESSIONAL": "professionnel",
+  "PACK_OF_10": "pack de 10",
+  "CUSTOM_PACK": "pack personnalisé",
+  "WITH_LYRICS": "avec paroles",
+  "WITH_ORCHESTRA": "avec orchestre",
+  "PRICE_FROM": "à partir de",
+  "PRICE_299": "299 €",
+  "PRICE_499": "499 €",
+  "PRICE_999": "999 €",
+  "PRICE_199": "199 €",
+  "PRICE_399": "399 €",
+  "PRICE_599": "599 €",
+  "PRICE_149": "149 €",
+  "PRICE_249": "249 €",
+  "PRICE_99": "99 €",
+  "PRICE_199_PACK": "199 € / pack",
+  "PRICE_1499": "1499 €",
+  "PRICE_2999": "2999 €"
+}
+
 }

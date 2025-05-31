@@ -112,6 +112,46 @@
     "MORE_TESTIMONIALS": "更多客户推荐将在此处添加。"
   },
   "PRICING": {
-    "MAIN_TITLE": "我们的价格"
-  }
+  "MAIN_TITLE": "我们的价格",
+  "SOUNDTRACKS_TITLE": "配乐",
+  "JINGLES_TITLE": "广告歌",
+  "VOICEOVER_TITLE": "配音",
+  "SOUND_DESIGN_TITLE": "声音设计",
+  "HYMNS_TITLE": "赞歌",
+  "STANDARD_TRACK": "标准音轨",
+  "CUSTOM_TRACK": "定制音轨",
+  "PREMIUM_TRACK": "高级音轨",
+  "SHORT_FORMAT": "短格式",
+  "MEDIUM_FORMAT": "中等格式",
+  "LONG_FORMAT": "长格式",
+  "MALE_VOICE": "男声",
+  "FEMALE_VOICE": "女声",
+  "SOUND_EFFECTS": "音效",
+  "AMBIENT_SOUNDS": "环境音",
+  "CORPORATE_HYMN": "企业赞歌",
+  "ORGANIZATION_HYMN": "组织赞歌",
+  "UP_TO_30_SEC": "最多30秒",
+  "UP_TO_2_MIN": "最多2分钟",
+  "UP_TO_5_MIN": "最多5分钟",
+  "NATIVE_SPEAKER": "母语人士",
+  "PROFESSIONAL": "专业人士",
+  "PACK_OF_10": "10个装",
+  "CUSTOM_PACK": "定制套装",
+  "WITH_LYRICS": "带歌词",
+  "WITH_ORCHESTRA": "带管弦乐队",
+  "PRICE_FROM": "起价",
+  "PRICE_299": "299 €",
+  "PRICE_499": "499 €",
+  "PRICE_999": "999 €",
+  "PRICE_199": "199 €",
+  "PRICE_399": "399 €",
+  "PRICE_599": "599 €",
+  "PRICE_149": "149 €",
+  "PRICE_249": "249 €",
+  "PRICE_99": "99 €",
+  "PRICE_199_PACK": "199 € / 套装",
+  "PRICE_1499": "1499 €",
+  "PRICE_2999": "2999 €"
+}
+
 }
