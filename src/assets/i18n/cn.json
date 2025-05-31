@@ -9,6 +9,22 @@
     "LOGIN": "登录",
     "CREATE_ACCOUNT": "创建账户"
   },
+
+  "PLAYER": {
+    "SOUNDTRACKS": "配乐",
+    "CREATE_MY_SOUNDTRACKS": "创建我的配乐",
+    "JINGLES": "广告歌",
+    "CREATE_MY_JINGLE": "创建我的广告歌",
+    "VOICEOVER": "配音",
+    "CREATE_MY_VOICEOVER": "创建我的配音",
+    "ASSIGNEMENT": "权利转让",
+    "GET_MY_ASSIGNEMENT_OF_RIGHTS": "获取我的权利转让",
+    "SOUND_DESIGN": "声音设计",
+    "CREATE_MY_SOUND_DESIGN": "创建我的声音设计",
+    "HYMNS_SOUNDTRACKS": "赞歌",
+    "CREATE_MY_HYMNS_SOUNDTRACKS": "创建我的赞歌"
+  },
+
   "LOGIN": {
     "WELCOME_BACK": "欢迎回来",
     "SUBTITLE": "登录以访问您的账户",

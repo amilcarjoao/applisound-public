@@ -9,6 +9,20 @@
     "LOGIN": "로그인",
     "CREATE_ACCOUNT": "계정 만들기"
   },
+  "PLAYER": {
+    "SOUNDTRACKS": "사운드트랙",
+    "CREATE_MY_SOUNDTRACKS": "내 사운드트랙 만들기",
+    "JINGLES": "징글",
+    "CREATE_MY_JINGLE": "내 징글 만들기",
+    "VOICEOVER": "보이스오버",
+    "CREATE_MY_VOICEOVER": "내 보이스오버 만들기",
+    "ASSIGNEMENT": "권리 양도",
+    "GET_MY_ASSIGNEMENT_OF_RIGHTS": "내 권리 양도 받기",
+    "SOUND_DESIGN": "사운드 디자인",
+    "CREATE_MY_SOUND_DESIGN": "내 사운드 디자인 만들기",
+    "HYMNS_SOUNDTRACKS": "찬가 사운드트랙",
+    "CREATE_MY_HYMNS_SOUNDTRACKS": "내 찬가 만들기"
+  },
   "LOGIN": {
     "WELCOME_BACK": "환영합니다",
     "SUBTITLE": "계정에 접속하려면 로그인하세요",

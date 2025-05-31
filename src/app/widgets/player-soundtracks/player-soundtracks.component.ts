@@ -99,6 +99,8 @@ export class PlayerSoundtracksComponent implements OnInit, OnDestroy {
 
     this.audio.addEventListener('error', (e) => {
       console.error('Erreur audio:', e);
+      console.error('Code d\'erreur:', this.audio.error ? this.audio.error.code : 'inconnu');
+      console.error('URL audio:', this.audio.src);
       this.isPlaying = false;
     });
   }
@@ -131,15 +133,31 @@ export class PlayerSoundtracksComponent implements OnInit, OnDestroy {
     }
 
     this.currentTrack = track;
-    this.audio.src = track.url;
-    this.audio.load();
-    this.audio.play().then(() => {
-      this.isPlaying = true;
-      this.audioService.setActivePlayer(this.componentId);
-    }).catch(error => {
-      console.error('Erreur lors de la lecture:', error);
+    
+    try {
+      // Vérifier si l'URL est valide
+      if (!track.url) {
+        console.error('URL audio invalide:', track.url);
+        this.isPlaying = false;
+        return;
+      }
+      
+      console.log('Tentative de lecture:', track.url);
+      this.audio.src = track.url;
+      this.audio.load();
+      this.audio.play().then(() => {
+        this.isPlaying = true;
+        this.audioService.setActivePlayer(this.componentId);
+      }).catch(error => {
+        console.error('Erreur lors de la lecture:', error);
+        console.error('URL audio:', track.url);
+        this.isPlaying = false;
+      });
+    } catch (e) {
+      console.error('Exception lors de la lecture:', e);
+      console.error('URL audio:', track.url);
       this.isPlaying = false;
-    });
+    }
   }
 
   // Modifier la méthode togglePlay existante
