@@ -1,0 +1,579 @@
+@import '../../../styles/variables';
+
+// Mixins pour les breakpoints
+@mixin mobile {
+  @media (max-width: 767px) { @content; }
+}
+
+@mixin tablet {
+  @media (min-width: 768px) and (max-width: 1023px) { @content; }
+}
+
+@mixin desktop {
+  @media (min-width: 1024px) { @content; }
+}
+
+.page-container {
+  padding: 2rem;
+  
+  @include mobile {
+    padding: 1rem;
+  }
+}
+
+.music-player-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.player-header {
+  padding: 2rem;
+  background: linear-gradient(135deg, $bleu1-aps, $bleu3-aps);
+  color: white;
+  text-align: center;
+  
+  h1 {
+    font-family: 'coco-bold', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    
+    @include mobile {
+      font-size: 1.8rem;
+    }
+  }
+  
+  p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+    
+    @include mobile {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.search-filters {
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  
+  @include mobile {
+    flex-direction: column;
+  }
+  
+  .search-bar {
+    flex: 1;
+    position: relative;
+    min-width: 250px;
+    
+    i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #999;
+    }
+    
+    input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 2.5rem;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      
+      &:focus {
+        outline: none;
+        border-color: $bleu1-aps;
+      }
+    }
+  }
+  
+  .filters {
+    display: flex;
+    gap: 1rem;
+    
+    @include mobile {
+      flex-direction: column;
+    }
+    
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      min-width: 150px;
+      
+      label {
+        font-size: 0.8rem;
+        color: #666;
+        font-weight: 500;
+      }
+      
+      select {
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        background-color: white;
+        font-size: 0.9rem;
+        
+        &:focus {
+          outline: none;
+          border-color: $bleu1-aps;
+        }
+      }
+    }
+  }
+}
+
+.featured-tracks {
+  padding: 2rem;
+  
+  h2 {
+    font-family: 'coco', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: $bleu3-aps;
+  }
+  
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    
+    @include mobile {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
+    }
+    
+    .featured-track {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        
+        .play-overlay {
+          opacity: 1;
+        }
+      }
+      
+      &.active {
+        background-color: rgba($bleu1-aps, 0.1);
+      }
+      
+      .track-artwork {
+        height: 180px;
+        background: linear-gradient(45deg, $bleu3-aps, $bleu1-aps);
+        position: relative;
+        
+        @include mobile {
+          height: 120px;
+        }
+        
+        .play-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: rgba(0, 0, 0, 0.3);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          
+          i {
+            font-size: 3rem;
+            color: white;
+          }
+        }
+      }
+      
+      .track-details {
+        padding: 1rem;
+        
+        h3 {
+          font-size: 1rem;
+          margin: 0 0 0.25rem 0;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        
+        p {
+          font-size: 0.9rem;
+          color: #666;
+          margin: 0 0 0.5rem 0;
+        }
+        
+        .track-tags {
+          display: flex;
+          gap: 0.5rem;
+          flex-wrap: wrap;
+          
+          span {
+            font-size: 0.7rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            
+            &.category-tag {
+              background-color: rgba($bleu1-aps, 0.1);
+              color: $bleu1-aps;
+            }
+            
+            &.mood-tag {
+              background-color: rgba(#6c757d, 0.1);
+              color: #6c757d;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.tracks-section {
+  padding: 2rem;
+  
+  h2 {
+    font-family: 'coco', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: $bleu3-aps;
+  }
+  
+  .tracks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    
+    .track-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      border-radius: 8px;
+      background-color: #f8f9fa;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      
+      &:hover {
+        background-color: rgba($bleu1-aps, 0.05);
+      }
+      
+      &.active {
+        background-color: rgba($bleu1-aps, 0.1);
+      }
+      
+      .track-info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        
+        .track-play-button {
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          background-color: $bleu1-aps;
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          
+          i {
+            font-size: 0.8rem;
+          }
+        }
+        
+        .track-details {
+          display: flex;
+          flex-direction: column;
+          
+          .track-title {
+            font-weight: 500;
+            font-size: 1rem;
+          }
+          
+          .track-artist {
+            font-size: 0.9rem;
+            color: #666;
+          }
+        }
+      }
+      
+            .track-meta {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        
+        @include mobile {
+          display: none;
+        }
+        
+        .track-category, .track-mood {
+          font-size: 0.8rem;
+          color: #666;
+          max-width: 150px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        
+        .track-duration {
+          font-size: 0.9rem;
+          color: #333;
+          min-width: 40px;
+          text-align: right;
+        }
+      }
+    }
+    
+    .no-results {
+      padding: 3rem 0;
+      text-align: center;
+      color: #666;
+    }
+  }
+}
+
+.player-controls {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border-top: 1px solid #eee;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  z-index: 100;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  
+  &.active {
+    transform: translateY(0);
+  }
+  
+  .now-playing {
+    width: 250px;
+    
+    .track-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      
+      .track-artwork.small {
+        width: 50px;
+        height: 50px;
+        border-radius: 4px;
+        background: linear-gradient(45deg, $bleu3-aps, $bleu1-aps);
+      }
+      
+      .track-details {
+        display: flex;
+        flex-direction: column;
+        
+        .track-title {
+          font-weight: 500;
+          font-size: 0.9rem;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          max-width: 180px;
+        }
+        
+        .track-artist {
+          font-size: 0.8rem;
+          color: #666;
+        }
+      }
+    }
+    
+    @include mobile {
+      display: none;
+    }
+  }
+  
+  .main-controls {
+    flex: 1;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    
+    .control-buttons {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      
+      .control-btn {
+        background: none;
+        border: none;
+        color: #666;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        
+        &:hover {
+          color: $bleu1-aps;
+        }
+        
+        &.active {
+          color: $bleu1-aps;
+        }
+        
+        &.play-btn {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background-color: $bleu1-aps;
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          
+          &:hover {
+            background-color: $bleu3-aps;
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
+    
+    .progress-container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      
+      .time {
+        font-size: 0.8rem;
+        color: #666;
+        min-width: 40px;
+      }
+      
+      .progress-bar {
+        flex: 1;
+        height: 4px;
+        background-color: #eee;
+        border-radius: 2px;
+        cursor: pointer;
+        position: relative;
+        
+        .progress {
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 100%;
+          background-color: $bleu1-aps;
+          border-radius: 2px;
+        }
+        
+        &:hover {
+          height: 6px;
+          
+          .progress {
+            background-color: $bleu3-aps;
+          }
+        }
+      }
+    }
+  }
+  
+  .volume-control {
+    width: 150px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    
+    i {
+      color: #666;
+      font-size: 1rem;
+    }
+    
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 4px;
+      background-color: #eee;
+      border-radius: 2px;
+      outline: none;
+      
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: $bleu1-aps;
+        cursor: pointer;
+      }
+      
+      &::-moz-range-thumb {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: $bleu1-aps;
+        cursor: pointer;
+        border: none;
+      }
+      
+      &:hover::-webkit-slider-thumb {
+        background-color: $bleu3-aps;
+      }
+      
+      &:hover::-moz-range-thumb {
+        background-color: $bleu3-aps;
+      }
+    }
+    
+    @include mobile {
+      display: none;
+    }
+  }
+  
+  @include mobile {
+    padding: 0.75rem;
+    
+    .main-controls {
+      width: 100%;
+      
+      .control-buttons {
+        gap: 0.5rem;
+        
+        .control-btn {
+          font-size: 0.9rem;
+          
+          &.play-btn {
+            width: 36px;
+            height: 36px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Ajout d'un espace en bas pour éviter que le contenu soit caché par le lecteur fixe
+.page-container {
+  padding-bottom: 120px;
+  
+  @include mobile {
+    padding-bottom: 100px;
+  }
+}

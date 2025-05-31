@@ -1,0 +1,169 @@
+// src/app/private/components/sidebar/sidebar.component.ts
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
+@Component({
+  selector: 'app-sidebar',
+  standalone: true,
+  imports: [CommonModule, RouterModule],
+  template: `
+    <div class="sidebar">
+      <div class="logo">
+        <img src="https://applisound-images.s3.eu-west-3.amazonaws.com/applisound-bleu.png" alt="Applisound">
+      </div>
+      
+      <nav class="sidebar-nav">
+        <a routerLink="/dashboard/overview" routerLinkActive="active" class="nav-item">
+          <i class="fas fa-home"></i>
+          <span>Dashboard</span>
+        </a>
+        <a routerLink="/dashboard/orders" routerLinkActive="active" class="nav-item">
+          <i class="fas fa-shopping-cart"></i>
+          <span>My Orders</span>
+        </a>
+        <a routerLink="/dashboard/messages" routerLinkActive="active" class="nav-item">
+          <i class="fas fa-comments"></i>
+          <span>Messages</span>
+          <span class="badge" *ngIf="unreadMessages > 0">{{unreadMessages}}</span>
+        </a>
+        <a routerLink="/dashboard/files" routerLinkActive="active" class="nav-item">
+          <i class="fas fa-file-audio"></i>
+          <span>My Files</span>
+        </a>
+        <a routerLink="/dashboard/profile" routerLinkActive="active" class="nav-item">
+          <i class="fas fa-user"></i>
+          <span>Profile</span>
+        </a>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <a routerLink="/" class="exit-dashboard">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>Exit Dashboard</span>
+        </a>
+      </div>
+    </div>
+  `,
+  styles: [`
+    .sidebar {
+      width: 250px;
+      height: 100%;
+      background-color: #1a41c6;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .logo {
+      padding: 1.5rem;
+      display: flex;
+      justify-content: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      
+      img {
+        height: 30px;
+        filter: brightness(0) invert(1);
+      }
+    }
+    
+    .sidebar-nav {
+      flex: 1;
+      padding: 1.5rem 0;
+      
+      .nav-item {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem 1.5rem;
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        transition: all 0.2s ease;
+        position: relative;
+        
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+          color: white;
+        }
+        
+        &.active {
+          background-color: rgba(255, 255, 255, 0.15);
+          color: white;
+          
+          &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: white;
+          }
+        }
+        
+        i {
+          margin-right: 0.75rem;
+          width: 20px;
+          text-align: center;
+        }
+        
+        .badge {
+          margin-left: auto;
+          background-color: #ff4757;
+          color: white;
+          font-size: 0.75rem;
+          font-weight: 600;
+          padding: 0.15rem 0.5rem;
+          border-radius: 10px;
+        }
+      }
+    }
+    
+    .sidebar-footer {
+      padding: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      
+      .exit-dashboard {
+        display: flex;
+        align-items: center;
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        transition: all 0.2s ease;
+        
+        &:hover {
+          color: white;
+        }
+        
+        i {
+          margin-right: 0.75rem;
+        }
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 70px;
+      }
+      
+      .logo img {
+        height: 24px;
+      }
+      
+      .nav-item span, .exit-dashboard span {
+        display: none;
+      }
+      
+      .nav-item i {
+        margin-right: 0;
+      }
+      
+      .sidebar-footer {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  `]
+})
+export class SidebarComponent {
+  unreadMessages: number = 3;
+}

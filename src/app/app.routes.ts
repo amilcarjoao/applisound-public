@@ -9,6 +9,8 @@ import { EnterprisePageComponent } from './pages/enterprise-page/enterprise-page
 import { HowItWorksPageComponent } from './pages/how-it-works-page/how-it-works-page.component';
 import { LoginSpaceComponent } from './pages/login-space/login-space.component';
 import { SignUpSpaceComponent } from './pages/sign-up-space/sign-up-space.component';
+import { AuthGuard } from '../app/guards/auth.guard';
+
 
 export const routes: Routes = [
   // Routes principales sans préfixe de langue (anglais par défaut)
@@ -60,6 +62,13 @@ export const routes: Routes = [
   {
     path: '404',
     component: NotFoundPageComponent
+  },
+
+    // Route pour la section privée (dashboard)
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./private/private-routing.module').then(m => m.PrivateRoutingModule),
+    canActivate: [AuthGuard]
   },
   
   // Routes avec préfixe de langue (toutes les langues sauf anglais)

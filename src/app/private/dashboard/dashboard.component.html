@@ -1,0 +1,114 @@
+<!-- src/app/private/dashboard/dashboard.component.html -->
+<div class="dashboard-container">
+  <app-sidebar></app-sidebar>
+  
+  <div class="dashboard-content">
+    <app-header [user]="user" [unreadMessages]="unreadMessages"></app-header>
+    
+    <div class="main-content">
+      <div class="welcome-section">
+        <h1>Welcome back, {{user.firstName}}!</h1>
+        <p>Here's an overview of your Applisound projects and activities.</p>
+      </div>
+      
+      <div class="dashboard-grid">
+        <div class="dashboard-card orders-card">
+          <div class="card-header">
+            <h2>Recent Orders</h2>
+            <a routerLink="/dashboard/orders" class="view-all">View All</a>
+          </div>
+          <div class="card-content">
+            <div class="order-list">
+              <div *ngFor="let order of recentOrders" class="order-item">
+                <div class="order-info">
+                  <h3>{{order.title}}</h3>
+                  <p>{{order.id}} • {{order.date}}</p>
+                </div>
+                <div class="order-status" [ngClass]="order.status">
+                  {{order.status}}
+                </div>
+              </div>
+              <div *ngIf="recentOrders.length === 0" class="empty-state">
+                <p>No orders yet. Ready to create your first sound?</p>
+                <button class="btn-primary">Create New Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="dashboard-card messages-card">
+          <div class="card-header">
+            <h2>Messages</h2>
+            <a routerLink="/dashboard/messages" class="view-all">View All</a>
+          </div>
+          <div class="card-content">
+            <div class="message-preview">
+              <div class="message-item">
+                <div class="message-avatar">
+                  <img src="https://applisound-images.s3.eu-west-3.amazonaws.com/team-avatar.png" alt="Team Applisound">
+                </div>
+                <div class="message-content">
+                  <h3>Team Applisound</h3>
+                  <p>Your soundtrack is ready for review! We've just uploaded...</p>
+                  <span class="message-time">2 hours ago</span>
+                </div>
+              </div>
+              <div class="message-actions">
+                <button class="btn-secondary">Open Chat</button>
+                <button class="btn-voice">
+                  <i class="fas fa-microphone"></i>
+                  Voice Message
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="dashboard-card files-card">
+          <div class="card-header">
+            <h2>Recent Files</h2>
+            <a routerLink="/dashboard/files" class="view-all">View All</a>
+          </div>
+          <div class="card-content">
+            <div class="file-list">
+              <div class="file-item">
+                <div class="file-icon">
+                  <i class="fas fa-music"></i>
+                </div>
+                <div class="file-info">
+                  <h3>Project_Soundtrack_v1.mp3</h3>
+                  <p>3.2 MB • Uploaded 3 days ago</p>
+                </div>
+                <div class="file-actions">
+                  <button class="btn-icon">
+                    <i class="fas fa-play"></i>
+                  </button>
+                  <button class="btn-icon">
+                    <i class="fas fa-download"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="file-item">
+                <div class="file-icon">
+                  <i class="fas fa-file-audio"></i>
+                </div>
+                <div class="file-info">
+                  <h3>Voice_Over_Final.wav</h3>
+                  <p>8.7 MB • Uploaded 1 week ago</p>
+                </div>
+                <div class="file-actions">
+                  <button class="btn-icon">
+                    <i class="fas fa-play"></i>
+                  </button>
+                  <button class="btn-icon">
+                    <i class="fas fa-download"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

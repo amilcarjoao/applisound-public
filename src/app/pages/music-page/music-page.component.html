@@ -1,3 +1,155 @@
 <div class="page-container">
-    <p>music-page works!</p>
+  <div class="music-player-container">
+    <div class="player-header">
+      <h1>{{ 'MUSIC.EXPLORE_SOUNDS' | translate }}</h1>
+      <p>{{ 'MUSIC.DISCOVER_DESCRIPTION' | translate }}</p>
+    </div>
+    
+    <div class="search-filters">
+      <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <input 
+          type="text" 
+          [(ngModel)]="searchQuery" 
+          (input)="filterTracks()" 
+          placeholder="{{ 'MUSIC.SEARCH_PLACEHOLDER' | translate }}"
+        >
+      </div>
+      
+      <div class="filters">
+        <div class="filter-group">
+          <label>{{ 'MUSIC.CATEGORY' | translate }}</label>
+          <select [(ngModel)]="selectedCategory" (change)="filterTracks()">
+            <option *ngFor="let category of categories" [value]="category.id">
+              {{ 'MUSIC.CATEGORIES.' + category.name.toUpperCase() | translate }}
+            </option>
+          </select>
+        </div>
+        
+        <div class="filter-group">
+          <label>{{ 'MUSIC.MOOD' | translate }}</label>
+          <select [(ngModel)]="selectedMood" (change)="filterTracks()">
+            <option *ngFor="let mood of moods" [value]="mood.id">
+              {{ 'MUSIC.MOODS.' + mood.name.toUpperCase() | translate }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    
+    <div class="featured-tracks" *ngIf="selectedCategory === 'all' && selectedMood === 'all' && searchQuery === ''">
+      <h2>{{ 'MUSIC.FEATURED' | translate }}</h2>
+      <div class="featured-grid">
+        <div 
+          *ngFor="let track of allTracks | slice:0:4" 
+          class="featured-track"
+          [class.active]="currentTrack?.id === track.id"
+          (click)="playTrack(track)"
+        >
+          <div class="track-artwork">
+            <div class="play-overlay">
+              <i [class]="currentTrack?.id === track.id && isPlaying ? 'fas fa-pause' : 'fas fa-play'"></i>
+            </div>
+          </div>
+          <div class="track-details">
+            <h3>{{ track.title }}</h3>
+            <p>{{ track.artist }}</p>
+            <div class="track-tags">
+              <span class="category-tag">{{ getCategoryName(track.category) }}</span>
+              <span class="mood-tag" *ngFor="let mood of track.mood.slice(0,1)">{{ mood }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="tracks-section">
+      <h2>{{ selectedCategory === 'all' ? ('MUSIC.ALL_TRACKS' | translate) : ('MUSIC.CATEGORIES.' + getCategoryName(selectedCategory).toUpperCase() | translate) }}</h2>
+      
+      <div class="tracks-list">
+        <div 
+          *ngFor="let track of filteredTracks" 
+          class="track-item"
+          [class.active]="currentTrack?.id === track.id"
+          (click)="playTrack(track)"
+        >
+          <div class="track-info">
+            <div class="track-play-button">
+              <i [class]="currentTrack?.id === track.id && isPlaying ? 'fas fa-pause' : 'fas fa-play'"></i>
+            </div>
+            <div class="track-details">
+              <span class="track-title">{{ track.title }}</span>
+              <span class="track-artist">{{ track.artist }}</span>
+            </div>
+          </div>
+          <div class="track-meta">
+            <span class="track-category">{{ getCategoryName(track.category) }}</span>
+            <span class="track-mood">{{ getMoodNames(track.mood) }}</span>
+            <span class="track-duration">{{ track.duration }}</span>
+          </div>
+        </div>
+        
+        <div class="no-results" *ngIf="filteredTracks.length === 0">
+          <p>{{ 'MUSIC.NO_RESULTS' | translate }}</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="player-controls" [class.active]="currentTrack">
+      <div class="now-playing">
+        <div class="track-info" *ngIf="currentTrack">
+          <div class="track-artwork small"></div>
+          <div class="track-details">
+            <span class="track-title">{{ currentTrack?.title }}</span>
+            <span class="track-artist">{{ currentTrack?.artist }}</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="main-controls">
+        <div class="control-buttons">
+          <button class="control-btn" (click)="toggleShuffle()" [class.active]="shuffle">
+            <i class="fas fa-random"></i>
+          </button>
+          <button class="control-btn" (click)="previousTrack()">
+            <i class="fas fa-step-backward"></i>
+          </button>
+          <button class="control-btn play-btn" (click)="togglePlay()">
+            <i [class]="isPlaying ? 'fas fa-pause' : 'fas fa-play'"></i>
+          </button>
+          <button class="control-btn" (click)="nextTrack()">
+            <i class="fas fa-step-forward"></i>
+          </button>
+          <button class="control-btn" (click)="toggleRepeat()" [class.active]="repeat !== 'none'">
+            <i [class]="repeat === 'one' ? 'fas fa-repeat-1' : 'fas fa-repeat'"></i>
+          </button>
+        </div>
+        
+        <div class="progress-container">
+          <span class="time">{{ currentTime | time }}</span>
+          <div 
+            class="progress-bar" 
+            (mousedown)="startSeek($event)"
+            (mousemove)="seeking($event)"
+            (mouseup)="endSeek()"
+            (mouseleave)="endSeek()"
+          >
+            <div class="progress" [style.width]="progress + '%'"></div>
+          </div>
+          <span class="time">{{ duration | time }}</span>
+        </div>
+      </div>
+      
+      <div class="volume-control">
+        <i class="fas" [class.fa-volume-up]="volume > 50" [class.fa-volume-down]="volume <= 50 && volume > 0" [class.fa-volume-mute]="volume === 0"></i>
+        <input 
+          type="range" 
+          min="0" 
+          max="100" 
+          [value]="volume" 
+          (input)="setVolume($event)"
+        >
+      </div>
+    </div>
+  </div>
 </div>

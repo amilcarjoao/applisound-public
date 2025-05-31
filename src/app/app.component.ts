@@ -23,6 +23,7 @@ import { LanguageService } from './services/language.service';
   animations: [routeAnimations]
 })
 export class AppComponent implements OnInit {
+  isDashboardRoute: boolean = false;
   
   // Variable pour suivre l'état d'animation
   @HostBinding('class.route-animating') routeAnimating = false;
@@ -30,7 +31,16 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private languageService: LanguageService
-  ) {}
+  ) {
+
+    // Créez un layout spécifique pour les pages privées qui n'inclut pas la navbar et le footer.
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event: any) => {
+      // Vérifier si la route actuelle commence par /dashboard
+      this.isDashboardRoute = event.url.startsWith('/dashboard');
+    });
+  }
 
   ngOnInit() {
     // Gérer les changements de route pour les animations
@@ -52,4 +62,7 @@ export class AppComponent implements OnInit {
   prepareRoute(outlet: RouterOutlet) {
     return outlet?.activatedRouteData?.['animation'] || '';
   }
+
+
+
 }
