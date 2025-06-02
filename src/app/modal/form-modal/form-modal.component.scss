@@ -1,0 +1,87 @@
+.modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    
+    .modal-container {
+      width: 90%;
+      max-width: 1000px;
+      max-height: 90vh;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .close-button {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 10;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: #333;
+      transition: all 0.2s ease;
+    }
+    
+    .close-button:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    .steps-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background-color: #f8f9fa;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .step {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #666;
+    }
+    
+    .step.active {
+      background-color: #1a41c6;
+      color: white;
+    }
+    
+    .step-line {
+      height: 2px;
+      width: 50px;
+      background-color: #eee;
+    }
+    
+    .modal-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0;
+    }

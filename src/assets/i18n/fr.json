@@ -110,7 +110,7 @@
     "MORE_TESTIMONIALS": "Plus de témoignages clients seront ajoutés ici."
   },
   "PRICING": {
-  "MAIN_TITLE": "Nos tarifs",
+  "MAIN_TITLE": "Nos tarifs des services personnalisés",
   "SOUNDTRACKS_TITLE": "Bandes sonores",
   "JINGLES_TITLE": "Jingles",
   "VOICEOVER_TITLE": "Voix off",
@@ -150,6 +150,58 @@
   "PRICE_199_PACK": "199 € / pack",
   "PRICE_1499": "1499 €",
   "PRICE_2999": "2999 €"
+},
+
+"MUSIC": {
+  "EXPLORE_SOUNDS": "Explorez Nos Sons",
+  "DISCOVER_DESCRIPTION": "Découvrez notre collection de bandes sonores, jingles, voix off et plus encore. Filtrez par catégorie ou ambiance pour trouver le son parfait pour votre projet.",
+  "SEARCH_PLACEHOLDER": "Rechercher par titre ou artiste...",
+  "CATEGORY": "Catégorie",
+  "MOOD": "Ambiance",
+  "FEATURED": "Morceaux en Vedette",
+  "ALL_TRACKS": "Tous les Morceaux",
+  "NO_RESULTS": "Aucun morceau ne correspond à vos critères de recherche.",
+  "CATEGORIES": {
+    "ALL": "Toutes les Catégories",
+    "SOUNDTRACKS": "Bandes Sonores",
+    "JINGLES": "Jingles",
+    "VOICE_OVERS": "Voix Off",
+    "HYMNS": "Hymnes",
+    "SOUND_DESIGN": "Design Sonore"
+  },
+  "MOODS": {
+    "ALL_MOODS": "Toutes les Ambiances",
+    "ENERGETIC": "Énergique",
+    "CALM": "Calme",
+    "HAPPY": "Joyeux",
+    "SAD": "Triste",
+    "EPIC": "Épique",
+    "MYSTERIOUS": "Mystérieux",
+    "ROMANTIC": "Romantique",
+    "CORPORATE": "Corporate"
+  }
+
+},
+
+"ENTERPRISE": {
+  "HERO_TITLE": "Un son qui captive votre audience",
+  "HERO_SUBTITLE": "Donnez vie à vos histoires avec notre vaste catalogue de musiques authentiques, d'effets sonores et de voix off de classe mondiale. Écoutés plus de 2,5 milliards de fois par jour.",
+  "CONTACT_SALES": "Contacter notre équipe",
+  "FEATURE_1_TITLE": "Accès illimité à des sons de classe mondiale",
+  "FEATURE_1_DESC": "Découvrez des morceaux exclusifs de lauréats de Grammy et d'artistes émergents, et explorez notre sélection premium d'effets sonores.",
+  "FEATURE_2_TITLE": "Des outils de nouvelle génération pour vos équipes",
+  "FEATURE_2_DESC": "Passez moins de temps à chercher et plus de temps à créer avec notre suite d'outils sonores. Incluant la découverte intelligente, la personnalisation des pistes et des amplificateurs de flux de travail.",
+  "FEATURE_3_TITLE": "Publiez sans souci, partout dans le monde",
+  "FEATURE_3_DESC": "Créez sans restrictions et sonorisez n'importe quoi, n'importe où. Toutes nos pistes incluent tous les droits pour que vous puissiez les utiliser dans votre contenu sans risque juridique.",
+  "BRANDS_TITLE": "Libérer la puissance du son pour les marques mondiales",
+  "TRUSTED_TITLE": "Ils nous font confiance",
+  "LICENSE_TITLE": "Un modèle de licence unique",
+  "LICENSE_SUBTITLE": "La gestion des droits musicaux simplifiée",
+  "LICENSE_DESC": "Oubliez les poursuites judiciaires, les frais surprises, les réclamations de droits d'auteur et les maux de tête administratifs. Notre modèle de licence directe signifie que vous êtes autorisé à utiliser notre musique globalement — quel que soit le média, le territoire ou le type de contenu, en ligne et hors ligne. Éliminant les risques juridiques pour votre entreprise.",
+  "LICENSE_DESC_2": "Et comme nous possédons tous les droits sur notre musique, y compris les droits d'exécution publique, nous pouvons personnaliser nos forfaits pour couvrir tous vos besoins sonores, maintenant et à l'avenir.",
+  "LEARN_MORE": "En savoir plus",
+  "CTA_TITLE": "Prêt à transformer votre expérience sonore ?",
+  "CTA_SUBTITLE": "Contactez notre équipe commerciale dès aujourd'hui pour découvrir comment Applisound peut répondre aux besoins spécifiques de votre entreprise."
 }
 
 }

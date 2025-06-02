@@ -7,6 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { filter } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { LanguageService } from './services/language.service';
+import { FormModalComponent } from './modal/form-modal/form-modal.component';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,8 @@ import { LanguageService } from './services/language.service';
     RouterOutlet,
     FooterComponent,
     NavBarComponent,
-    TranslateModule
+    TranslateModule,
+    FormModalComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

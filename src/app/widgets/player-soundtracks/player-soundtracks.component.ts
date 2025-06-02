@@ -6,6 +6,8 @@ import { AudioService } from '../../services/audio.service';
 import { Subscription } from 'rxjs';
 import { PlayerConfig, Track } from '../../models/player-config.interface';
 import { TranslateModule } from '@ngx-translate/core';
+import { FormService } from '../../services/form.service';
+
 
 
 
@@ -20,6 +22,7 @@ import { TranslateModule } from '@ngx-translate/core';
 export class PlayerSoundtracksComponent implements OnInit, OnDestroy {
 
   @Input() config!: PlayerConfig;
+ 
 
   // Obtenir le titre traduit
   get sectionTitle(): string {
@@ -33,11 +36,28 @@ export class PlayerSoundtracksComponent implements OnInit, OnDestroy {
 
 
   // NE PAS SUPPRIMER CELA ON A BESOIN POUR APRES
-  openTypeForm() {
-    if (this.config?.typeformUrl) {
-      window.open(this.config.typeformUrl, '_blank');
-    }
+openTypeForm() {
+  // Déterminer le type de service en fonction du titre de la section
+  let serviceType = '';
+  if (this.config.sectionTitle.includes('SOUNDTRACKS')) {
+    serviceType = 'soundtrack';
+  } else if (this.config.sectionTitle.includes('JINGLES')) {
+    serviceType = 'jingle';
+  } else if (this.config.sectionTitle.includes('VOICEOVER')) {
+    serviceType = 'voiceover';
+  } else if (this.config.sectionTitle.includes('SOUND_DESIGN')) {
+    serviceType = 'sound_design';
+  } else if (this.config.sectionTitle.includes('HYMNS')) {
+    serviceType = 'hymn';
   }
+  
+  // Ouvrir le formulaire via le service
+    if (this.formService) {
+      this.formService.openOrderForm(serviceType);
+    } else {
+      console.error('FormService is not injected properly');
+  }
+}
 
   // LES TRACKS JE LAISSE
   tracks: Track[] = [];
@@ -106,7 +126,7 @@ export class PlayerSoundtracksComponent implements OnInit, OnDestroy {
   }
 
   // SERVICE AUDIO
-  constructor(private audioService: AudioService) {
+  constructor(private audioService: AudioService, private formService: FormService) {
     // Générer un ID unique pour chaque instance du composant
     this.componentId = 'player_' + Math.random().toString(36).substr(2, 9);
     

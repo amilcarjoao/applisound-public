@@ -111,5 +111,58 @@
   },
   "PRICING": {
     "MAIN_TITLE": "Our Pricing"
+  },
+
+  "MUSIC": {
+  "EXPLORE_SOUNDS": "Explore Our Sounds",
+  "DISCOVER_DESCRIPTION": "Discover our collection of soundtracks, jingles, voice overs and more. Filter by category or mood to find the perfect sound for your project.",
+  "SEARCH_PLACEHOLDER": "Search by title or artist...",
+  "CATEGORY": "Category",
+  "MOOD": "Mood",
+  "FEATURED": "Featured Tracks",
+  "ALL_TRACKS": "All Tracks",
+  "NO_RESULTS": "No tracks found matching your search criteria.",
+  "CATEGORIES": {
+    "ALL": "All Categories",
+    "SOUNDTRACKS": "Soundtracks",
+    "JINGLES": "Jingles",
+    "VOICE_OVERS": "Voice Overs",
+    "HYMNS": "Hymns",
+    "SOUND_DESIGN": "Sound Design"
+  },
+  "MOODS": {
+    "ALL_MOODS": "All Moods",
+    "ENERGETIC": "Energetic",
+    "CALM": "Calm",
+    "HAPPY": "Happy",
+    "SAD": "Sad",
+    "EPIC": "Epic",
+    "MYSTERIOUS": "Mysterious",
+    "ROMANTIC": "Romantic",
+    "CORPORATE": "Corporate"
   }
+},
+
+"ENTERPRISE": {
+  "HERO_TITLE": "Sound that moves your audience",
+  "HERO_SUBTITLE": "Bring your stories to life with our huge catalog of authentic, world-class music, sound effects, and voiceovers. Heard over 2.5 billion times per day.",
+  "CONTACT_SALES": "Contact sales",
+  "FEATURE_1_TITLE": "Get unlimited access to world-class sounds",
+  "FEATURE_1_DESC": "Discover exclusive tracks by Grammy winners and up-and-coming artists, and explore our premium selection of sound effects.",
+  "FEATURE_2_TITLE": "Supercharge your teams with next-gen tools",
+  "FEATURE_2_DESC": "Spend less time searching and more time creating with our suite of soundtracking tools. Including smart discovery, track customization and workflow amplifiers.",
+  "FEATURE_3_TITLE": "Publish worry-free, worldwide",
+  "FEATURE_3_DESC": "Create without restrictions and soundtrack anything, anywhere. All of our tracks come with all rights included so you can use them in your content without legal risk.",
+  "BRANDS_TITLE": "Unlocking the power of sound for global brands",
+  "TRUSTED_TITLE": "Trusted by",
+  "LICENSE_TITLE": "A unique license model",
+  "LICENSE_SUBTITLE": "Music licensing made easy",
+  "LICENSE_DESC": "Forget lawsuits, surprise fees, copyright claims, and admin headaches. Our direct license model means you're cleared to use our music globally — regardless of media, territory, or type of content, both online and offline. Removing legal risk for your business.",
+  "LICENSE_DESC_2": "And because we own all the rights to our music, including public performance rights, we can customize our plans to cover all of your soundtracking needs, now and in the future.",
+  "LEARN_MORE": "Learn more",
+  "CTA_TITLE": "Ready to transform your sound experience?",
+  "CTA_SUBTITLE": "Contact our sales team today to discover how Applisound can meet your specific business needs."
+}
+
+  
 }

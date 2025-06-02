@@ -1,3 +1,111 @@
 <div class="page-container">
-    <p>enterprise-page works!</p>
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="animate-on-scroll fade-up">{{ 'ENTERPRISE.HERO_TITLE' | translate }}</h1>
+      <p class="hero-subtitle animate-on-scroll fade-up delay-200">{{ 'ENTERPRISE.HERO_SUBTITLE' | translate }}</p>
+      <button class="contact-btn animate-on-scroll fade-up delay-400">{{ 'ENTERPRISE.CONTACT_SALES' | translate }}</button>
+    </div>
+    <div class="hero-image animate-on-scroll fade-in">
+      <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=348,h=336,fit=crop/dJoJqE8xnLhV6np4/logo-carra-c-site-spa-c-cial-eclat-AzG39DbEvvTVQR1W.png" alt="Enterprise Sound Solutions">
+    </div>
+  </section>
+
+  <section class="features-section">
+    <div class="feature-card animate-on-scroll slide-right">
+      <div class="feature-icon">
+        <i class="fas fa-music"></i>
+      </div>
+      <h2>{{ 'ENTERPRISE.FEATURE_1_TITLE' | translate }}</h2>
+      <p>{{ 'ENTERPRISE.FEATURE_1_DESC' | translate }}</p>
+    </div>
+
+    <div class="feature-card animate-on-scroll slide-right delay-200">
+      <div class="feature-icon">
+        <i class="fas fa-tools"></i>
+      </div>
+      <h2>{{ 'ENTERPRISE.FEATURE_2_TITLE' | translate }}</h2>
+      <p>{{ 'ENTERPRISE.FEATURE_2_DESC' | translate }}</p>
+    </div>
+
+    <div class="feature-card animate-on-scroll slide-right delay-400">
+      <div class="feature-icon">
+        <i class="fas fa-globe"></i>
+      </div>
+      <h2>{{ 'ENTERPRISE.FEATURE_3_TITLE' | translate }}</h2>
+      <p>{{ 'ENTERPRISE.FEATURE_3_DESC' | translate }}</p>
+    </div>
+  </section>
+
+  <section class="brands-section">
+    <h2 class="section-title animate-on-scroll fade-up">{{ 'ENTERPRISE.BRANDS_TITLE' | translate }}</h2>
+    
+    <div class="brands-grid animate-on-scroll fade-in">
+      
+        <div class="brands-grid animate-on-scroll fade-in">
+            <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Levi%27s_logo.svg" alt="Levis"></div>
+            <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/37/Miami_Dolphins_logo.svg/800px-Miami_Dolphins_logo.svg.png" alt="Miami Dolphins"></div>
+            <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Mercedes-Logo.svg/800px-Mercedes-Logo.svg.png" alt="Mercedes"></div>
+            <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Disney%2B_logo.svg/800px-Disney%2B_logo.svg.png" alt="Disney"></div>
+            <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/fr/thumb/d/d5/Logo_Grenoble.svg/800px-Logo_Grenoble.svg.png" alt="Ville de Grenoble"></div>
+            <div class="brand-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Neuchatel_coat_of_arms.svg/800px-Neuchatel_coat_of_arms.svg.png" alt="Ville de Neuchâtel"></div>
+        </div>
+
+
+    </div>
+  </section>
+
+  <section class="player-section">
+    <div class="player-container animate-on-scroll fade-up">
+      <div class="player-info">
+        <h3>Sending (Lofi Version)</h3>
+        <p>Hanna Lindgren, Aerian & Jobii</p>
+      </div>
+      <div class="player-controls">
+        <button class="play-btn">
+          <i class="fas fa-play"></i>
+        </button>
+        <div class="progress-bar">
+          <div class="progress" style="width: 30%;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trusted-section">
+    <h2 class="section-title animate-on-scroll fade-up">{{ 'ENTERPRISE.TRUSTED_TITLE' | translate }}</h2>
+    
+    <div class="trusted-logos animate-on-scroll fade-in">
+      <div class="logo-row">
+        <div class="trusted-logo"><img src="https://applisound-images.s3.eu-west-3.amazonaws.com/mini-icones/trusted1.svg" alt="HubSpot"></div>
+        <div class="trusted-logo"><img src="https://applisound-images.s3.eu-west-3.amazonaws.com/mini-icones/trusted2.svg" alt="The Telegraph"></div>
+        <div class="trusted-logo"><img src="https://applisound-images.s3.eu-west-3.amazonaws.com/mini-icones/trusted3.svg" alt="Axel Arigato"></div>
+        <div class="trusted-logo"><img src="https://applisound-images.s3.eu-west-3.amazonaws.com/mini-icones/trusted4.svg" alt="A+E Networks"></div>
+      </div>
+      <div class="logo-row">
+        <div class="trusted-logo"><img src="https://applisound-images.s3.eu-west-3.amazonaws.com/mini-icones/trusted5.svg" alt="Ubisoft"></div>
+        <div class="trusted-logo"><img src="https://applisound-images.s3.eu-west-3.amazonaws.com/mini-icones/trusted6.svg" alt="OGN"></div>
+        <div class="trusted-logo"><img src="https://applisound-images.s3.eu-west-3.amazonaws.com/mini-icones/trusted7.svg" alt="MAC Cosmetics"></div>
+        <div class="trusted-logo"><img src="https://applisound-images.s3.eu-west-3.amazonaws.com/mini-icones/trusted8.svg" alt="Aston Villa"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="license-section">
+    <div class="license-content animate-on-scroll slide-left">
+      <h2>{{ 'ENTERPRISE.LICENSE_TITLE' | translate }}</h2>
+      <h3>{{ 'ENTERPRISE.LICENSE_SUBTITLE' | translate }}</h3>
+      <p>{{ 'ENTERPRISE.LICENSE_DESC' | translate }}</p>
+      <p>{{ 'ENTERPRISE.LICENSE_DESC_2' | translate }}</p>
+      <a href="/how-it-works" class="learn-more-btn">{{ 'ENTERPRISE.LEARN_MORE' | translate }}</a>
+    </div>
+    <div class="license-image animate-on-scroll slide-right">
+      <img src="https://applisound-images.s3.eu-west-3.amazonaws.com/enterprise-license.jpg" alt="License Model">
+    </div>
+  </section>
+
+  <section class="cta-section animate-on-scroll fade-up">
+    <h2>{{ 'ENTERPRISE.CTA_TITLE' | translate }}</h2>
+    <p>{{ 'ENTERPRISE.CTA_SUBTITLE' | translate }}</p>
+    <button class="contact-btn">{{ 'ENTERPRISE.CONTACT_SALES' | translate }}</button>
+  </section>
 </div>

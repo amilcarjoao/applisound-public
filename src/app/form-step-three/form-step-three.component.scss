@@ -1,0 +1,205 @@
+// form-step-three/form-step-three.component.scss
+@import '../../styles/variables';
+
+.step-three-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+  .intro-text {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .documents-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+    }
+
+    h3 {
+      color: $bleu1-aps;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-align: center;
+      font-family: 'coco', sans-serif;
+    }
+  }
+
+  .devis-section, .cgv-section {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 1.5rem;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #eee;
+
+    .devis-content, .cgv-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+      background: #fff;
+      border-radius: 8px;
+      border: 1px solid #eee;
+      
+      &::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 4px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 4px;
+        
+        &:hover {
+          background: #aaa;
+        }
+      }
+    }
+  }
+
+  .devis-content {
+    .devis-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      
+      .company-info, .client-info {
+        flex: 1;
+      }
+    }
+
+    .devis-details {
+      margin-bottom: 2rem;
+      
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        
+        th, td {
+          padding: 0.75rem;
+          border-bottom: 1px solid #eee;
+        }
+        
+        th {
+          text-align: left;
+          color: #666;
+        }
+      }
+    }
+
+    .devis-total {
+      text-align: right;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: $bleu1-aps;
+    }
+  }
+
+  .signature-section {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    .signature-container {
+      width: 100%;
+      max-width: 500px;
+      
+      canvas {
+        width: 100%;
+        height: 200px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border: 2px solid #eee;
+        margin-bottom: 1rem;
+      }
+
+      .signature-actions {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        
+        button {
+          padding: 0.75rem 1.5rem;
+          border-radius: 6px;
+          font-weight: 600;
+          transition: all 0.3s ease;
+          
+          &:first-child {
+            background: transparent;
+            border: 1px solid #ddd;
+            color: #333;
+            
+            &:hover {
+              border-color: #ccc;
+              background: #f8f9fa;
+            }
+          }
+          
+          &:last-child {
+            background: $bleu1-aps;
+            border: none;
+            color: white;
+            
+            &:hover:not(:disabled) {
+              background: $bleu3-aps;
+            }
+            
+            &:disabled {
+              opacity: 0.5;
+              cursor: not-allowed;
+            }
+          }
+        }
+      }
+    }
+
+    .return-later {
+      display: flex;
+      gap: 1rem;
+      
+      button {
+        padding: 0.75rem 1.5rem;
+        border-radius: 6px;
+        background: transparent;
+        border: 1px solid #ddd;
+        color: #333;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          border-color: #ccc;
+          background: #f8f9fa;
+        }
+      }
+    }
+  }
+}
+
+// Responsive styles
+@media (max-width: 768px) {
+  .step-three-container {
+    padding: 1.5rem;
+  }
+}

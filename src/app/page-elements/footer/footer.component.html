@@ -1,70 +1,116 @@
 <div class="footer-container">
-    <div class="footer-main">
-        <div class="footer-section">
-            <h3>{{ 'FOOTER.LOCATION' | translate }}</h3>
-            <p>2000 Neuchâtel</p>
-            <p>Switzerland</p>
-        </div>
-
-        <div class="footer-section">
-            <h3>{{ 'FOOTER.CONTACTS' | translate }}</h3>
-            <p>+41 78 123 45 67 • Amilcar Joao</p>
-            <p>+41 45 132 89 64 • Gisèle Joao</p>
-            <p><a href="mailto:amilcar.joao@applisound.com">amilcar.joao&#64;applisound.com</a></p>
-            <p><a href="mailto:gisele.joao@applisound.com">gisele.joao&#64;applisound.com</a></p>
-        </div>
-
-        <div class="footer-section">
-            <h3>{{ 'FOOTER.REGISTRATION' | translate }}</h3>
-            <p>Société à responsabilité limitée (Sàrl)</p>
-            <p>IDE: CHE-123.456.789</p>
-        </div>
-
-        <div class="footer-section">
-            <h3>{{ 'FOOTER.FOLLOW_US' | translate }}</h3>
-            <div class="social-icons">
-                <a href="#" class="social-icon-placeholder" title="Instagram"></a>
-                <a href="#" class="social-icon-placeholder" title="TikTok"></a>
-                <a href="#" class="social-icon-placeholder" title="YouTube"></a>
-                <a href="#" class="social-icon-placeholder" title="SoundCloud"></a>
-                <a href="#" class="social-icon-placeholder" title="Spotify"></a>
-            </div>
-            
-            <div class="language-selector">
-                <h3>{{ 'FOOTER.LANGUAGE' | translate }}</h3>
-                <div class="select-wrapper">
-                    <select (change)="switchLang($event)" [value]="languageService.getCurrentLanguage()">
-                        <option value="en">English</option>
-                        <option value="fr">Français</option>
-                        <option value="cn">中文</option>
-                        <option value="de">Deutsch</option>
-                        <option value="dk">Dansk</option>
-                        <option value="es">Español</option>
-                        <option value="fi">Suomi</option>
-                        <option value="he">עברית</option>
-                        <option value="hi">हिन्दी</option>
-                        <option value="it">Italiano</option>
-                        <option value="jp">日本語</option>
-                        <option value="kr">한국어</option>
-                        <option value="nl">Nederlands</option>
-                        <option value="no">Norsk</option>
-                        <option value="pl">Polski</option>
-                        <option value="pt">Português</option>
-                        <option value="ru">Русский</option>
-                        <option value="se">Svenska</option>
-                        <option value="tr">Türkçe</option>
-                        <option value="vi">Tiếng Việt</option>
-                        <option value="ch-fr">Français (CH)</option>
-                        <option value="ch-de">Deutsch (CH)</option>
-                        <option value="ar">العربية</option>
-                    </select>
-                    <span class="select-arrow">▼</span>
-                </div>
-            </div>
-        </div>
+  <div class="footer-main">
+    <div class="footer-section">
+      <h3>{{ "FOOTER.LOCATION" | translate }}</h3>
+      <p>2000 Neuchâtel</p>
+      <p>Switzerland</p>
     </div>
 
-    <div class="footer-copyright">
-        <p>{{ 'FOOTER.COPYRIGHT' | translate: {year: currentYear} }}</p>
+    <div class="footer-section">
+      <h3>{{ "FOOTER.CONTACTS" | translate }}</h3>
+      <p>+41 78 123 45 67 • Amilcar Joao</p>
+      <p>+41 45 132 89 64 • Gisèle Joao</p>
+      <p>
+        <a href="mailto:amilcar.joao@applisound.com"
+          >amilcar.joao&#64;applisound.com</a
+        >
+      </p>
+      <p>
+        <a href="mailto:gisele.joao@applisound.com"
+          >gisele.joao&#64;applisound.com</a
+        >
+      </p>
     </div>
+
+    <div class="footer-section">
+      <h3>{{ "FOOTER.REGISTRATION" | translate }}</h3>
+      <p>Société à responsabilité limitée (Sàrl)</p>
+      <p>IDE: CHE-123.456.789</p>
+    </div>
+
+    <div class="footer-section">
+      <h3>{{ "FOOTER.FOLLOW_US" | translate }}</h3>
+      <div class="social-icons">
+        <a
+          href="https://www.instagram.com/applisound/"
+          target="_blank"
+          class="social-icon"
+          title="Instagram"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a
+          href="http://tiktok.com/@applisound"
+          target="_blank"
+          class="social-icon"
+          title="TikTok"
+        >
+          <i class="fab fa-tiktok"></i>
+        </a>
+        <a
+          href="https://www.youtube.com/@applisound"
+          target="_blank"
+          class="social-icon"
+          title="YouTube"
+        >
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a
+          href="https://soundcloud.com/applisound"
+          target="_blank"
+          class="social-icon"
+          title="SoundCloud"
+        >
+          <i class="fab fa-soundcloud"></i>
+        </a>
+        <a
+          href="https://open.spotify.com/intl-fr/artist/0VhB2kEnVBNqwtsuJ0Fidc"
+          target="_blank"
+          class="social-icon"
+          title="Spotify"
+        >
+          <i class="fab fa-spotify"></i>
+        </a>
+      </div>
+
+      <div class="language-selector">
+        <h3>{{ "FOOTER.LANGUAGE" | translate }}</h3>
+        <div class="select-wrapper">
+          <select
+            (change)="switchLang($event)"
+            [value]="languageService.getCurrentLanguage()"
+          >
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+            <option value="cn">中文</option>
+            <option value="de">Deutsch</option>
+            <option value="dk">Dansk</option>
+            <option value="es">Español</option>
+            <option value="fi">Suomi</option>
+            <option value="he">עברית</option>
+            <option value="hi">हिन्दी</option>
+            <option value="it">Italiano</option>
+            <option value="jp">日本語</option>
+            <option value="kr">한국어</option>
+            <option value="nl">Nederlands</option>
+            <option value="no">Norsk</option>
+            <option value="pl">Polski</option>
+            <option value="pt">Português</option>
+            <option value="ru">Русский</option>
+            <option value="se">Svenska</option>
+            <option value="tr">Türkçe</option>
+            <option value="vi">Tiếng Việt</option>
+            <option value="ch-fr">Français (CH)</option>
+            <option value="ch-de">Deutsch (CH)</option>
+            <option value="ar">العربية</option>
+          </select>
+          <span class="select-arrow">▼</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-copyright">
+    <p>{{ "FOOTER.COPYRIGHT" | translate : { year: currentYear } }}</p>
+  </div>
 </div>

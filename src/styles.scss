@@ -44,3 +44,50 @@ body {
 * {
   box-sizing: border-box;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+// POUR LE MODAL.
+body.modal-open {
+  overflow: hidden;
+}
+
+// Styles pour les boutons de formulaire
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-top: 1px solid #eee;
+  
+  button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &.btn-previous, &.btn-cancel {
+      background: transparent;
+      border: 1px solid #ddd;
+      color: #333;
+      
+      &:hover {
+        background-color: #f0f0f0;
+      }
+    }
+    
+    &.btn-next {
+      background-color: #1a41c6;
+      border: none;
+      color: white;
+      
+      &:hover {
+        background-color: #153aad;
+      }
+    }
+  }
+}

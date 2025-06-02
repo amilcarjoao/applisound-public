@@ -1,10 +1,26 @@
 // src/app/private/dashboard/dashboard.component.scss
+@import '../../../styles/variables';
+@import '../../../styles/fonts';
+
+:host {
+  display: block;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
 .dashboard-container {
   display: flex;
   height: 100vh;
-  background-color: #f5f7fa;
+  width: 100vw;
+  background-color: #f8f9fa;
   color: #333;
   font-family: 'Montserrat', sans-serif;
+  overflow: hidden; // Empêche le scroll au niveau du conteneur
 }
 
 .dashboard-content {
@@ -14,67 +30,111 @@
   overflow: hidden;
 }
 
+// Modifiez la classe main-content pour permettre le scroll uniquement à l'intérieur
 .main-content {
   flex: 1;
   padding: 2rem;
-  overflow-y: auto;
+  overflow-y: auto; // Permet le scroll uniquement à l'intérieur de cette section
+  background: linear-gradient(135deg, rgba($bleu1-aps, 0.03), rgba($bleu3-aps, 0.05));
+  height: calc(100vh - 70px); // Ajustez cette valeur en fonction de la hauteur de votre header
 }
 
 .welcome-section {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+  padding-bottom: 1rem;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, $bleu1-aps, $bleu3-aps);
+    border-radius: 3px;
+  }
   
   h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: #1a41c6;
+    margin-bottom: 0.75rem;
+    color: $bleu1-aps;
+    font-family: 'coco', sans-serif;
   }
   
   p {
     color: #666;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    max-width: 600px;
   }
 }
 
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 1.5rem;
+  gap: 1.75rem;
 }
 
 .dashboard-card {
   background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba($bleu1-aps, 0.05);
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  }
   
   .card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.25rem;
+    padding: 1.5rem;
     border-bottom: 1px solid #eee;
+    background: linear-gradient(90deg, rgba($bleu1-aps, 0.03), rgba($bleu3-aps, 0.08));
     
     h2 {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: 600;
       margin: 0;
-      color: #333;
+      color: $bleu1-aps;
+      font-family: 'coco', sans-serif;
+      position: relative;
+      padding-left: 1rem;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 18px;
+        background-color: $bleu1-aps;
+        border-radius: 2px;
+      }
     }
     
     .view-all {
-      color: #1a41c6;
+      color: $bleu3-aps;
       font-size: 0.9rem;
       text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s ease;
       
       &:hover {
+        color: $bleu1-aps;
         text-decoration: underline;
       }
     }
   }
   
   .card-content {
-    padding: 1.25rem;
+    padding: 1.5rem;
   }
 }
 
@@ -89,20 +149,23 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
-  background-color: #f9f9f9;
-  border-radius: 8px;
+  padding: 1.25rem;
+  background-color: #f9f9fa;
+  border-radius: 10px;
   transition: all 0.2s ease;
+  border-left: 4px solid transparent;
   
   &:hover {
-    background-color: #f0f0f0;
+    background-color: #f0f2f5;
+    border-left-color: $bleu3-aps;
   }
   
   .order-info {
     h3 {
-      font-size: 1rem;
-      margin: 0 0 0.25rem 0;
-      font-weight: 500;
+      font-size: 1.1rem;
+      margin: 0 0 0.35rem 0;
+      font-weight: 600;
+      color: #333;
     }
     
     p {
@@ -113,24 +176,26 @@
   }
   
   .order-status {
-    padding: 0.35rem 0.75rem;
+    padding: 0.4rem 1rem;
     border-radius: 20px;
     font-size: 0.8rem;
-    font-weight: 500;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     
     &.completed {
-      background-color: #e6f7e6;
+      background-color: rgba(#28a745, 0.1);
       color: #28a745;
     }
     
     &.in-progress {
-      background-color: #e6f0ff;
-      color: #1a41c6;
+      background-color: rgba($bleu1-aps, 0.1);
+      color: $bleu1-aps;
     }
     
     &.pending {
-      background-color: #fff8e6;
-      color: #ffc107;
+      background-color: rgba(#ffc107, 0.1);
+      color: darken(#ffc107, 10%);
     }
   }
 }
@@ -139,14 +204,16 @@
 .message-preview {
   .message-item {
     display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
     
     .message-avatar {
-      width: 50px;
-      height: 50px;
+      width: 55px;
+      height: 55px;
       border-radius: 50%;
       overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      border: 2px solid white;
       
       img {
         width: 100%;
@@ -159,57 +226,64 @@
       flex: 1;
       
       h3 {
-        font-size: 1rem;
-        margin: 0 0 0.25rem 0;
-        font-weight: 500;
+        font-size: 1.1rem;
+        margin: 0 0 0.35rem 0;
+        font-weight: 600;
+        color: #333;
       }
       
       p {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
         color: #666;
-        margin: 0 0 0.25rem 0;
+        margin: 0 0 0.35rem 0;
+        line-height: 1.5;
       }
       
       .message-time {
         font-size: 0.8rem;
         color: #999;
+        display: inline-block;
+        padding: 0.2rem 0.5rem;
+        background-color: #f0f0f0;
+        border-radius: 4px;
       }
     }
   }
   
   .message-actions {
     display: flex;
-    gap: 0.75rem;
-    margin-top: 1rem;
+    gap: 1rem;
+    margin-top: 1.25rem;
     
     button {
-      padding: 0.6rem 1rem;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      font-weight: 500;
+      padding: 0.75rem 1.25rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.3s ease;
+      border: none;
       
       &.btn-secondary {
-        background-color: #f0f0f0;
-        border: 1px solid #ddd;
+        background-color: #f0f2f5;
         color: #333;
         
         &:hover {
-          background-color: #e0e0e0;
+          background-color: #e0e4e9;
         }
       }
       
       &.btn-voice {
-        background-color: #1a41c6;
-        border: none;
+        background: linear-gradient(135deg, $bleu1-aps, $bleu3-aps);
         color: white;
         display: flex;
         align-items: center;
         gap: 0.5rem;
+        box-shadow: 0 4px 10px rgba($bleu1-aps, 0.3);
         
         &:hover {
-          background-color: #153aad;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 15px rgba($bleu1-aps, 0.4);
         }
         
         i {
@@ -230,28 +304,30 @@
 .file-item {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  background-color: #f9f9f9;
-  border-radius: 8px;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  background-color: #f9f9fa;
+  border-radius: 10px;
   transition: all 0.2s ease;
   
   &:hover {
-    background-color: #f0f0f0;
+    background-color: #f0f2f5;
+    transform: translateX(5px);
   }
   
   .file-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
-    background-color: #e6f0ff;
-    color: #1a41c6;
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, $bleu1-aps, $bleu3-aps);
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 4px 10px rgba($bleu1-aps, 0.2);
     
     i {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
     }
   }
   
@@ -259,9 +335,10 @@
     flex: 1;
     
     h3 {
-      font-size: 1rem;
-      margin: 0 0 0.25rem 0;
-      font-weight: 500;
+      font-size: 1.1rem;
+      margin: 0 0 0.35rem 0;
+      font-weight: 600;
+      color: #333;
     }
     
     p {
@@ -273,25 +350,28 @@
   
   .file-actions {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.75rem;
     
     .btn-icon {
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      background-color: transparent;
-      border: 1px solid #ddd;
-      color: #666;
+      background-color: white;
+      border: 1px solid #eee;
+      color: $bleu1-aps;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
       
       &:hover {
-        background-color: #1a41c6;
-        border-color: #1a41c6;
+        background: linear-gradient(135deg, $bleu1-aps, $bleu3-aps);
+        border-color: transparent;
         color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba($bleu1-aps, 0.3);
       }
     }
   }
@@ -299,26 +379,75 @@
 
 .empty-state {
   text-align: center;
-  padding: 2rem 0;
+  padding: 3rem 0;
   
   p {
     color: #666;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
   }
   
   .btn-primary {
-    background-color: #1a41c6;
+    background: linear-gradient(135deg, $bleu1-aps, $bleu3-aps);
     color: white;
     border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 6px;
-    font-weight: 500;
+    padding: 0.9rem 1.75rem;
+    border-radius: 8px;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba($bleu1-aps, 0.3);
     
     &:hover {
-      background-color: #153aad;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba($bleu1-aps, 0.4);
     }
+  }
+}
+
+// Ajoutez des styles pour les contenus scrollables à l'intérieur des cartes
+.card-content {
+  padding: 1.5rem;
+  max-height: 300px; // Hauteur maximale pour les contenus des cartes
+  overflow-y: auto; // Permet le scroll à l'intérieur des cartes
+  
+  // Style de la scrollbar pour les contenus des cartes
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+    
+    &:hover {
+      background: #aaa;
+    }
+  }
+}
+
+
+// Style de la scrollbar pour main-content
+.main-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.main-content::-webkit-scrollbar-track {
+  background: rgba($bleu1-aps, 0.03);
+  border-radius: 4px;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+  background: rgba($bleu1-aps, 0.2);
+  border-radius: 4px;
+  
+  &:hover {
+    background: rgba($bleu1-aps, 0.3);
   }
 }
 
@@ -326,5 +455,13 @@
 @media (max-width: 768px) {
   .dashboard-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .main-content {
+    padding: 1.5rem;
+  }
+  
+  .welcome-section h1 {
+    font-size: 1.6rem;
   }
 }

@@ -8,8 +8,13 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { NavBarComponent } from './page-elements/nav-bar/nav-bar.component';
 import { AppComponent } from './app.component';
-import { FormStepOneComponent } from './form-step-one/form-step-one/form-step-one.component';
+import { FormStepOneComponent } from './form-step-one/form-step-one.component';
+import { FormStepTwoComponent } from './form-step-two/form-step-two.component';
+import { FormStepThreeComponent } from './form-step-three/form-step-three.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+
+
 
 
 
@@ -21,7 +26,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    FormStepOneComponent
+    
   ],
   
   imports: [

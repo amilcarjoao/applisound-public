@@ -1,0 +1,139 @@
+// form-step-two/form-step-two.component.scss
+@import '../../styles/variables';
+
+.step-two-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  
+  .intro-text {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .process-cards {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 1.5rem;
+    padding: 1rem 0.5rem;
+    margin: 0 -0.5rem;
+    
+    &::-webkit-scrollbar {
+      height: 8px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 4px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 4px;
+      
+      &:hover {
+        background: #aaa;
+      }
+    }
+  }
+
+  .process-card {
+    flex: 0 0 300px;
+    background: linear-gradient(135deg, $bleu1-aps, $bleu3-aps);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: transform 0.3s ease;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    box-shadow: 0 5px 15px rgba($bleu1-aps, 0.3);
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba($bleu1-aps, 0.4);
+    }
+
+    .card-image {
+      height: 80px;
+      margin-bottom: 1.5rem;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+    }
+
+    h3 {
+      color: white;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      font-family: 'coco', sans-serif;
+      position: relative;
+      padding-bottom: 0.75rem;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background-color: rgba(255, 255, 255, 0.5);
+      }
+    }
+
+    p {
+      margin-bottom: 0.8rem;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      opacity: 0.9;
+    }
+
+    .payment-methods {
+      margin-top: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      
+      img {
+        height: 30px;
+        filter: brightness(0) invert(1);
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+        
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+// Responsive styles
+@media (max-width: 768px) {
+  .step-two-container {
+    padding: 1.5rem;
+    
+    .process-cards {
+      padding-bottom: 1.5rem;
+    }
+    
+    .process-card {
+      flex: 0 0 280px;
+      height: 380px;
+    }
+  }
+}

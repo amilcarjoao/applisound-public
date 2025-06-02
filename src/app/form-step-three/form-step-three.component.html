@@ -1,0 +1,183 @@
+<div class="step-three-container">
+  <p class="intro-text">
+    Dans un soucis d'efficience, de rapidité et de fluidité nous vous mettons en
+    place un devis avec les conditions générales de vente à prendre
+    connaissance. Vous procéderez à la signature du devis après validation.
+    Devis Blockchain-Contrat Intelligent.
+  </p>
+
+  <div class="documents-container">
+    <!-- Devis Section -->
+    <div class="devis-section">
+      <h3>DEVIS</h3>
+      <div class="devis-content" #devisContent>
+        <!-- Le contenu du devis sera injecté dynamiquement -->
+        <div class="devis-header">
+          <div class="company-info">
+            <h4>Applisound</h4>
+            <!-- Informations de l'entreprise -->
+          </div>
+          <div class="client-info">
+            <!-- Informations du client -->
+          </div>
+        </div>
+        <div class="devis-details">
+          <!-- Détails des services -->
+        </div>
+        <div class="devis-total">
+          <!-- Total et conditions de paiement -->
+        </div>
+      </div>
+    </div>
+
+    <!-- CGV Section -->
+    <div class="cgv-section">
+      <h3>CONDITIONS GÉNÉRALES DE VENTES</h3>
+      <div class="cgv-content" #cgvContent>
+        
+        <p><strong>Article 1 - Objet et champ d'application</strong></p>
+        <p>
+          Les présentes conditions générales de vente (CGV) constituent le socle
+          de la négociation commerciale et sont systématiquement adressées ou
+          remises à chaque client pour lui permettre de passer commande.
+        </p>
+        <p>
+          Elles s'appliquent à toutes les prestations de services conclues par
+          APPLISOUND auprès des clients professionnels ou particuliers, quelles
+          que soient les clauses pouvant figurer sur les documents du client.
+        </p>
+
+        <p><strong>Article 2 - Commandes et exécution</strong></p>
+        <p>
+          Toute commande de prestation implique l'acceptation sans réserve par
+          le client et son adhésion pleine et entière aux présentes CGV.
+        </p>
+        <p>
+          APPLISOUND s'engage à fournir les prestations commandées dans un délai
+          maximum de 30 jours ouvrés à compter de la validation du brief
+          créatif, sauf mention contraire spécifiée dans le devis.
+        </p>
+
+        <p><strong>Article 3 - Tarifs</strong></p>
+        <p>
+          Les prix des prestations vendues sont ceux en vigueur au jour de la
+          prise de commande. Ils sont libellés en euros et calculés hors taxes.
+          La TVA applicable est celle en vigueur au jour de la facturation.
+        </p>
+        <p>
+          APPLISOUND se réserve le droit de modifier ses tarifs à tout moment.
+          Toutefois, elle s'engage à facturer les prestations commandées aux
+          prix indiqués lors de l'enregistrement de la commande.
+        </p>
+
+        <p><strong>Article 4 - Conditions de paiement</strong></p>
+        <p>
+          Un acompte de 50% du montant total TTC est exigé lors de la passation
+          de la commande. Le solde est payable à la livraison des prestations.
+        </p>
+        <p>
+          En cas de retard de paiement, des pénalités seront appliquées au taux
+          d'intérêt légal majoré de 10 points.
+        </p>
+
+        <p>
+          <strong
+            >Article 5 - Droits d'auteur et propriété intellectuelle</strong
+          >
+        </p>
+        <p>
+          Sauf stipulation contraire explicite du contrat, APPLISOUND cède au
+          client les droits patrimoniaux sur les œuvres créées dans le cadre de
+          la prestation selon les modalités suivantes :
+        </p>
+        <ul>
+          <li>
+            Pour les licences non-exclusives : droit d'utilisation limité aux
+            usages spécifiés dans le devis
+          </li>
+          <li>
+            Pour les cessions exclusives : transfert complet des droits
+            d'exploitation
+          </li>
+        </ul>
+        <p>
+          Dans tous les cas, APPLISOUND conserve le droit moral sur ses
+          créations et peut les utiliser à des fins de portfolio et de promotion
+          de son activité.
+        </p>
+
+        <p><strong>Article 6 - Révisions et modifications</strong></p>
+        <p>
+          Le forfait de base comprend deux séries de révisions mineures.
+          Au-delà, des frais supplémentaires seront facturés selon le tarif
+          horaire en vigueur.
+        </p>
+        <p>
+          Toute demande de modification majeure du brief initial fera l'objet
+          d'un devis complémentaire.
+        </p>
+
+        <p><strong>Article 7 - Confidentialité</strong></p>
+        <p>
+          APPLISOUND s'engage à respecter la confidentialité des informations
+          portées à sa connaissance dans le cadre de la prestation.
+        </p>
+
+        <p><strong>Article 8 - Contrat intelligent et blockchain</strong></p>
+        <p>
+          Les contrats conclus via notre plateforme sont enregistrés sur la
+          blockchain pour garantir leur authenticité et leur immuabilité. Le
+          client reconnaît la valeur juridique de cette technologie.
+        </p>
+        <p>
+          Les paiements et transferts de droits peuvent être automatisés via des
+          smart contracts selon les conditions prédéfinies.
+        </p>
+
+        <p><strong>Article 9 - Droit applicable et litiges</strong></p>
+        <p>
+          Les présentes CGV sont soumises au droit français. Tout différend
+          relatif à l'interprétation et à l'exécution des présentes CGV est
+          soumis aux tribunaux français.
+        </p>
+
+        <p><strong>Article 10 - Acceptation du client</strong></p>
+        <p>
+          Les présentes CGV sont expressément agréées et acceptées par le
+          client, qui déclare et reconnaît en avoir une parfaite connaissance,
+          et renonce, de ce fait, à se prévaloir de tout document
+          contradictoire.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section Signature -->
+  <div class="signature-section">
+    <div class="signature-container">
+      <canvas #signatureCanvas></canvas>
+      <!-- Dans la section signature-actions -->
+      <div class="signature-actions">
+        <button type="button" (click)="clearSignature()">Effacer</button>
+        <button type="button" (click)="goToPreviousStep()">Précédent</button>
+        <button
+          type="button"
+          (click)="validateSignature()"
+          [disabled]="!hasSignature"
+        >
+          Signer le devis
+        </button>
+      </div>
+    </div>
+
+    <!-- Option de retour ultérieur -->
+    <div class="return-later">
+      <button type="button" (click)="saveDraftAndReturn()">
+        Revenir plus tard
+      </button>
+      <button type="button" (click)="createAccount()" *ngIf="!isLoggedIn">
+        Créer un compte
+      </button>
+    </div>
+  </div>
+</div>
