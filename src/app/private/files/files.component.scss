@@ -1,0 +1,181 @@
+// src/app/private/files/files.component.scss
+@import '../../../styles/variables';
+
+.files-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  
+  h1 {
+    font-family: 'coco-bold', sans-serif;
+    color: $bleu1-aps;
+    margin-bottom: 0.5rem;
+  }
+  
+  .subtitle {
+    color: #666;
+    margin-bottom: 2rem;
+  }
+}
+
+.files-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.file-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba($bleu1-aps, 0.05);
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  }
+  
+  .file-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-bottom: 1px solid #eee;
+    background: linear-gradient(90deg, rgba($bleu1-aps, 0.03), rgba($bleu3-aps, 0.08));
+    
+    .file-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, $bleu1-aps, $bleu3-aps);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba($bleu1-aps, 0.2);
+      
+      i {
+        font-size: 1.3rem;
+      }
+    }
+    
+    .file-title {
+      flex: 1;
+      
+      h3 {
+        font-size: 1.1rem;
+        margin: 0 0 0.35rem 0;
+        font-weight: 600;
+        color: #333;
+      }
+      
+      .file-status {
+        font-size: 0.8rem;
+        font-weight: 600;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        display: inline-block;
+        
+        &.ready {
+          background-color: rgba(#28a745, 0.1);
+          color: #28a745;
+        }
+        
+        &.pending {
+          background-color: rgba(#ffc107, 0.1);
+          color: darken(#ffc107, 10%);
+        }
+      }
+    }
+  }
+  
+  .file-details {
+    padding: 1.5rem;
+    
+    .file-description {
+      margin-bottom: 1rem;
+      color: #333;
+    }
+    
+    .file-meta {
+      font-size: 0.85rem;
+      color: #666;
+    }
+  }
+  
+  .file-actions {
+    display: flex;
+    gap: 1rem;
+    padding: 0 1.5rem 1.5rem;
+    
+    button {
+      flex: 1;
+      padding: 0.75rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      
+      i {
+        font-size: 0.9rem;
+      }
+      
+      &.btn-play {
+        background-color: $bleu1-aps;
+        color: white;
+        border: none;
+        
+        &:hover:not(:disabled) {
+          background-color: darken($bleu1-aps, 5%);
+        }
+      }
+      
+      &.btn-download {
+        background-color: white;
+        color: $bleu1-aps;
+        border: 1px solid $bleu1-aps;
+        
+        &:hover:not(:disabled) {
+          background-color: rgba($bleu1-aps, 0.05);
+        }
+      }
+    }
+  }
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  
+  .empty-icon {
+    font-size: 3rem;
+    color: #ddd;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+  }
+  
+  .empty-subtitle {
+    font-size: 0.9rem;
+    color: #999;
+  }
+}

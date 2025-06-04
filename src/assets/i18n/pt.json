@@ -111,6 +111,35 @@
     "MORE_TESTIMONIALS": "Mais depoimentos de clientes serão adicionados aqui."
   },
   "PRICING": {
-    "MAIN_TITLE": "Nossos Preços"
-  }
+  "MAIN_TITLE": "Preços de Serviços Personalizados",
+  "CURRENCY": "Moeda",
+  "SOUNDTRACKS_TITLE": "Trilhas Sonoras",
+  "JINGLES_TITLE": "Jingles",
+  "VOICEOVER_TITLE": "Locução",
+  "SOUND_DESIGN_TITLE": "Design de Som",
+  "HYMNS_TITLE": "Hinos",
+  "STANDARD_TRACK": "Faixa Padrão",
+  "CUSTOM_TRACK": "Faixa Personalizada",
+  "PREMIUM_TRACK": "Faixa Premium",
+  "SHORT_FORMAT": "Formato Curto",
+  "MEDIUM_FORMAT": "Formato Médio",
+  "LONG_FORMAT": "Formato Longo",
+  "MALE_VOICE": "Voz Masculina",
+  "FEMALE_VOICE": "Voz Feminina",
+  "SOUND_EFFECTS": "Efeitos Sonoros",
+  "AMBIENT_SOUNDS": "Sons Ambientes",
+  "CORPORATE_HYMN": "Hino Corporativo",
+  "ORGANIZATION_HYMN": "Hino Organizacional",
+  "UP_TO_30_SEC": "até 30 segundos",
+  "UP_TO_2_MIN": "até 2 minutos",
+  "UP_TO_5_MIN": "até 5 minutos",
+  "NATIVE_SPEAKER": "falante nativo",
+  "PROFESSIONAL": "profissional",
+  "PACK_OF_10": "pacote de 10",
+  "CUSTOM_PACK": "pacote personalizado",
+  "WITH_LYRICS": "com letra",
+  "WITH_ORCHESTRA": "com orquestra",
+  "PRICE_FROM": "a partir de"
+}
+
 }

@@ -1,25 +1,22 @@
 // src/app/guards/auth.guard.ts
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { TokenStorageService } from '../services/token-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
-  
-  constructor(private router: Router) {}
-  
-  canActivate(): boolean {
-  // Temporairement retourner true pour le développement
-  return true;
-  
-  // Code à utiliser plus tard avec l'authentification réelle
-  // const isAuthenticated = localStorage.getItem('auth_token') !== null;
-  // if (!isAuthenticated) {
-  //   this.router.navigate(['/login']);
-  //   return false;
-  // }
-  // return true;
-}
+export class AuthGuard {
+  constructor(private router: Router, private tokenStorage: TokenStorageService) {}
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    const token = this.tokenStorage.getToken();
+    if (token) {
+      return true;
+    }
+
+    // Non connecté, redirection vers la page de connexion
+    this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
+    return false;
+  }
 }

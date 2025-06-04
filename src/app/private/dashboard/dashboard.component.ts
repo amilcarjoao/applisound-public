@@ -21,7 +21,7 @@ import { HeaderComponent } from '../components/header/header.component';
 })
 export class DashboardComponent implements OnInit {
   user: any = {};
-  recentOrders: any[] = [];
+  audioFiles: any[] = [];
   unreadMessages: number = 0;
   
   constructor() {}
@@ -35,14 +35,50 @@ export class DashboardComponent implements OnInit {
       avatar: 'https://applisound-images.s3.eu-west-3.amazonaws.com/default-avatar.png'
     };
     
-    // Simuler la récupération des commandes récentes
-    this.recentOrders = [
-      { id: 'ORD-2023-001', title: 'Custom Soundtrack', status: 'completed', date: '2023-05-15' },
-      { id: 'ORD-2023-002', title: 'Voice Over Project', status: 'in-progress', date: '2023-05-20' },
-      { id: 'ORD-2023-003', title: 'Jingle Creation', status: 'pending', date: '2023-05-25' }
+    // Simuler la récupération des fichiers audio
+    this.audioFiles = [
+      { 
+        id: 'FILE-2023-001', 
+        title: 'Custom Soundtrack.mp3', 
+        size: '3.2 MB', 
+        uploadDate: '2023-05-15',
+        status: 'ready',
+        type: 'soundtrack'
+      },
+      { 
+        id: 'FILE-2023-002', 
+        title: 'Voice Over Project.wav', 
+        size: '8.7 MB', 
+        uploadDate: '2023-05-20',
+        status: 'ready',
+        type: 'voiceover'
+      },
+      { 
+        id: 'FILE-2023-003', 
+        title: 'Corporate Jingle.mp3', 
+        size: '1.5 MB', 
+        uploadDate: '2023-05-25',
+        status: 'pending',
+        type: 'jingle'
+      }
     ];
     
     // Simuler le nombre de messages non lus
-    this.unreadMessages = 3;
+    this.unreadMessages = 1;
+  }
+  
+  playAudio(file: any) {
+    console.log('Playing audio:', file);
+    // Implémentation de la lecture audio
+  }
+  
+  downloadAudio(file: any) {
+    console.log('Downloading audio:', file);
+    // Implémentation du téléchargement
+  }
+  
+  openMessages() {
+    console.log('Opening messages');
+    // Navigation vers la page de messages
   }
 }

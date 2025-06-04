@@ -110,6 +110,35 @@
     "MORE_TESTIMONIALS": "Meer klantgetuigenissen worden hier toegevoegd."
   },
   "PRICING": {
-    "MAIN_TITLE": "Onze prijzen"
-  }
+  "MAIN_TITLE": "Prijzen voor aangepaste diensten",
+  "CURRENCY": "Valuta",
+  "SOUNDTRACKS_TITLE": "Soundtracks",
+  "JINGLES_TITLE": "Jingles",
+  "VOICEOVER_TITLE": "Voice-over",
+  "SOUND_DESIGN_TITLE": "Geluidsontwerp",
+  "HYMNS_TITLE": "Hymnes",
+  "STANDARD_TRACK": "Standaard track",
+  "CUSTOM_TRACK": "Aangepaste track",
+  "PREMIUM_TRACK": "Premium track",
+  "SHORT_FORMAT": "Kort formaat",
+  "MEDIUM_FORMAT": "Middellang formaat",
+  "LONG_FORMAT": "Lang formaat",
+  "MALE_VOICE": "Mannenstem",
+  "FEMALE_VOICE": "Vrouwenstem",
+  "SOUND_EFFECTS": "Geluidseffecten",
+  "AMBIENT_SOUNDS": "Omgevingsgeluiden",
+  "CORPORATE_HYMN": "Bedrijfshymne",
+  "ORGANIZATION_HYMN": "Organisatiehymne",
+  "UP_TO_30_SEC": "tot 30 seconden",
+  "UP_TO_2_MIN": "tot 2 minuten",
+  "UP_TO_5_MIN": "tot 5 minuten",
+  "NATIVE_SPEAKER": "moedertaalspreker",
+  "PROFESSIONAL": "professioneel",
+  "PACK_OF_10": "pakket van 10",
+  "CUSTOM_PACK": "aangepast pakket",
+  "WITH_LYRICS": "met tekst",
+  "WITH_ORCHESTRA": "met orkest",
+  "PRICE_FROM": "vanaf"
+}
+
 }

@@ -1,1 +1,45 @@
-<p>files works!</p>
+<!-- src/app/private/files/files.component.html -->
+<div class="files-container">
+  <h1>Mes Fichiers Audio</h1>
+  <p class="subtitle">Téléchargez et écoutez vos fichiers audio personnalisés</p>
+  
+  <div class="files-list">
+    <div *ngFor="let file of audioFiles" class="file-card">
+      <div class="file-header">
+        <div class="file-icon">
+          <i class="fas" [ngClass]="{
+            'fa-music': file.type === 'soundtrack',
+            'fa-microphone': file.type === 'voiceover',
+            'fa-bell': file.type === 'jingle'
+          }"></i>
+        </div>
+        <div class="file-title">
+          <h3>{{file.title}}</h3>
+          <span class="file-status" [ngClass]="file.status">
+            {{file.status === 'ready' ? 'Prêt' : 'En attente'}}
+          </span>
+        </div>
+      </div>
+      
+      <div class="file-details">
+        <p class="file-description">{{file.description}}</p>
+        <p class="file-meta">{{file.size}} • Ajouté le {{file.uploadDate}}</p>
+      </div>
+      
+      <div class="file-actions">
+        <button class="btn-play" (click)="playAudio(file)" [disabled]="file.status !== 'ready'">
+          <i class="fas fa-play"></i> Écouter
+        </button>
+        <button class="btn-download" (click)="downloadAudio(file)" [disabled]="file.status !== 'ready'">
+          <i class="fas fa-download"></i> Télécharger
+        </button>
+      </div>
+    </div>
+    
+    <div *ngIf="audioFiles.length === 0" class="empty-state">
+      <i class="fas fa-music empty-icon"></i>
+      <p>Aucun fichier audio disponible pour le moment.</p>
+      <p class="empty-subtitle">Vos fichiers audio commandés apparaîtront ici une fois prêts.</p>
+    </div>
+  </div>
+</div>

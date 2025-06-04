@@ -18,7 +18,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 
 
-
 // Factory function for translation loader
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');

@@ -110,6 +110,35 @@
     "MORE_TESTIMONIALS": "Lisää asiakaspalautteita lisätään tähän."
   },
   "PRICING": {
-    "MAIN_TITLE": "Hinnoittelumme"
-  }
+  "MAIN_TITLE": "Räätälöityjen palvelujen hinnoittelu",
+  "CURRENCY": "Valuutta",
+  "SOUNDTRACKS_TITLE": "Ääniraidat",
+  "JINGLES_TITLE": "Jinglet",
+  "VOICEOVER_TITLE": "Ääninäyttely",
+  "SOUND_DESIGN_TITLE": "Äänisuunnittelu",
+  "HYMNS_TITLE": "Hymnit",
+  "STANDARD_TRACK": "Vakioraita",
+  "CUSTOM_TRACK": "Räätälöity raita",
+  "PREMIUM_TRACK": "Premium-raita",
+  "SHORT_FORMAT": "Lyhyt formaatti",
+  "MEDIUM_FORMAT": "Keskipitkä formaatti",
+  "LONG_FORMAT": "Pitkä formaatti",
+  "MALE_VOICE": "Miesääni",
+  "FEMALE_VOICE": "Naisääni",
+  "SOUND_EFFECTS": "Äänitehosteet",
+  "AMBIENT_SOUNDS": "Ambienssiäänet",
+  "CORPORATE_HYMN": "Yrityshymni",
+  "ORGANIZATION_HYMN": "Organisaatiohymni",
+  "UP_TO_30_SEC": "enintään 30 sekuntia",
+  "UP_TO_2_MIN": "enintään 2 minuuttia",
+  "UP_TO_5_MIN": "enintään 5 minuuttia",
+  "NATIVE_SPEAKER": "äidinkielinen puhuja",
+  "PROFESSIONAL": "ammattilainen",
+  "PACK_OF_10": "10 kappaleen paketti",
+  "CUSTOM_PACK": "räätälöity paketti",
+  "WITH_LYRICS": "sanoituksilla",
+  "WITH_ORCHESTRA": "orkesterin kanssa",
+  "PRICE_FROM": "alkaen"
+}
+
 }

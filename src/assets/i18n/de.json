@@ -110,6 +110,35 @@
     "MORE_TESTIMONIALS": "Weitere Kundenstimmen werden hier hinzugefügt."
   },
   "PRICING": {
-    "MAIN_TITLE": "Unsere Preise"
-  }
+  "MAIN_TITLE": "Preise für maßgeschneiderte Dienstleistungen",
+  "CURRENCY": "Währung",
+  "SOUNDTRACKS_TITLE": "Soundtracks",
+  "JINGLES_TITLE": "Jingles",
+  "VOICEOVER_TITLE": "Sprachaufnahme",
+  "SOUND_DESIGN_TITLE": "Sounddesign",
+  "HYMNS_TITLE": "Hymnen",
+  "STANDARD_TRACK": "Standard-Track",
+  "CUSTOM_TRACK": "Individueller Track",
+  "PREMIUM_TRACK": "Premium-Track",
+  "SHORT_FORMAT": "Kurzformat",
+  "MEDIUM_FORMAT": "Mittelformat",
+  "LONG_FORMAT": "Langformat",
+  "MALE_VOICE": "Männliche Stimme",
+  "FEMALE_VOICE": "Weibliche Stimme",
+  "SOUND_EFFECTS": "Soundeffekte",
+  "AMBIENT_SOUNDS": "Ambient-Sounds",
+  "CORPORATE_HYMN": "Unternehmenshymne",
+  "ORGANIZATION_HYMN": "Organisationshymne",
+  "UP_TO_30_SEC": "bis zu 30 Sekunden",
+  "UP_TO_2_MIN": "bis zu 2 Minuten",
+  "UP_TO_5_MIN": "bis zu 5 Minuten",
+  "NATIVE_SPEAKER": "Muttersprachler",
+  "PROFESSIONAL": "professionell",
+  "PACK_OF_10": "10er-Pack",
+  "CUSTOM_PACK": "individuelles Paket",
+  "WITH_LYRICS": "mit Text",
+  "WITH_ORCHESTRA": "mit Orchester",
+  "PRICE_FROM": "ab"
+}
+
 }

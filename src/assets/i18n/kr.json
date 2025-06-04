@@ -109,7 +109,36 @@
     "COMING_SOON": "곧 출시 예정",
     "MORE_TESTIMONIALS": "더 많은 고객 추천이 여기에 추가될 예정입니다."
   },
-  "PRICING": {
-    "MAIN_TITLE": "가격 정책"
-  }
+ "PRICING": {
+  "MAIN_TITLE": "맞춤 서비스 가격",
+  "CURRENCY": "통화",
+  "SOUNDTRACKS_TITLE": "사운드트랙",
+  "JINGLES_TITLE": "징글",
+  "VOICEOVER_TITLE": "보이스오버",
+  "SOUND_DESIGN_TITLE": "사운드 디자인",
+  "HYMNS_TITLE": "찬가",
+  "STANDARD_TRACK": "표준 트랙",
+  "CUSTOM_TRACK": "맞춤 트랙",
+  "PREMIUM_TRACK": "프리미엄 트랙",
+  "SHORT_FORMAT": "짧은 형식",
+  "MEDIUM_FORMAT": "중간 형식",
+  "LONG_FORMAT": "긴 형식",
+  "MALE_VOICE": "남성 목소리",
+  "FEMALE_VOICE": "여성 목소리",
+  "SOUND_EFFECTS": "음향 효과",
+  "AMBIENT_SOUNDS": "환경음",
+  "CORPORATE_HYMN": "기업 찬가",
+  "ORGANIZATION_HYMN": "조직 찬가",
+  "UP_TO_30_SEC": "최대 30초",
+  "UP_TO_2_MIN": "최대 2분",
+  "UP_TO_5_MIN": "최대 5분",
+  "NATIVE_SPEAKER": "원어민",
+  "PROFESSIONAL": "전문가",
+  "PACK_OF_10": "10개 패키지",
+  "CUSTOM_PACK": "맞춤 패키지",
+  "WITH_LYRICS": "가사 포함",
+  "WITH_ORCHESTRA": "오케스트라 포함",
+  "PRICE_FROM": "부터"
+}
+
 }

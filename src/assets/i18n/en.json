@@ -109,9 +109,38 @@
     "COMING_SOON": "Coming Soon",
     "MORE_TESTIMONIALS": "More client testimonials will be added here."
   },
-  "PRICING": {
-    "MAIN_TITLE": "Our Pricing"
-  },
+
+"PRICING": {
+  "MAIN_TITLE": "Our Custom Services Pricing",
+  "CURRENCY": "Currency",
+  "SOUNDTRACKS_TITLE": "Soundtracks",
+  "JINGLES_TITLE": "Jingles",
+  "VOICEOVER_TITLE": "Voice Over",
+  "SOUND_DESIGN_TITLE": "Sound Design",
+  "HYMNS_TITLE": "Hymns",
+  "STANDARD_TRACK": "Standard Track",
+  "CUSTOM_TRACK": "Custom Track",
+  "PREMIUM_TRACK": "Premium Track",
+  "SHORT_FORMAT": "Short Format",
+  "MEDIUM_FORMAT": "Medium Format",
+  "LONG_FORMAT": "Long Format",
+  "MALE_VOICE": "Male Voice",
+  "FEMALE_VOICE": "Female Voice",
+  "SOUND_EFFECTS": "Sound Effects",
+  "AMBIENT_SOUNDS": "Ambient Sounds",
+  "CORPORATE_HYMN": "Corporate Hymn",
+  "ORGANIZATION_HYMN": "Organization Hymn",
+  "UP_TO_30_SEC": "up to 30 seconds",
+  "UP_TO_2_MIN": "up to 2 minutes",
+  "UP_TO_5_MIN": "up to 5 minutes",
+  "NATIVE_SPEAKER": "native speaker",
+  "PROFESSIONAL": "professional",
+  "PACK_OF_10": "pack of 10",
+  "CUSTOM_PACK": "custom pack",
+  "WITH_LYRICS": "with lyrics",
+  "WITH_ORCHESTRA": "with orchestra",
+  "PRICE_FROM": "from"
+},
 
   "MUSIC": {
   "EXPLORE_SOUNDS": "Explore Our Sounds",
@@ -162,7 +191,70 @@
   "LEARN_MORE": "Learn more",
   "CTA_TITLE": "Ready to transform your sound experience?",
   "CTA_SUBTITLE": "Contact our sales team today to discover how Applisound can meet your specific business needs."
-}
+},
 
-  
+"VOICEOVER": {
+  "HERO_TITLE": "Professional Voiceovers",
+  "HERO_SUBTITLE": "From ads to long-form content, craft the perfect narration for any project. Access a wide range of human voices to elevate your brand and maximize emotional impact.",
+  "TRY_NOW": "Try now",
+  "VOICES_TITLE": "Voices that speak volumes",
+  "VOICES_DESC": "Discover top voice actors, carefully selected to amplify your message, elevate your brand and maximize emotional impact.",
+  "LEARN_ARTISTS": "Learn how we work with voice artists",
+  "SAMPLES_TITLE": "Listen to our voice talents",
+  "VOICE_TYPE_DEEP": "Deep & Authoritative",
+  "VOICE_TYPE_WARM": "Warm & Friendly",
+  "VOICE_TYPE_ENERGETIC": "Energetic & Dynamic",
+  "VOICE_TYPE_PROFESSIONAL": "Professional & Clear",
+  "RANGE_TITLE": "A wide range tailored to you",
+  "RANGE_DESC": "More than just a standard voice service—Voices gives you high creative control over language, speed, and more, all while ensuring human authenticity stays part of the process.",
+  "YOUR_VOICE_TITLE": "Your vision, your voice",
+  "YOUR_VOICE_DESC": "Create voiceovers with your own voice. Editing the script? No re-recording necessary. Perfect for narration, podcasts, or ad reads. Save time, maintain a personal touch, and keep your storytelling authentic.",
+  "LEARN_MORE": "Learn more",
+  "WORKFLOW_TITLE": "Stay in your creative flow",
+  "WORKFLOW_DESC": "Our plugins for Adobe and DaVinci Resolve Studio enable you to seamlessly add voiceovers right within your workflow, with no need to switch tabs or windows.",
+  "CTA_TITLE": "Ready to give voice to your vision?",
+  "CTA_SUBTITLE": "Start creating professional voiceovers for your projects today.",
+  "START_NOW": "Start now"
+},
+
+"HOW_IT_WORKS": {
+  "HERO_TITLE": "Music Licensing Made Simple",
+  "HERO_SUBTITLE": "We've revolutionized the way you license music with our unique model that goes beyond the standard. Because we own all the rights to our music, we can offer you a worry-free experience with all rights included, globally.",
+  "START_TRIAL": "Start 30-day free trial",
+  "BLOCKCHAIN_TITLE": "Smart Contracts for Transparent Rights Management",
+  "BLOCKCHAIN_DESC": "At Applisound, we leverage blockchain technology to create smart contracts that automatically manage rights, royalties, and usage permissions. This ensures complete transparency and security for both creators and clients.",
+  "SECURE_TITLE": "Secure Transactions",
+  "SECURE_DESC": "Every transaction is securely recorded on the blockchain, providing an immutable record of your music license and rights.",
+  "TRANSPARENT_TITLE": "Transparent Rights",
+  "TRANSPARENT_DESC": "Smart contracts clearly define usage rights, territories, and duration, eliminating confusion and potential disputes.",
+  "ROYALTIES_TITLE": "Automatic Royalties",
+  "ROYALTIES_DESC": "Creators receive their share of royalties automatically whenever their music is used, ensuring fair compensation.",
+  "ONLINE_TITLE": "Publish Anywhere Online",
+  "ONLINE_DESC": "With an Applisound subscription, you can use unlimited music and sound effects in your content, then publish and monetize it globally on all major platforms including YouTube, Facebook, Instagram, Twitter, TikTok, podcasts, vlogs and more.",
+  "FOREVER_TITLE": "Your Content Stays Safe Forever",
+  "FOREVER_DESC": "Simply connect your social media channels to your Applisound account to publish and monetize your content with our music, worry-free. All content published during an active subscription will stay cleared forever.",
+  "LEARN_MORE": "Learn more",
+  "CUSTOM_TITLE": "We Cover All Your Sound Needs",
+  "CUSTOM_DESC": "Soundtrack anything, anywhere, with an Applisound plan. From filmmaking to game development, our customized solutions are designed to cover all of your sound personalization needs.",
+  "FILM": "Film & Video",
+  "TV": "TV & Broadcast",
+  "GAMES": "Games",
+  "EVENTS": "Live Events",
+  "SIMPLIFY_TITLE": "We Simplify Your Sound Experience",
+  "SIMPLIFY_DESC": "Our mission is to make professional sound accessible to everyone. We've streamlined the entire process from selection to licensing, so you can focus on creating amazing content.",
+  "STEP_1_TITLE": "Choose Your Sound",
+  "STEP_1_DESC": "Browse our extensive library of music, sound effects, and voiceovers, or request a custom creation tailored to your specific needs.",
+  "STEP_2_TITLE": "Secure Your Rights",
+  "STEP_2_DESC": "Our blockchain-powered smart contracts automatically handle all licensing and rights management, giving you peace of mind.",
+  "STEP_3_TITLE": "Create & Publish",
+  "STEP_3_DESC": "Use your sounds in any project and publish anywhere, knowing that all rights are secured and properly managed.",
+  "CTA_TITLE": "Ready to Transform Your Sound Experience?",
+  "CTA_SUBTITLE": "Join thousands of creators who trust Applisound for their sound needs.",
+  "START_NOW": "Start now"
+},
+
+"PRODUCSOUNDS": {
+    "COMING_SOON": "This feature will be available soon"
+  }
+
 }

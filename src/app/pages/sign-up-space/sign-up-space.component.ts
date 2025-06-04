@@ -4,6 +4,9 @@ import { RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl, ValidationErrors } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LanguageService } from '../../services/language.service';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-sign-up-space',
@@ -22,7 +25,9 @@ export class SignUpSpaceComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private translate: TranslateService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -57,19 +62,30 @@ export class SignUpSpaceComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
 
-    // Arrêter si le formulaire est invalide
     if (this.signupForm.invalid) {
       return;
     }
 
     this.loading = true;
 
-    // Simulation d'une requête d'inscription
-    setTimeout(() => {
-      // Ici, vous implémenteriez l'appel à votre service d'inscription
-      console.log('Tentative d\'inscription avec:', this.signupForm.value);
-      this.loading = false;
-    }, 1500);
+    this.authService.register(
+      this.f['firstName'].value,
+      this.f['lastName'].value,
+      this.f['email'].value, // Email
+      this.f['email'].value, // Utiliser l'email comme nom d'utilisateur
+      this.f['password'].value
+    ).subscribe({
+      next: data => {
+        this.loading = false;
+        // Rediriger vers la page de connexion avec un message de succès
+        this.router.navigate(['/login']);
+      },
+      error: err => {
+        console.error(err);
+        this.loading = false;
+        // Afficher un message d'erreur
+      }
+    });
   }
 
   togglePasswordVisibility() {

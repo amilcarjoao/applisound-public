@@ -1,9 +1,8 @@
+// src/app/pages/pricing-page/pricing-page.component.ts
 import { CommonModule } from '@angular/common';
-import { Component, ViewChild, ElementRef } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { TranslateModule } from '@ngx-translate/core'; // Assurez-vous d'avoir cet import
-
-
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
+import { CurrencyService } from '../../services/currency.service';
 
 interface PricingCard {
   title: string;
@@ -19,67 +18,78 @@ interface PricingCard {
   standalone: true,
   imports: [
     CommonModule,
-    TranslateModule  // Important : ajoutez TranslateModule ici
+    TranslateModule
   ],
   templateUrl: './pricing-page.component.html',
   styleUrls: ['./pricing-page.component.scss']
 })
-export class PricingPageComponent {
+export class PricingPageComponent implements OnInit {
   @ViewChild('cardsContainer') cardsContainer!: ElementRef;
 
   pricingCards: PricingCard[] = [
     {
-      title: 'SOUNDTRACKS',
+      title: 'PRICING.SOUNDTRACKS_TITLE',
       services: [
-        { name: 'Existing Library', price: 'FREE', details: '(Limited Rights)' },
-        { name: 'Custom 30 seconds', price: '€70' },
-        { name: 'Custom 1-2 minutes', price: '€85' },
-        { name: 'Custom 2-3 minutes', price: '€105' },
-        { name: 'Custom 3-4 minutes', price: '€130' },
-        { name: 'Custom over 4 minutes', price: 'from €170' }
+        { name: 'PRICING.STANDARD_TRACK', price: '€70', details: 'PRICING.UP_TO_30_SEC' },
+        { name: 'PRICING.CUSTOM_TRACK', price: '€85', details: 'PRICING.UP_TO_2_MIN' },
+        { name: 'PRICING.CUSTOM_TRACK', price: '€105', details: 'PRICING.UP_TO_5_MIN' },
+        { name: 'PRICING.PREMIUM_TRACK', price: '€130', details: 'PRICING.PROFESSIONAL' },
+        { name: 'PRICING.PREMIUM_TRACK', price: 'from €170', details: 'PRICING.WITH_ORCHESTRA' }
       ]
     },
     {
-      title: 'JINGLES',
+      title: 'PRICING.JINGLES_TITLE',
       services: [
-        { name: 'Short Non-Exclusive Jingle', price: '€160', details: '(max 15 seconds)' },
-        { name: 'Standard Non-Exclusive Jingle', price: '€250', details: '(max 40 seconds)' },
-        { name: 'Corporate Exclusive Jingle', price: 'from €2000', details: '(All Rights)' },
-        { name: 'TV & Radio Exclusive Jingle', price: 'from €3500', details: '(All Rights)' }
+        { name: 'PRICING.SHORT_FORMAT', price: '€160', details: 'PRICING.UP_TO_30_SEC' },
+        { name: 'PRICING.MEDIUM_FORMAT', price: '€250', details: 'PRICING.UP_TO_2_MIN' },
+        { name: 'PRICING.CORPORATE_HYMN', price: 'from €2000', details: 'PRICING.WITH_LYRICS' },
+        { name: 'PRICING.ORGANIZATION_HYMN', price: 'from €3500', details: 'PRICING.WITH_ORCHESTRA' }
       ]
     },
     {
-      title: 'SOUND DESIGN',
+      title: 'PRICING.SOUND_DESIGN_TITLE',
       services: [
-        { name: 'Simple Sound Design', price: '€9/sound', details: '(Interface, Button, Alert)' },
-        { name: 'Video Sound Design', price: '€70', details: '(max 1 minute)' },
-        { name: 'Video Sound Design', price: '€85', details: '(2-5 minutes)' },
-        { name: 'Video Game Project Pack', price: 'from €105' },
-        { name: 'Film Project Pack', price: 'On quote' },
-        { name: 'Animation Project Pack', price: 'On quote' }
+        { name: 'PRICING.SOUND_EFFECTS', price: '€9', details: 'PRICING.PROFESSIONAL' },
+        { name: 'PRICING.AMBIENT_SOUNDS', price: '€70', details: 'PRICING.UP_TO_30_SEC' },
+        { name: 'PRICING.AMBIENT_SOUNDS', price: '€85', details: 'PRICING.UP_TO_2_MIN' },
+        { name: 'PRICING.PACK_OF_10', price: '€105', details: 'PRICING.SOUND_EFFECTS' },
+        { name: 'PRICING.CUSTOM_PACK', price: 'from €299', details: 'PRICING.PROFESSIONAL' }
       ]
     },
     {
-      title: 'VOICEOVER',
+      title: 'PRICING.VOICEOVER_TITLE',
       services: [
-        { name: 'High Quality Voiceover', price: '€50', details: '(30 seconds)' },
-        { name: 'High Quality Voiceover', price: '€80', details: '(1 minute)' },
-        { name: 'High Quality Voiceover', price: '€100', details: '(2 minutes)' },
-        { name: 'High Quality Voiceover', price: '€120', details: '(3 minutes)' },
-        { name: 'National Advertising', price: 'from €130', details: '(Long Narration Project)' }
+        { name: 'PRICING.MALE_VOICE', price: '€50', details: 'PRICING.UP_TO_30_SEC' },
+        { name: 'PRICING.FEMALE_VOICE', price: '€80', details: 'PRICING.UP_TO_2_MIN' },
+        { name: 'PRICING.MALE_VOICE', price: '€100', details: 'PRICING.NATIVE_SPEAKER' },
+        { name: 'PRICING.FEMALE_VOICE', price: '€120', details: 'PRICING.NATIVE_SPEAKER' },
+        { name: 'PRICING.PROFESSIONAL', price: 'from €130', details: 'PRICING.UP_TO_5_MIN' }
       ]
     },
     {
-      title: 'MIXING & MASTERING',
+      title: 'PRICING.HYMNS_TITLE',
       services: [
-        { name: 'Single Track Mixing', price: '€50' },
-        { name: 'Single Track Mastering', price: '€80' },
-        { name: 'EP Mixing (4-6 tracks)', price: '€100' },
-        { name: 'EP Mastering (4-6 tracks)', price: '€120' },
-        { name: 'Album Project', price: 'from €130' }
+        { name: 'PRICING.SHORT_FORMAT', price: '€299', details: 'PRICING.UP_TO_2_MIN' },
+        { name: 'PRICING.MEDIUM_FORMAT', price: '€499', details: 'PRICING.UP_TO_5_MIN' },
+        { name: 'PRICING.CORPORATE_HYMN', price: '€999', details: 'PRICING.WITH_LYRICS' },
+        { name: 'PRICING.ORGANIZATION_HYMN', price: 'from €1499', details: 'PRICING.WITH_ORCHESTRA' }
       ]
     }
   ];
+
+  currentCurrency: string = '€';
+
+  constructor(
+    private translate: TranslateService,
+    public currencyService: CurrencyService
+  ) {}
+
+  ngOnInit() {
+    // S'abonner aux changements de devise
+    this.currencyService.currentCurrency$.subscribe(currency => {
+      this.currentCurrency = currency.symbol;
+    });
+  }
 
   scrollLeft() {
     this.cardsContainer.nativeElement.scrollBy({
@@ -95,12 +105,7 @@ export class PricingPageComponent {
     });
   }
 
-
-  // JE TRADUIT
-  constructor(private translate: TranslateService) {
-    // Utiliser les traductions programmatiquement
-    translate.get('PRICING.TITLE').subscribe((res: string) => {
-      console.log(res);
-    });
+  formatPrice(price: string): string {
+    return this.currencyService.formatPrice(price);
   }
 }

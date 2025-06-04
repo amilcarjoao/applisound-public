@@ -4,6 +4,10 @@ import { RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LanguageService } from '../../services/language.service';
+// AUTH
+import { TokenStorageService } from '../../services/token-storage.service';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-space',
@@ -21,7 +25,10 @@ export class LoginSpaceComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private translate: TranslateService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private tokenStorage: TokenStorageService,
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -38,20 +45,30 @@ export class LoginSpaceComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
 
-    // Arrêter si le formulaire est invalide
     if (this.loginForm.invalid) {
       return;
     }
 
     this.loading = true;
 
-    // Simulation d'une requête d'authentification
-    setTimeout(() => {
-      // Ici, vous implémenteriez l'appel à votre service d'authentification
-      console.log('Tentative de connexion avec:', this.loginForm.value);
-      this.loading = false;
-    }, 1500);
+    this.authService.login(
+      this.f['email'].value, 
+      this.f['password'].value
+    ).subscribe({
+      next: data => {
+        this.tokenStorage.saveToken(data.token);
+        this.tokenStorage.saveUser(data);
+        this.loading = false;
+        this.router.navigate(['/dashboard']);
+      },
+      error: err => {
+        console.error(err);
+        this.loading = false;
+        // Afficher un message d'erreur
+      }
+    });
   }
+
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
@@ -69,4 +86,7 @@ export class LoginSpaceComponent implements OnInit {
     // Pour les autres pages
     return currentLang === 'en' ? ['/', path] : ['/', currentLang, path];
   }
+
+
+  // AUTH SUITE
 }

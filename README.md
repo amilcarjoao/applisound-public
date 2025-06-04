@@ -14,5 +14,5 @@ Je viens enfin de régler la plus part des problématiques de traduction.
 
 - DigitalOcean Managed Databases pour la base de données Stockage
 - Aws pour le stockage des fichiers audio et video 
-
-- 
+// Correction Magique contre le scroll bizzare
+  padding: 4rem 2rem;

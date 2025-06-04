@@ -30,18 +30,29 @@ export class FormModalService {
 
 
   closeForm() {
-    // Vérifier si le formulaire est terminé ou si l'utilisateur est sur la première étape
-    if (this.formCompletedSubject.value || this.currentStepSubject.value === 'one') {
-      this.currentStepSubject.next('none');
-      document.body.classList.remove('modal-open');
-    } else {
-      // Afficher une confirmation si le formulaire n'est pas terminé
-      if (confirm('Êtes-vous sûr de vouloir quitter ? Vos données ne seront pas sauvegardées.')) {
-        this.currentStepSubject.next('none');
-        document.body.classList.remove('modal-open');
-      }
-    }
+  // Vérifier si le formulaire est terminé ou si l'utilisateur est sur la première étape
+  if (this.formCompletedSubject.value || this.currentStepSubject.value === 'one') {
+    this.currentStepSubject.next('none');
+    document.body.classList.remove('modal-open');
+  } else {
+    // Au lieu d'utiliser confirm(), émettre un état de confirmation
+    this.showConfirmationSubject.next(true);
   }
+}
+
+// Ajouter ces propriétés et méthodes
+private showConfirmationSubject = new BehaviorSubject<boolean>(false);
+showConfirmation$ = this.showConfirmationSubject.asObservable();
+
+confirmClose() {
+  this.showConfirmationSubject.next(false);
+  this.currentStepSubject.next('none');
+  document.body.classList.remove('modal-open');
+}
+
+cancelClose() {
+  this.showConfirmationSubject.next(false);
+}
 
   completeForm() {
     this.formCompletedSubject.next(true);

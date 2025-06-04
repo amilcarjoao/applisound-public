@@ -1,1 +1,37 @@
-<p>messages works!</p>
+<!-- src/app/private/messages/messages.component.html -->
+<div class="messages-container">
+  <h1>Messages</h1>
+  <p class="subtitle">Communiquez avec l'équipe Applisound</p>
+  
+  <div class="messages-box">
+    <div class="messages-list">
+      <div *ngFor="let message of messages" class="message-item" [ngClass]="{'user-message': message.sender === 'user', 'team-message': message.sender === 'team'}">
+        <div class="message-avatar" *ngIf="message.sender === 'team'">
+          <img src="https://applisound-images.s3.eu-west-3.amazonaws.com/team-avatar.png" alt="Team Applisound">
+        </div>
+        <div class="message-content">
+          <div class="message-header">
+            <span class="message-sender">{{message.sender === 'user' ? 'Vous' : 'Équipe Applisound'}}</span>
+            <span class="message-time">{{formatDate(message.timestamp)}}</span>
+          </div>
+          <div class="message-text">
+            {{message.content}}
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="message-input">
+      <textarea 
+        [(ngModel)]="newMessage" 
+        placeholder="Écrivez votre message ici..." 
+        rows="3"
+        (keydown.enter)="$event.preventDefault(); sendMessage()">
+      </textarea>
+      <button class="send-button" (click)="sendMessage()" [disabled]="!newMessage.trim()">
+        <i class="fas fa-paper-plane"></i> Envoyer
+      </button>
+      <p class="info-text">Vos messages seront envoyés à l'équipe Applisound par email.</p>
+    </div>
+  </div>
+</div>

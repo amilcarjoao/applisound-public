@@ -1,35 +1,46 @@
+<!-- src/app/pages/pricing-page/pricing-page.component.html -->
 <div class="page-container">
   <div class="pricing-container">
     <h1 class="pricing-title">{{ 'PRICING.MAIN_TITLE' | translate }}</h1>
     
-    <div class="pricing-cards-container">
-      <button class="scroll-button left" (click)="scrollLeft()">
-        <i class="fas fa-chevron-left"></i>
-      </button>
+    <div class="currency-selector">
+      <span>{{ 'PRICING.CURRENCY' | translate }}:</span>
+      <button [class.active]="currentCurrency === '€'" (click)="currencyService.setCurrentCurrency('EUR')">EUR (€)</button>
+      <button [class.active]="currentCurrency === '$'" (click)="currencyService.setCurrentCurrency('USD')">USD ($)</button>
+      <button [class.active]="currentCurrency === 'CHF'" (click)="currencyService.setCurrentCurrency('CHF')">CHF</button>
+      <button [class.active]="currentCurrency === '¥'" (click)="currencyService.setCurrentCurrency('JPY')">JPY (¥)</button>
+    </div>
+    
+    <div class="pricing-cards-background">
+      <div class="pricing-cards-container">
+        <button class="scroll-button left" (click)="scrollLeft()">
+          <i class="fas fa-chevron-left"></i>
+        </button>
 
-      <div class="cards-container" #cardsContainer>
-        <div class="pricing-card" *ngFor="let card of pricingCards">
-          <h2>{{ card.title | translate }}</h2>
-          
-          <div class="services-list">
-            <div class="service-item" *ngFor="let service of card.services">
-              <div class="service-name">
-                {{ service.name | translate }}
-                <span class="service-details" *ngIf="service.details">
-                  {{ service.details | translate }}
-                </span>
-              </div>
-              <div class="service-price">
-                {{ service.price | translate }}
+        <div class="cards-container" #cardsContainer>
+          <div class="pricing-card" *ngFor="let card of pricingCards">
+            <h2>{{ card.title | translate }}</h2>
+            
+            <div class="services-list">
+              <div class="service-item" *ngFor="let service of card.services">
+                <div class="service-name">
+                  {{ service.name | translate }}
+                  <span class="service-details" *ngIf="service.details">
+                    {{ service.details | translate }}
+                  </span>
+                </div>
+                <div class="service-price">
+                  {{ formatPrice(service.price) }}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <button class="scroll-button right" (click)="scrollRight()">
-        <i class="fas fa-chevron-right"></i>
-      </button>
+        <button class="scroll-button right" (click)="scrollRight()">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
     </div>
   </div>
 </div>

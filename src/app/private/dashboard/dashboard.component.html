@@ -7,30 +7,44 @@
     
     <div class="main-content">
       <div class="welcome-section">
-        <h1>Welcome back, {{user.firstName}}!</h1>
-        <p>Here's an overview of your Applisound projects and activities.</p>
+        <h1>Bienvenue, {{user.firstName}}!</h1>
+        <p>Voici vos fichiers audio et messages.</p>
       </div>
       
       <div class="dashboard-grid">
-        <div class="dashboard-card orders-card">
+        <div class="dashboard-card files-card">
           <div class="card-header">
-            <h2>Recent Orders</h2>
-            <a routerLink="/dashboard/orders" class="view-all">View All</a>
+            <h2>Mes Fichiers Audio</h2>
+            <a routerLink="/dashboard/files" class="view-all">Voir tout</a>
           </div>
           <div class="card-content">
-            <div class="order-list">
-              <div *ngFor="let order of recentOrders" class="order-item">
-                <div class="order-info">
-                  <h3>{{order.title}}</h3>
-                  <p>{{order.id}} • {{order.date}}</p>
+            <div class="file-list">
+              <div *ngFor="let file of audioFiles" class="file-item">
+                <div class="file-icon">
+                  <i class="fas" [ngClass]="{
+                    'fa-music': file.type === 'soundtrack',
+                    'fa-microphone': file.type === 'voiceover',
+                    'fa-bell': file.type === 'jingle'
+                  }"></i>
                 </div>
-                <div class="order-status" [ngClass]="order.status">
-                  {{order.status}}
+                <div class="file-info">
+                  <h3>{{file.title}}</h3>
+                  <p>{{file.size}} • {{file.uploadDate}}</p>
+                  <span class="file-status" [ngClass]="file.status">
+                    {{file.status === 'ready' ? 'Prêt' : 'En attente'}}
+                  </span>
+                </div>
+                <div class="file-actions">
+                  <button class="btn-icon" (click)="playAudio(file)" [disabled]="file.status !== 'ready'">
+                    <i class="fas fa-play"></i>
+                  </button>
+                  <button class="btn-icon" (click)="downloadAudio(file)" [disabled]="file.status !== 'ready'">
+                    <i class="fas fa-download"></i>
+                  </button>
                 </div>
               </div>
-              <div *ngIf="recentOrders.length === 0" class="empty-state">
-                <p>No orders yet. Ready to create your first sound?</p>
-                <button class="btn-primary">Create New Order</button>
+              <div *ngIf="audioFiles.length === 0" class="empty-state">
+                <p>Aucun fichier audio disponible pour le moment.</p>
               </div>
             </div>
           </div>
@@ -39,7 +53,7 @@
         <div class="dashboard-card messages-card">
           <div class="card-header">
             <h2>Messages</h2>
-            <a routerLink="/dashboard/messages" class="view-all">View All</a>
+            <a routerLink="/dashboard/messages" class="view-all">Voir tout</a>
           </div>
           <div class="card-content">
             <div class="message-preview">
@@ -48,62 +62,13 @@
                   <img src="https://applisound-images.s3.eu-west-3.amazonaws.com/team-avatar.png" alt="Team Applisound">
                 </div>
                 <div class="message-content">
-                  <h3>Team Applisound</h3>
-                  <p>Your soundtrack is ready for review! We've just uploaded...</p>
-                  <span class="message-time">2 hours ago</span>
+                  <h3>Équipe Applisound</h3>
+                  <p>Votre fichier audio est prêt ! Nous venons de le télécharger...</p>
+                  <span class="message-time">Il y a 2 heures</span>
                 </div>
               </div>
               <div class="message-actions">
-                <button class="btn-secondary">Open Chat</button>
-                <button class="btn-voice">
-                  <i class="fas fa-microphone"></i>
-                  Voice Message
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="dashboard-card files-card">
-          <div class="card-header">
-            <h2>Recent Files</h2>
-            <a routerLink="/dashboard/files" class="view-all">View All</a>
-          </div>
-          <div class="card-content">
-            <div class="file-list">
-              <div class="file-item">
-                <div class="file-icon">
-                  <i class="fas fa-music"></i>
-                </div>
-                <div class="file-info">
-                  <h3>Project_Soundtrack_v1.mp3</h3>
-                  <p>3.2 MB • Uploaded 3 days ago</p>
-                </div>
-                <div class="file-actions">
-                  <button class="btn-icon">
-                    <i class="fas fa-play"></i>
-                  </button>
-                  <button class="btn-icon">
-                    <i class="fas fa-download"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="file-item">
-                <div class="file-icon">
-                  <i class="fas fa-file-audio"></i>
-                </div>
-                <div class="file-info">
-                  <h3>Voice_Over_Final.wav</h3>
-                  <p>8.7 MB • Uploaded 1 week ago</p>
-                </div>
-                <div class="file-actions">
-                  <button class="btn-icon">
-                    <i class="fas fa-play"></i>
-                  </button>
-                  <button class="btn-icon">
-                    <i class="fas fa-download"></i>
-                  </button>
-                </div>
+                <button class="btn-primary" (click)="openMessages()">Contacter l'équipe</button>
               </div>
             </div>
           </div>
