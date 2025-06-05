@@ -1,7 +1,7 @@
 <div class="modal-overlay" *ngIf="currentStep !== 'none'" [@fadeAnimation]>
   <div class="modal-container" [@slideAnimation]>
     <button class="close-button" (click)="closeModal()">×</button>
-    
+
     <div class="steps-indicator">
       <div class="step" [class.active]="currentStep === 'one'">1</div>
       <div class="step-line"></div>
@@ -9,37 +9,27 @@
       <div class="step-line"></div>
       <div class="step" [class.active]="currentStep === 'three'">3</div>
     </div>
-    
+
     <div class="modal-content">
-      <app-form-step-one 
-        *ngIf="currentStep === 'one'"
+      <app-form-unified
         [serviceType]="serviceType"
-        (next)="onNextStep('one', $event)"
-        (cancel)="closeModal()">
-      </app-form-step-one>
-      
-      <app-form-step-two 
-        *ngIf="currentStep === 'two'"
-        (next)="onNextStep('two', $event)"
-        (previous)="onPreviousStep('two')">
-      </app-form-step-two>
-      
-      <app-form-step-three 
-        *ngIf="currentStep === 'three'"
-        [formData]="formData"
-        (previous)="onPreviousStep('three')"
-        (complete)="onFormComplete($event)">
-      </app-form-step-three>
+        (next)="onNextStep($event)"
+        (cancel)="closeModal()"
+        (complete)="onFormComplete($event)"
+      >
+      </app-form-unified>
     </div>
   </div>
-  
+
   <!-- Confirmation dialog -->
   <div class="confirmation-dialog" *ngIf="showConfirmation" [@confirmAnimation]>
     <div class="confirmation-content">
       <h3>Quitter le formulaire ?</h3>
       <p>Vos données ne seront pas sauvegardées.</p>
       <div class="confirmation-buttons">
-        <button class="btn-cancel" (click)="cancelClose()">Continuer l'édition</button>
+        <button class="btn-cancel" (click)="cancelClose()">
+          Continuer l'édition
+        </button>
         <button class="btn-confirm" (click)="confirmClose()">Quitter</button>
       </div>
     </div>

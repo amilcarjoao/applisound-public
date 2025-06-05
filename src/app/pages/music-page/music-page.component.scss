@@ -13,6 +13,13 @@
   @media (min-width: 1024px) { @content; }
 }
 
+:host {
+  display: block;
+  background: linear-gradient(135deg, $bleu1-aps, darken($bleu1-aps, 15%));
+  min-height: 100vh;
+  width: 100%;
+}
+
 .page-container {
   padding: 2rem;
   
@@ -25,7 +32,7 @@
   max-width: 1200px;
   margin: 0 auto;
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 2px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
@@ -87,7 +94,7 @@
       width: 100%;
       padding: 0.75rem 1rem 0.75rem 2.5rem;
       border: 1px solid #ddd;
-      border-radius: 6px;
+      border-radius: 2px;
       font-size: 0.9rem;
       
       &:focus {
@@ -120,7 +127,7 @@
       select {
         padding: 0.75rem;
         border: 1px solid #ddd;
-        border-radius: 6px;
+        border-radius: 2px;
         background-color: white;
         font-size: 0.9rem;
         
@@ -155,7 +162,7 @@
     
     .featured-track {
       background-color: #f8f9fa;
-      border-radius: 8px;
+      border-radius: 2px;
       overflow: hidden;
       transition: all 0.3s ease;
       cursor: pointer;
@@ -227,7 +234,7 @@
           span {
             font-size: 0.7rem;
             padding: 0.25rem 0.5rem;
-            border-radius: 12px;
+            border-radius: 2px;
             
             &.category-tag {
               background-color: rgba($bleu1-aps, 0.1);
@@ -265,7 +272,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem;
-      border-radius: 8px;
+      border-radius: 2px;
       background-color: #f8f9fa;
       transition: all 0.2s ease;
       cursor: pointer;
@@ -286,7 +293,7 @@
         .track-play-button {
           width: 36px;
           height: 36px;
-          border-radius: 50%;
+          border-radius: 2px;
           background-color: $bleu1-aps;
           color: white;
           display: flex;
@@ -314,7 +321,7 @@
         }
       }
       
-            .track-meta {
+      .track-meta {
         display: flex;
         align-items: center;
         gap: 1.5rem;
@@ -344,7 +351,7 @@
     .no-results {
       padding: 3rem 0;
       text-align: center;
-      color: #666;
+      color: white;
     }
   }
 }
@@ -380,7 +387,7 @@
       .track-artwork.small {
         width: 50px;
         height: 50px;
-        border-radius: 4px;
+        border-radius: 2px;
         background: linear-gradient(45deg, $bleu3-aps, $bleu1-aps);
       }
       
@@ -441,7 +448,7 @@
         &.play-btn {
           width: 40px;
           height: 40px;
-          border-radius: 50%;
+          border-radius: 2px;
           background-color: $bleu1-aps;
           color: white;
           display: flex;
@@ -519,7 +526,7 @@
         -webkit-appearance: none;
         width: 12px;
         height: 12px;
-        border-radius: 50%;
+        border-radius: 2px;
         background-color: $bleu1-aps;
         cursor: pointer;
       }
@@ -527,7 +534,7 @@
       &::-moz-range-thumb {
         width: 12px;
         height: 12px;
-        border-radius: 50%;
+        border-radius: 2px;
         background-color: $bleu1-aps;
         cursor: pointer;
         border: none;

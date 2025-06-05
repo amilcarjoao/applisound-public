@@ -71,8 +71,8 @@ export class SignUpSpaceComponent implements OnInit {
     this.authService.register(
       this.f['firstName'].value,
       this.f['lastName'].value,
-      this.f['email'].value, // Email
-      this.f['email'].value, // Utiliser l'email comme nom d'utilisateur
+      this.f['email'].value,
+      this.f['email'].value, // Utilisé comme username
       this.f['password'].value
     ).subscribe({
       next: data => {

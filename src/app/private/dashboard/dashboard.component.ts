@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { SidebarComponent } from '../components/sidebar/sidebar.component';
 import { HeaderComponent } from '../components/header/header.component';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,16 +25,11 @@ export class DashboardComponent implements OnInit {
   audioFiles: any[] = [];
   unreadMessages: number = 0;
   
-  constructor() {}
+  constructor(private userService: UserService) {}
   
   ngOnInit() {
-    // Simuler la récupération des données utilisateur
-    this.user = {
-      firstName: 'John',
-      lastName: 'Doe',
-      email: 'john.doe@example.com',
-      avatar: 'https://applisound-images.s3.eu-west-3.amazonaws.com/default-avatar.png'
-    };
+    // Récupérer les données utilisateur depuis le service
+    this.user = this.userService.currentUserValue;
     
     // Simuler la récupération des fichiers audio
     this.audioFiles = [

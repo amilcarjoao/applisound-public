@@ -3,12 +3,18 @@
   <div class="pricing-container">
     <h1 class="pricing-title">{{ 'PRICING.MAIN_TITLE' | translate }}</h1>
     
-    <div class="currency-selector">
-      <span>{{ 'PRICING.CURRENCY' | translate }}:</span>
-      <button [class.active]="currentCurrency === '€'" (click)="currencyService.setCurrentCurrency('EUR')">EUR (€)</button>
-      <button [class.active]="currentCurrency === '$'" (click)="currencyService.setCurrentCurrency('USD')">USD ($)</button>
-      <button [class.active]="currentCurrency === 'CHF'" (click)="currencyService.setCurrentCurrency('CHF')">CHF</button>
-      <button [class.active]="currentCurrency === '¥'" (click)="currencyService.setCurrentCurrency('JPY')">JPY (¥)</button>
+    <div class="currency-dropdown">
+      <div class="selected-currency" (click)="toggleCurrencyDropdown()">
+        <span>{{ 'PRICING.CURRENCY' | translate }}: </span>
+        <span class="current-value">{{ getCurrentCurrencyLabel() }}</span>
+        <i class="fas" [ngClass]="isDropdownOpen ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+      </div>
+      <div class="dropdown-menu" [class.open]="isDropdownOpen">
+        <button [class.active]="currentCurrency === '€'" (click)="selectCurrency('EUR')">EUR (€)</button>
+        <button [class.active]="currentCurrency === '$'" (click)="selectCurrency('USD')">USD ($)</button>
+        <button [class.active]="currentCurrency === 'CHF'" (click)="selectCurrency('CHF')">CHF</button>
+        <button [class.active]="currentCurrency === '¥'" (click)="selectCurrency('JPY')">JPY (¥)</button>
+      </div>
     </div>
     
     <div class="pricing-cards-background">

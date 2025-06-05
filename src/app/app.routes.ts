@@ -10,9 +10,6 @@ import { HowItWorksPageComponent } from './pages/how-it-works-page/how-it-works-
 import { LoginSpaceComponent } from './pages/login-space/login-space.component';
 import { SignUpSpaceComponent } from './pages/sign-up-space/sign-up-space.component';
 import { AuthGuard } from '../app/guards/auth.guard';
-import { FormStepOneComponent } from './form-step-one/form-step-one.component';
-import { FormStepTwoComponent } from './form-step-two/form-step-two.component';
-import { FormStepThreeComponent } from './form-step-three/form-step-three.component';
 
 
 export const routes: Routes = [
@@ -61,18 +58,6 @@ export const routes: Routes = [
     path: 'signup',
     component: SignUpSpaceComponent,
     data: { animation: 'SignUpSpace'}
-  },
-   {
-    path: 'form/step-one',
-    component: FormStepOneComponent
-  },
-  {
-    path: 'form/step-two',
-    component: FormStepTwoComponent
-  },
-  {
-    path: 'form/step-three',
-    component: FormStepThreeComponent
   },
   {
     path: '404',

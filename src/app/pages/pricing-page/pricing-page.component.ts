@@ -2,7 +2,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
-import { CurrencyService } from '../../services/currency.service';
+import { CurrencyService, CurrencyCode } from '../../services/currency.service';
+
 
 interface PricingCard {
   title: string;
@@ -78,6 +79,7 @@ export class PricingPageComponent implements OnInit {
   ];
 
   currentCurrency: string = '€';
+  isDropdownOpen: boolean = false;
 
   constructor(
     private translate: TranslateService,
@@ -88,6 +90,14 @@ export class PricingPageComponent implements OnInit {
     // S'abonner aux changements de devise
     this.currencyService.currentCurrency$.subscribe(currency => {
       this.currentCurrency = currency.symbol;
+    });
+    
+    // Fermer le dropdown quand on clique ailleurs sur la page
+    document.addEventListener('click', (event) => {
+      const target = event.target as HTMLElement;
+      if (!target.closest('.currency-dropdown')) {
+        this.isDropdownOpen = false;
+      }
     });
   }
 
@@ -107,5 +117,31 @@ export class PricingPageComponent implements OnInit {
 
   formatPrice(price: string): string {
     return this.currencyService.formatPrice(price);
+  }
+  
+  toggleCurrencyDropdown(event?: Event) {
+    if (event) {
+      event.stopPropagation();
+    }
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+  
+  selectCurrency(currency: string) {
+
+    // Vérifier que la valeur est valide avant de la convertir
+  if (currency === 'EUR' || currency === 'USD' || currency === 'CHF' || currency === 'JPY') {
+    this.currencyService.setCurrentCurrency(currency as CurrencyCode);
+  }
+  this.isDropdownOpen = false;
+  }
+  
+  getCurrentCurrencyLabel(): string {
+    switch(this.currentCurrency) {
+      case '€': return 'EUR (€)';
+      case '$': return 'USD ($)';
+      case 'CHF': return 'CHF';
+      case '¥': return 'JPY (¥)';
+      default: return 'EUR (€)';
+    }
   }
 }
