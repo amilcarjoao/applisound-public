@@ -17,7 +17,7 @@
       max-width: 1000px;
       max-height: 90vh;
       background-color: white;
-      border-radius: 10px;
+      border-radius: 2px;
       box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
       position: relative;
       overflow: hidden;
@@ -39,7 +39,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 50%;
+      border-radius: 2px;
       color: #333;
       transition: all 0.2s ease;
     }
@@ -60,7 +60,7 @@
     .step {
       width: 30px;
       height: 30px;
-      border-radius: 50%;
+      border-radius: 2px;
       background-color: #eee;
       display: flex;
       align-items: center;
@@ -72,6 +72,7 @@
     .step.active {
       background-color: #0a1b50;
       color: white;
+      border-radius: 2px;
     }
     
     .step-line {
@@ -102,7 +103,7 @@
 
 .confirmation-content {
   background-color: white;
-  border-radius: 10px;
+  border-radius: 2px;
   padding: 2rem;
   width: 90%;
   max-width: 400px;
@@ -127,7 +128,7 @@
     
     button {
       padding: 0.75rem 1.5rem;
-      border-radius: 6px;
+      border-radius: 2px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;

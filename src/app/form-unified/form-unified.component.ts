@@ -1,7 +1,12 @@
 // form-unified.component.ts
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { FormDataService } from '../services/form-data.service';
 
 @Component({
@@ -9,7 +14,7 @@ import { FormDataService } from '../services/form-data.service';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './form-unified.component.html',
-  styleUrls: ['./form-unified.component.scss']
+  styleUrls: ['./form-unified.component.scss'],
 })
 export class FormUnifiedComponent implements OnInit {
   @Input() serviceType: string = '';
@@ -20,7 +25,7 @@ export class FormUnifiedComponent implements OnInit {
 
   currentStep: 'one' | 'two' | 'three' = 'one';
   form!: FormGroup;
-  
+
   // Propriétés de l'étape 1
   serviceTypes: any[] = [];
   durations: any[] = [];
@@ -30,7 +35,7 @@ export class FormUnifiedComponent implements OnInit {
   isRecording: boolean = false;
   recordingTime: string = '00:00';
   minDate: string;
-  
+
   // Propriétés de l'étape 3
   hasSignature = false;
   isLoggedIn = false;
@@ -47,13 +52,109 @@ export class FormUnifiedComponent implements OnInit {
   ngOnInit(): void {
     this.initForm();
     this.initData();
-    
+
     // Charger les données sauvegardées
     const savedData = this.formDataService.getFormData();
     if (savedData && Object.keys(savedData).length > 0) {
       this.form.patchValue(savedData);
     }
   }
+
+  // Ajoutez cette méthode pour initialiser les données
+initData(): void {
+  // Initialiser les types de services
+  this.serviceTypes = [
+    { id: 'soundtrack', label: 'Bande sonore', tooltip: 'Musique pour vos projets' },
+    { id: 'voiceover', label: 'Voix off', tooltip: 'Narration professionnelle' },
+    { id: 'jingle', label: 'Jingle', tooltip: 'Court extrait musical identitaire' },
+    { id: 'sounddesign', label: 'Sound Design', tooltip: 'Création d\'ambiances et effets sonores' },
+    { id: 'hymne', label: 'Hymne-Générique', tooltip: 'Composition musicale identitaire pour marque ou organisation' },
+    { id: 'droits', label: 'Cession de droits', tooltip: 'Acquisition de droits d\'utilisation pour contenus audio' }
+  ];
+
+  // Initialiser les durées
+  this.durations = [
+    { value: '30sec', label: '30 secondes' },
+    { value: '1min', label: '1 minute' },
+    { value: '2min', label: '2 minutes' },
+    { value: 'custom', label: 'Autre durée' }
+  ];
+
+  // Initialiser les types de diffusion
+  this.diffusionTypes = ['Web', 'TV', 'Radio', 'Événementiel', 'Interne'];
+
+  // Initialiser les formats audio
+  this.audioFormats = [
+    { value: 'mp3', label: 'MP3' },
+    { value: 'wav', label: 'WAV' },
+    { value: 'aiff', label: 'AIFF' },
+    { value: 'other', label: 'Autre' }
+  ];
+}
+
+  serviceDurations: { [key: string]: any[] } = {
+    soundtrack: [
+      { value: '30sec', label: '30 secondes', price: 70 },
+      { value: '1min', label: '1 minute', price: 85 },
+      { value: '2min', label: '2 minutes', price: 105 },
+      { value: '5min', label: '5 minutes', price: 130 },
+      { value: 'orchestra', label: 'Avec orchestre', price: 170 },
+    ],
+    jingle: [
+      { value: '30sec', label: '30 secondes', price: 160 },
+      { value: '2min', label: '2 minutes', price: 250 },
+      { value: 'lyrics', label: 'Avec paroles', price: 2000 },
+      { value: 'orchestra', label: 'Avec orchestre', price: 3500 },
+    ],
+    voiceover: [
+      { value: '30sec', label: '30 secondes (voix masculine)', price: 50 },
+      { value: '2min', label: '2 minutes (voix féminine)', price: 80 },
+      {
+        value: 'native-male',
+        label: 'Langue maternelle (voix masculine)',
+        price: 100,
+      },
+      {
+        value: 'native-female',
+        label: 'Langue maternelle (voix féminine)',
+        price: 120,
+      },
+      { value: '5min', label: '5 minutes (professionnel)', price: 130 },
+    ],
+    sounddesign: [
+      { value: 'effect', label: 'Effet sonore', price: 9 },
+      { value: '30sec', label: 'Ambiance sonore (30 secondes)', price: 70 },
+      { value: '2min', label: 'Ambiance sonore (2 minutes)', price: 85 },
+      { value: 'pack10', label: 'Pack de 10 effets sonores', price: 105 },
+      { value: 'custom', label: 'Pack personnalisé', price: 299 },
+    ],
+    hymne: [
+      { value: '2min', label: 'Format court (2 minutes)', price: 299 },
+      { value: '5min', label: 'Format moyen (5 minutes)', price: 499 },
+      { value: 'lyrics', label: "Hymne d'entreprise avec paroles", price: 999 },
+      {
+        value: 'orchestra',
+        label: "Hymne d'organisation avec orchestre",
+        price: 1499,
+      },
+    ],
+    droits: [
+      { value: 'limited', label: 'Licence limitée (1 an)', price: 200 },
+      { value: 'extended', label: 'Licence étendue (5 ans)', price: 500 },
+      { value: 'unlimited', label: 'Licence illimitée', price: 1000 },
+      { value: 'exclusive', label: 'Droits exclusifs', price: 2000 },
+    ],
+  };
+
+  // Services sélectionnés avec leurs durées et quantités
+  selectedServices: {
+    serviceId: string;
+    serviceName: string;
+    duration: string;
+    durationLabel: string;
+    price: number;
+    quantity: number;
+  }[] = [];
 
   initForm(): void {
     this.form = this.fb.group({
@@ -81,30 +182,7 @@ export class FormUnifiedComponent implements OnInit {
     });
   }
 
-  initData(): void {
-    // Initialiser les données pour les sélections (comme dans FormStepOneComponent)
-    this.serviceTypes = [
-      { id: 'soundtrack', label: 'Bande sonore', tooltip: 'Musique pour vos projets' },
-      { id: 'jingle', label: 'Jingle', tooltip: 'Court extrait musical identitaire' },
-      { id: 'voiceover', label: 'Voix off', tooltip: 'Narration professionnelle' },
-    ];
 
-    this.durations = [
-      { value: '30sec', label: '30 secondes' },
-      { value: '1min', label: '1 minute' },
-      { value: '2min', label: '2 minutes' },
-      { value: 'custom', label: 'Autre durée' },
-    ];
-
-    this.diffusionTypes = ['Web', 'TV', 'Radio', 'Événementiel', 'Interne'];
-
-    this.audioFormats = [
-      { value: 'mp3', label: 'MP3' },
-      { value: 'wav', label: 'WAV' },
-      { value: 'aiff', label: 'AIFF' },
-      { value: 'other', label: 'Autre' },
-    ];
-  }
 
   // Navigation entre les étapes
   goToNextStep() {
@@ -144,10 +222,78 @@ export class FormUnifiedComponent implements OnInit {
     });
   }
 
-  onServiceSelect(event: Event, serviceId: string): void {
-    const isChecked = (event.target as HTMLInputElement).checked;
-    // Logique pour gérer la sélection de service
+onServiceSelect(event: Event, serviceId: string): void {
+  const isChecked = (event.target as HTMLInputElement).checked;
+  const serviceControl = document.getElementById(`service-options-${serviceId}`);
+  
+  if (serviceControl) {
+    if (isChecked) {
+      serviceControl.classList.remove('hidden');
+    } else {
+      serviceControl.classList.add('hidden');
+      // Supprimer ce service des services sélectionnés
+      this.selectedServices = this.selectedServices.filter(s => s.serviceId !== serviceId);
+    }
   }
+}
+
+onServiceDurationChange(event: Event, serviceId: string): void {
+  const selectElement = event.target as HTMLSelectElement;
+  const durationValue = selectElement.value;
+  
+  if (!durationValue) return;
+  
+  // Trouver le service dans la liste
+  const service = this.serviceTypes.find(s => s.id === serviceId);
+  if (!service) return;
+  
+  // Trouver la durée sélectionnée
+  const duration = this.serviceDurations[serviceId].find(d => d.value === durationValue);
+  if (!duration) return;
+  
+  // Vérifier si ce service avec cette durée existe déjà
+  const existingIndex = this.selectedServices.findIndex(
+    s => s.serviceId === serviceId && s.duration === durationValue
+  );
+  
+  if (existingIndex >= 0) {
+    // Mettre à jour la quantité
+    const quantityInput = document.getElementById(`quantity-${serviceId}-${durationValue}`) as HTMLInputElement;
+    if (quantityInput) {
+      this.selectedServices[existingIndex].quantity = parseInt(quantityInput.value) || 1;
+    }
+  } else {
+    // Ajouter un nouveau service
+    this.selectedServices.push({
+      serviceId: serviceId,
+      serviceName: service.label,
+      duration: durationValue,
+      durationLabel: duration.label,
+      price: duration.price,
+      quantity: 1
+    });
+  }
+   // Mettre à jour le formulaire
+  this.formDataService.updateFormData({ selectedServices: this.selectedServices });
+
+}
+
+updateServiceQuantity(serviceId: string, durationValue: string, event: Event): void {
+  const target = event.target as HTMLInputElement;
+  if (!target) return;
+  
+  const quantity = parseInt(target.value) || 1;
+  
+  const index = this.selectedServices.findIndex(
+    s => s.serviceId === serviceId && s.duration === durationValue
+  );
+  
+  if (index >= 0) {
+    this.selectedServices[index].quantity = quantity;
+    // Mettre à jour le formulaire
+    this.formDataService.updateFormData({ selectedServices: this.selectedServices });
+  }
+}
 
   onDurationChange(event: Event): void {
     const value = (event.target as HTMLSelectElement).value;
@@ -182,50 +328,82 @@ export class FormUnifiedComponent implements OnInit {
 
   // Méthodes de l'étape 3
   generateDevis() {
-    // Utiliser this.form.value pour générer le contenu du devis
-    setTimeout(() => {
-      const devisContent = document.querySelector('.devis-content') as HTMLElement;
-      if (devisContent && this.form.value.personalInfo) {
-        const personalInfo = this.form.value.personalInfo;
-        
-        // Informations client
-        const clientInfo = devisContent.querySelector('.client-info') as HTMLElement;
-        if (clientInfo) {
-          clientInfo.innerHTML = `
-            <h4>Client</h4>
-            <p>${personalInfo.nom} ${personalInfo.prenom}</p>
-            <p>${personalInfo.email}</p>
-            <p>${personalInfo.telephone || ''}</p>
-            <p>${personalInfo.entreprise || ''}</p>
-          `;
-        }
-        
-        // Détails du projet
-        const devisDetails = devisContent.querySelector('.devis-details') as HTMLElement;
-        if (devisDetails) {
-          // Exemple de table avec services
-          devisDetails.innerHTML = `
-            <table>
-              <thead>
-                <tr>
-                  <th>Service</th>
-                  <th>Quantité</th>
-                  <th>Prix</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Service exemple</td>
-                  <td>1</td>
-                  <td>€100</td>
-                </tr>
-              </tbody>
-            </table>
-          `;
-        }
+  setTimeout(() => {
+    const devisContent = document.querySelector('.devis-content') as HTMLElement;
+    if (devisContent && this.form.value.personalInfo) {
+      const personalInfo = this.form.value.personalInfo;
+      
+      // Informations client
+      const clientInfo = devisContent.querySelector('.client-info') as HTMLElement;
+      if (clientInfo) {
+        clientInfo.innerHTML = `
+          <h4>Client</h4>
+          <p>${personalInfo.nom} ${personalInfo.prenom}</p>
+          <p>${personalInfo.email}</p>
+          <p>${personalInfo.telephone || ''}</p>
+          <p>${personalInfo.entreprise || ''}</p>
+        `;
       }
-    }, 100);
-  }
+      
+      // Détails du projet
+      const devisDetails = devisContent.querySelector('.devis-details') as HTMLElement;
+      if (devisDetails) {
+        let servicesHtml = `
+          <table>
+            <thead>
+              <tr>
+                <th>Service</th>
+                <th>Durée</th>
+                <th>Quantité</th>
+                <th>Prix unitaire</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+        `;
+        
+        let totalPrice = 0;
+        
+        // Ajouter les services sélectionnés
+        this.selectedServices.forEach(service => {
+          const serviceTotal = service.price * service.quantity;
+          totalPrice += serviceTotal;
+          
+          servicesHtml += `
+            <tr>
+              <td>${service.serviceName}</td>
+              <td>${service.durationLabel}</td>
+              <td>${service.quantity}</td>
+              <td>€${service.price}</td>
+              <td>€${serviceTotal}</td>
+            </tr>
+          `;
+        });
+        
+        servicesHtml += `
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="4" style="text-align: right;"><strong>Total HT:</strong></td>
+                <td>€${totalPrice}</td>
+              </tr>
+              <tr>
+                <td colspan="4" style="text-align: right;"><strong>TVA (20%):</strong></td>
+                <td>€${(totalPrice * 0.2).toFixed(2)}</td>
+              </tr>
+              <tr>
+                <td colspan="4" style="text-align: right;"><strong>Total TTC:</strong></td>
+                <td>€${(totalPrice * 1.2).toFixed(2)}</td>
+              </tr>
+            </tfoot>
+          </table>
+        `;
+        
+        devisDetails.innerHTML = servicesHtml;
+      }
+    }
+  }, 100);
+}
 
   initializeSignaturePad() {
     const canvas = document.querySelector('canvas');

@@ -45,56 +45,75 @@
         </div>
       </section>
 
-      <!-- Services -->
+      <!-- Services et durées -->
       <section class="form-section">
-        <h3>Services souhaités</h3>
-        <div class="services-grid">
+        <h3>Services et durées</h3>
+        <div class="services-container">
           <div *ngFor="let service of serviceTypes" class="service-item">
-            <label [for]="service.id" class="checkbox-label">
-              <input
-                type="checkbox"
-                [id]="service.id"
-                (change)="onServiceSelect($event, service.id)"
-              />
-              <span>{{ service.label }}</span>
-              <small *ngIf="service.tooltip" class="tooltip">{{
-                service.tooltip
-              }}</small>
-            </label>
+            <div class="service-header">
+              <label [for]="service.id" class="checkbox-label">
+                <input
+                  type="checkbox"
+                  [id]="service.id"
+                  (change)="onServiceSelect($event, service.id)"
+                />
+                <span>{{ service.label }}</span>
+                <small *ngIf="service.tooltip" class="tooltip">{{
+                  service.tooltip
+                }}</small>
+              </label>
+            </div>
+
+            <div
+              [id]="'service-options-' + service.id"
+              class="service-options hidden"
+            >
+              <div class="service-durations">
+                <div
+                  *ngFor="let duration of serviceDurations[service.id]"
+                  class="duration-item"
+                >
+                  <div class="duration-header">
+                    <label
+                      [for]="'duration-' + service.id + '-' + duration.value"
+                      class="checkbox-label"
+                    >
+                      <input
+                        type="checkbox"
+                        [id]="'duration-' + service.id + '-' + duration.value"
+                        (change)="onServiceDurationChange($event, service.id)"
+                        [value]="duration.value"
+                      />
+                      <span>{{ duration.label }} - €{{ duration.price }}</span>
+                    </label>
+                  </div>
+
+                  <div class="quantity-selector">
+                    <label
+                      [for]="'quantity-' + service.id + '-' + duration.value"
+                      >Quantité:</label
+                    >
+                    <input
+                      type="number"
+                      [id]="'quantity-' + service.id + '-' + duration.value"
+                      min="1"
+                      value="1"
+                      (change)="
+                        updateServiceQuantity(
+                          service.id,
+                          duration.value,
+                          $event
+                        )
+                      "
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Quantités -->
-      <section class="form-section" formGroupName="serviceCounts">
-        <h3>Quantités souhaitées</h3>
-        <div class="quantities-grid">
-          <!-- Inputs pour les quantités -->
-        </div>
-      </section>
-
-      <!-- Suite du form-step-one/form-step-one.component.html -->
-      <!-- Durée -->
-      <section class="form-section">
-        <h3>Durée souhaitée</h3>
-        <div class="duration-selector">
-          <select
-            formControlName="duration"
-            (change)="onDurationChange($event)"
-          >
-            <option value="">Sélectionnez une durée</option>
-            <option *ngFor="let duration of durations" [value]="duration.value">
-              {{ duration.label }}
-            </option>
-          </select>
-          <input
-            *ngIf="form.get('duration')?.value === 'custom'"
-            type="text"
-            formControlName="customDuration"
-            placeholder="Précisez la durée souhaitée"
-          />
-        </div>
-      </section>
 
       <!-- Lieux de diffusion -->
       <section class="form-section">
